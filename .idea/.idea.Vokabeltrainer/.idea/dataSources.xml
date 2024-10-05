@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Vokabel" uuid="e89f62ff-d70e-4bf0-9bd8-1940c0873c80">
+    <data-source source="LOCAL" name="Vokabel" uuid="7419e404-e5c1-4dd6-861c-6e6ffcc1c724">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\micha\source\repos\Vokabeltrainer\Vokabeltrainer.Core\Vokabel.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\micha\source\repos\Vokabeltrainer\Vokabeltrainer\bin\x64\Debug\net8.0-windows10.0.22621\win-x64\Vokabel.db</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
       </jdbc-additional-properties>

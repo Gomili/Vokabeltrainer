@@ -16,9 +16,9 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock Margin="8,0,0,0" Text="Deutsch:" VerticalAlignment="Center"/>
-            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextDeutsch, Mode=TwoWay}" Width="180"/>
+            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextDeutsch, Mode=TwoWay}" MaxLength="256" Width="180"/>
             <TextBlock Margin="8,0,0,0" Text="Englisch:" VerticalAlignment="Center"/>
-            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextEnglisch, Mode=TwoWay}" Width="180"/>
+            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextEnglisch, Mode=TwoWay}" MaxLength="256" Width="180"/>
         </StackPanel>
         <CommandBar Grid.Row="1" Margin="8" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Left" >
             <AppBarButton Icon="Add" Label="Neu"/>
