@@ -16,6 +16,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     [ObservableProperty] private string _textEnglisch = string.Empty;
     [ObservableProperty] private ObservableCollection<Vokabel> _displayListe = new() ;
     [ObservableProperty] private Vokabel? _selectedVokabel;
+    [ObservableProperty] private int _anzahlVokabeln;
 
     public VokabeleingabeViewModel(IDataService dataService)
     {
@@ -23,6 +24,8 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
         
         List<Vokabel> sourceListe = _dataService.ReadAllAsync().GetAwaiter().GetResult();
 
+        AnzahlVokabeln = sourceListe.Count;
+        
         foreach (Vokabel vokabel in sourceListe)
             DisplayListe.Add(vokabel);
     }
@@ -49,6 +52,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
             TextEnglisch = string.Empty;
             
             ListHelper.AddListEntry(DisplayListe, vokabel);
+            AnzahlVokabeln++;
         }
     }
 
@@ -69,6 +73,9 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     {
         if (SelectedVokabel is null) return;
         if (await _dataService.DeleteAsync(SelectedVokabel))
+        {
             ListHelper.DeleteListEntry(DisplayListe, SelectedVokabel);
+            AnzahlVokabeln--;
+        }
     }
 }

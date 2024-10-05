@@ -14,21 +14,32 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        
+        <Border Grid.Row="0" Margin="0,0,0,8" Background="#FF004EAA" CornerRadius="4" BorderThickness="0" BorderBrush="#00488f" Padding="16 8">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="8,0,8,0" Text="Anzahl der Vokabeln:" Foreground="White"/>
+                <TextBlock Margin="4,0,8,0" Text="{x:Bind ViewModel.AnzahlVokabeln, Mode=OneWay}" Foreground="White"/>    
+            </StackPanel>
+        </Border>
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
             <TextBlock Margin="8,0,0,0" Text="Deutsch:" VerticalAlignment="Center"/>
             <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextDeutsch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="256" Width="180"/>
             <TextBlock Margin="8,0,0,0" Text="Englisch:" VerticalAlignment="Center"/>
             <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextEnglisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="256" Width="180"/>
         </StackPanel>
-        <CommandBar Grid.Row="1" Margin="8" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Left" >
+        
+        <CommandBar Grid.Row="2" Margin="8" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Left" >
             <AppBarButton Icon="Add" Label="Neu" Command="{x:Bind ViewModel.NeueVokabelCommand}"/>
             <AppBarButton Icon="Save" Label="Speichern" Command="{x:Bind ViewModel.VokabelSpeichernCommand}"/>
             <AppBarButton Icon="Delete" Label="Löschen" Command="{x:Bind ViewModel.VokabelLoeschenCommand}"
                           Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
         </CommandBar>
-        <ListView x:Name="VokabelListe" Grid.Row="2" ItemsSource="{x:Bind ViewModel.DisplayListe, Mode=OneWay}" Margin="4" HorizontalAlignment="Left" HorizontalContentAlignment="Left"
+        
+        <ListView x:Name="VokabelListe" Grid.Row="3" ItemsSource="{x:Bind ViewModel.DisplayListe, Mode=OneWay}" Margin="4" HorizontalAlignment="Left" HorizontalContentAlignment="Left"
                   ScrollViewer.HorizontalScrollMode="Auto" SelectedItem="{x:Bind ViewModel.SelectedVokabel, Mode=TwoWay}"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.IsHorizontalRailEnabled="True">
@@ -41,8 +52,8 @@
             
             <ListView.Header>
                 <ct:DataTable Margin="8" ColumnSpacing="12" MinWidth="1600">
-                    <ct:DataColumn Content="Deutsch" DesiredWidth="200"/>
-                    <ct:DataColumn Content="Englisch" DesiredWidth="200"/>
+                    <ct:DataColumn Content="Deutsch" DesiredWidth="280"/>
+                    <ct:DataColumn Content="Englisch" DesiredWidth="280"/>
                     <ct:DataColumn Content="Zähler" DesiredWidth="*"/>
                 </ct:DataTable>
             </ListView.Header>
