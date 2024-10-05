@@ -14,7 +14,7 @@ public class PageService : IPageService
 
     public PageService()
     {
-        Configure<MainViewModel, MainPage>();
+        Configure<VokabelTrainingViewModel, VokabelTrainingPage>();
         Configure<VokabeleingabeViewModel, VokabeleingabePage>();
     }
 

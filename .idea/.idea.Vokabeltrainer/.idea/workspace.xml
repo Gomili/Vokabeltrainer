@@ -12,10 +12,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Activation/DefaultActivationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Activation/DefaultActivationHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Services/PageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Services/PageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Strings/en-us/Resources.resw" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Strings/en-us/Resources.resw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/MainViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/MainPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/MainPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,14 +36,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.4.231008000/include/MddBootstrapAutoInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.4.231008000/include/WindowsAppSDK-VersionInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.6.240923002/include/MddBootstrapAutoInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.6.240923002/include/WindowsAppSDK-VersionInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/47f7a1f7d80b4da8babf400ed3efd6ee6eefc0/b4/ee45041b/NavigationViewItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/56de80467cc84e88ad3b5e8b0984d05f7f220/c2/509d3d57/ExceptionHelpers.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/752bbcc9cc4f8bd1a0d29d96d43040cdeaeb40f1ef3e19fde544683879d537ef/AsyncRelayCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9fc3658c64b5279b12c061382a9526533fdfcb5dbf114b5f9dd4dfde459/ObservableRecipient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d882146b4f265f10bcbec2663fce248db9ffec5fa1aeaf76e32a11ba5eafcd6/MethodBaseInvoker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/MainWindow.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/Views/VokabeleingabePage.g.i.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -140,7 +149,9 @@
       <workItem from="1728119524044" duration="209000" />
       <workItem from="1728119779296" duration="145000" />
       <workItem from="1728120028738" duration="5151000" />
-      <workItem from="1728126673574" duration="6184000" />
+      <workItem from="1728126673574" duration="6375000" />
+      <workItem from="1728142125829" duration="364000" />
+      <workItem from="1728142506314" duration="3908000" />
     </task>
     <servers />
   </component>

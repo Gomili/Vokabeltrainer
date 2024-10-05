@@ -69,8 +69,8 @@ public partial class App : Application
             // Views and ViewModels
             services.AddTransient<VokabeleingabeViewModel>();
             services.AddTransient<VokabeleingabePage>();
-            services.AddTransient<MainViewModel>();
-            services.AddTransient<MainPage>();
+            services.AddTransient<VokabelTrainingViewModel>();
+            services.AddTransient<VokabelTrainingPage>();
             services.AddTransient<ShellPage>();
             services.AddTransient<ShellViewModel>();
 
