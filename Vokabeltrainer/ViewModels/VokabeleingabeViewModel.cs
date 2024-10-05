@@ -5,6 +5,7 @@ using Vokabeltrainer.Core.Contracts.Services;
 using Vokabeltrainer.Core.Models;
 using Vokabeltrainer.Core.Services;
 using Vokabeltrainer.Core.VokabelContext;
+using Vokabeltrainer.Helpers;
 
 namespace Vokabeltrainer.ViewModels;
 
@@ -13,20 +14,61 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     private readonly IDataService _dataService;
     [ObservableProperty] private string _textDeutsch = string.Empty;
     [ObservableProperty] private string _textEnglisch = string.Empty;
-    [ObservableProperty] private string _zaehler = string.Empty;
     [ObservableProperty] private ObservableCollection<Vokabel> _displayListe = new() ;
+    [ObservableProperty] private Vokabel? _selectedVokabel;
 
-    private List<Vokabel> _sourceListe;
-    
     public VokabeleingabeViewModel(IDataService dataService)
     {
         _dataService = dataService;
         
-        _sourceListe = _dataService.ReadAllAsync().GetAwaiter().GetResult();
+        List<Vokabel> sourceListe = _dataService.ReadAllAsync().GetAwaiter().GetResult();
 
-        foreach (Vokabel vokabel in _sourceListe)
+        foreach (Vokabel vokabel in sourceListe)
             DisplayListe.Add(vokabel);
     }
 
+    [RelayCommand]
+    private Task SelectionChangedAsync(Vokabel? selectedVokabel)
+    {
+        if (selectedVokabel != null)
+        {
+            TextDeutsch = selectedVokabel.Deutsch;
+            TextEnglisch = selectedVokabel.Englisch;
+        }
+
+        return Task.CompletedTask;
+    }
     
+    [RelayCommand]
+    private async Task NeueVokabelAsync()
+    {
+        Vokabel vokabel = new Vokabel { Deutsch = TextDeutsch, Englisch = TextEnglisch, Zaehler = 100 };
+        if (await _dataService.SaveAsync(vokabel))
+        {
+            TextDeutsch = string.Empty;
+            TextEnglisch = string.Empty;
+            
+            ListHelper.AddListEntry(DisplayListe, vokabel);
+        }
+    }
+
+    [RelayCommand]
+    private async Task VokabelSpeichernAsync()
+    {
+        if (SelectedVokabel is null) return;
+        SelectedVokabel.Deutsch = TextDeutsch;
+        SelectedVokabel.Englisch = TextEnglisch;
+        if (await _dataService.SaveAsync(SelectedVokabel))
+        {
+            ListHelper.UpdateListEntry(DisplayListe, SelectedVokabel);
+        }
+    }
+
+    [RelayCommand]
+    private async Task VokabelLoeschenAsync()
+    {
+        if (SelectedVokabel is null) return;
+        if (await _dataService.DeleteAsync(SelectedVokabel))
+            ListHelper.DeleteListEntry(DisplayListe, SelectedVokabel);
+    }
 }

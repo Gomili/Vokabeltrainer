@@ -1,9 +1,12 @@
-﻿namespace Vokabeltrainer.Core.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using Vokabeltrainer.Core.Contracts.Services;
 
-public class Vokabel
+namespace Vokabeltrainer.Core.Models;
+
+public class Vokabel : IEntity
 {
     public Guid Id { get; set; }
-    public string Deutsch { get; set; }
-    public string Englisch { get; set; }
+    [MaxLength(256)]public string Deutsch { get; set; }
+    [MaxLength(256)]public string Englisch { get; set; }
     public int Zaehler { get; set; }
 }

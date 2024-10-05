@@ -8,7 +8,7 @@ public interface IDataService
 
     Task<Vokabel?> ReadAsync(Guid id);
     
-    Task SaveAsync(Vokabel content);
+    Task<bool> SaveAsync(Vokabel content);
 
-    Task DeleteAsync(Vokabel content);
+    Task<bool> DeleteAsync(Vokabel content);
 }

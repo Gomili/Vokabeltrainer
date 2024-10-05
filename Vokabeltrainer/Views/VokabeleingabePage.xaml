@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:models="using:Vokabeltrainer.Core.Models"
     xmlns:ct="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
@@ -16,19 +18,26 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock Margin="8,0,0,0" Text="Deutsch:" VerticalAlignment="Center"/>
-            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextDeutsch, Mode=TwoWay}" MaxLength="256" Width="180"/>
+            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextDeutsch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="256" Width="180"/>
             <TextBlock Margin="8,0,0,0" Text="Englisch:" VerticalAlignment="Center"/>
-            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextEnglisch, Mode=TwoWay}" MaxLength="256" Width="180"/>
+            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextEnglisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="256" Width="180"/>
         </StackPanel>
         <CommandBar Grid.Row="1" Margin="8" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Left" >
-            <AppBarButton Icon="Add" Label="Neu"/>
-            <AppBarButton Icon="Save" Label="Speichern"/>
-            <AppBarButton Icon="Delete" Label="Löschen" Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
+            <AppBarButton Icon="Add" Label="Neu" Command="{x:Bind ViewModel.NeueVokabelCommand}"/>
+            <AppBarButton Icon="Save" Label="Speichern" Command="{x:Bind ViewModel.VokabelSpeichernCommand}"/>
+            <AppBarButton Icon="Delete" Label="Löschen" Command="{x:Bind ViewModel.VokabelLoeschenCommand}"
+                          Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
         </CommandBar>
-        <ListView Grid.Row="2" ItemsSource="{x:Bind ViewModel.DisplayListe, Mode=OneWay}" Margin="4" HorizontalAlignment="Left" HorizontalContentAlignment="Left"
-                  ScrollViewer.HorizontalScrollMode="Auto" 
+        <ListView x:Name="VokabelListe" Grid.Row="2" ItemsSource="{x:Bind ViewModel.DisplayListe, Mode=OneWay}" Margin="4" HorizontalAlignment="Left" HorizontalContentAlignment="Left"
+                  ScrollViewer.HorizontalScrollMode="Auto" SelectedItem="{x:Bind ViewModel.SelectedVokabel, Mode=TwoWay}"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.IsHorizontalRailEnabled="True">
+            
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="SelectionChanged">
+                    <core:InvokeCommandAction Command="{x:Bind ViewModel.SelectionChangedCommand}" CommandParameter="{x:Bind VokabelListe.SelectedItem, Mode=OneWay}"/>
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
             
             <ListView.Header>
                 <ct:DataTable Margin="8" ColumnSpacing="12" MinWidth="1600">

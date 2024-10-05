@@ -26,26 +26,45 @@ public class DataService : IDataService
         return await context.Vokabeln.FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task SaveAsync(Vokabel content)
+    public async Task<bool> SaveAsync(Vokabel content)
     {
         await using var context = new VokabelDataContext();
+        
         if (content.Id == Guid.Empty)
         {
             content.Id = Guid.NewGuid();
-            context.Vokabeln.Add(content);
+            context.Add(content);
         }
         else
         {
-            context.Vokabeln.Update(content);
+            var org = await ReadAsync(content.Id);
+            if (org is not null)
+            {
+                org.Deutsch = content.Deutsch;
+                org.Englisch = content.Englisch;
+                org.Zaehler = content.Zaehler;
+                context.Update(org);
+            }
         }
 
-        await context.SaveChangesAsync();
+        int r = await context.SaveChangesAsync();
+        if (r > 0) return true;
+        
+        return false;
     }
 
-    public async Task DeleteAsync(Vokabel content)
+    public async Task<bool> DeleteAsync(Vokabel content)
     {
         await using var context = new VokabelDataContext();
-        context.Vokabeln.Remove(content);
-        await context.SaveChangesAsync();
+        
+        var org = await ReadAsync(content.Id);
+        
+        if (org is not null)
+            context.Remove(org);
+        
+        int r = await context.SaveChangesAsync();
+        if (r > 0) return true;
+        
+        return false;
     }
 }
