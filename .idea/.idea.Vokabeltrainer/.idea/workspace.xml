@@ -12,11 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/VokabelContext/VokabelDataContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Vokabel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Vokabel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Vokabeltrainer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Vokabeltrainer.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,22 +42,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.Vokabeltrainer: Vokabeltrainer (Unpackaged).executor": "Debug",
-    "Publish to folder.Publish Vokabeltrainer to folder.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UWP.Vokabeltrainer.executor": "Debug",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.Vokabeltrainer: Vokabeltrainer (Unpackaged).executor&quot;: &quot;Debug&quot;,
+    &quot;Publish to folder.Publish Vokabeltrainer to folder.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UWP.Vokabeltrainer.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Vokabeltrainer: Vokabeltrainer (Unpackaged)">
     <configuration name="Publish Vokabeltrainer to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
       <riderPublish configuration="Release" platform="Any CPU" runtime="Portable" target_folder="$PROJECT_DIR$/Vokabeltrainer/bin/Release/net7.0-windows10.0.19041.0/publish" target_framework="net7.0-windows10.0.19041.0" uuid_high="-1888846428121117338" uuid_low="-8534667009385749406" />
@@ -129,6 +125,8 @@
       <workItem from="1728054322767" duration="31000" />
       <workItem from="1728114558442" duration="518000" />
       <workItem from="1728115375015" duration="4106000" />
+      <workItem from="1728119524044" duration="209000" />
+      <workItem from="1728119779296" duration="145000" />
     </task>
     <servers />
   </component>
