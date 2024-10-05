@@ -19,8 +19,6 @@
             <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextDeutsch, Mode=TwoWay}" Width="180"/>
             <TextBlock Margin="8,0,0,0" Text="Englisch:" VerticalAlignment="Center"/>
             <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextEnglisch, Mode=TwoWay}" Width="180"/>
-            <TextBlock Margin="8,0,0,0" Text="Zähler:" VerticalAlignment="Center"/>
-            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.Zaehler, Mode=TwoWay}" Width="80"/>
         </StackPanel>
         <CommandBar Grid.Row="1" Margin="8" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Left" >
             <AppBarButton Icon="Add" Label="Neu"/>
