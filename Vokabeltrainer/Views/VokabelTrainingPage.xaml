@@ -13,12 +13,31 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <Border Grid.Row="0" Margin="0,0,0,8" Background="#FF004EAA" CornerRadius="4" BorderThickness="0" BorderBrush="#00488f" Padding="16 8">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="8,0,8,0" Text="Anzahl der Vokabeln:" Foreground="White"/>
-                <TextBlock Margin="4,0,8,0" Text="0" Foreground="White"/>    
+                <TextBlock Margin="4,0,8,0" Text="0" Foreground="White"/>
             </StackPanel>
         </Border>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Margin="4" Text="Wie viele Vokabeln möchtest du lernen?" VerticalAlignment="Center"/>
+            <Slider Margin="4" TickFrequency="1" TickPlacement="Outside" SnapsTo="StepValues" VerticalAlignment="Center" Width="200"/>
+            <Button Margin="4" Content="Start" Command="{x:Bind ViewModel.StartCommand}"/>
+            <Button Margin="4" Content="Stopp" Command="{x:Bind ViewModel.StopCommand}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Margin="4" Text="Status:" VerticalAlignment="Center"/>
+            <TextBlock Margin="4" Text="{x:Bind ViewModel.Laufzeit, Mode=OneWay}" VerticalAlignment="Center"/>
+            <TextBlock Margin="4" Text="Laufzeit" VerticalAlignment="Center"/>
+            <TextBlock Margin="4" Text="Richtig:" VerticalAlignment="Center"/>
+            <TextBlock Margin="4" Text="{x:Bind ViewModel.Richtige, Mode=OneWay}" VerticalAlignment="Center"/>
+            <TextBlock Margin="4" Text="Falsch:" VerticalAlignment="Center"/>
+            <TextBlock Margin="4" Text="{x:Bind ViewModel.Falsche, Mode=OneWay}" VerticalAlignment="Center"/>
+            <TextBlock Margin="4" Text="Vokabel:" VerticalAlignment="Center"/>
+            <TextBlock Margin="4" Text="{x:Bind ViewModel.Anzahl, Mode=OneWay}" VerticalAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </Page>
