@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "Vokabeltrainer (Unpackaged)": {
+        "commandName": "Project"
+      },
+      "Vokabeltrainer (Package)": {
+        "commandName": "MsixPackage"
+      }
+    }
+}
