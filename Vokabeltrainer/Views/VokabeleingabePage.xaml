@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:Vokabeltrainer.Core.Models"
+    xmlns:ct="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
 
     <Grid x:Name="ContentArea">
@@ -26,11 +27,27 @@
             <AppBarButton Icon="Save" Label="Speichern"/>
             <AppBarButton Icon="Delete" Label="Löschen" Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
         </CommandBar>
-        <!--<ListView x:Name="DataTable" ItemsSource="{x:Bind ViewModel.DisplayListe, Mode=OneWay}" Margin="4" ItemContainerStyle="{ThemeResource DataTableItem}"
+        <ListView Grid.Row="2" ItemsSource="{x:Bind ViewModel.DisplayListe, Mode=OneWay}" Margin="4" HorizontalAlignment="Left" HorizontalContentAlignment="Left"
                   ScrollViewer.HorizontalScrollMode="Auto" 
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.IsHorizontalRailEnabled="True">
             
-        </ListView> -->
+            <ListView.Header>
+                <ct:DataTable Margin="8" ColumnSpacing="12" MinWidth="1600">
+                    <ct:DataColumn Content="Deutsch" DesiredWidth="200"/>
+                    <ct:DataColumn Content="Englisch" DesiredWidth="200"/>
+                    <ct:DataColumn Content="Zähler" DesiredWidth="*"/>
+                </ct:DataTable>
+            </ListView.Header>
+             <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Vokabel">
+                    <ct:DataRow>
+                        <TextBlock Text="{x:Bind Deutsch}" VerticalAlignment="Center" />
+                        <TextBlock Text="{x:Bind Englisch}" VerticalAlignment="Center" />
+                        <TextBlock Text="{x:Bind Zaehler}" VerticalAlignment="Center" />
+                    </ct:DataRow>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid> 
 </Page>

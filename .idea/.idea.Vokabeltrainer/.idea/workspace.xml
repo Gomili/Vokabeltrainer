@@ -11,7 +11,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="" />
+    <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,10 +25,14 @@
   <component name="DpaMonitoringSettings">
     <option name="autoShow" value="false" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.4.231008000/include/MddBootstrapAutoInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.4.231008000/include/WindowsAppSDK-VersionInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/56de80467cc84e88ad3b5e8b0984d05f7f220/c2/509d3d57/ExceptionHelpers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/Views/VokabeleingabePage.g.i.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -40,6 +49,7 @@
     "Publish to folder.Publish Vokabeltrainer to folder.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UWP.Vokabeltrainer.executor": "Debug",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -115,6 +125,7 @@
       <workItem from="1728053917077" duration="172000" />
       <workItem from="1728054322767" duration="31000" />
       <workItem from="1728114558442" duration="518000" />
+      <workItem from="1728115375015" duration="1470000" />
     </task>
     <servers />
   </component>
