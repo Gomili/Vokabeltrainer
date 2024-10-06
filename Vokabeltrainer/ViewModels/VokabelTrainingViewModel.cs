@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using ABI.System.Collections;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using Vokabeltrainer.Core.Contracts.Services;
@@ -13,6 +14,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     [ObservableProperty] private int _richtige = 0;
     [ObservableProperty] private int _falsche = 0;
     [ObservableProperty] private int _anzahl = 0;
+    [ObservableProperty] private int _anzahlLernVokabeln = 0;
     
     private readonly DispatcherTimer _timer = new ();
     private DateTime _startTime;
@@ -28,8 +30,11 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     [RelayCommand]
     private void Start()
     {
-        _timer.Start();
-        _startTime = DateTime.Now;
+        if (AnzahlLernVokabeln > 0)
+        {
+            _timer.Start();
+            _startTime = DateTime.Now;
+        }
     }
 
     [RelayCommand]
@@ -40,6 +45,11 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         {
             Anzahl = Anzahl, Falsche = Falsche, Richtige = Richtige, StartTime = _startTime, StopTime = DateTime.Now
         });
+
+        Anzahl = 0;
+        Falsche = 0;
+        Richtige = 0;
+        Laufzeit = "00:00:00";
     }
     
     private void Timer_Tick(object sender, object e)

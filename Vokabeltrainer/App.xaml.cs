@@ -67,6 +67,8 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
+            services.AddTransient<SessionsViewModel>();
+            services.AddTransient<SessionsPage>();
             services.AddTransient<VokabeleingabeViewModel>();
             services.AddTransient<VokabeleingabePage>();
             services.AddTransient<VokabelTrainingViewModel>();

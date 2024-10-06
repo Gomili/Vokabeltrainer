@@ -23,7 +23,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <TextBlock Margin="4" Text="Wie viele Vokabeln möchtest du lernen?" VerticalAlignment="Center"/>
-            <Slider Margin="4" TickFrequency="1" TickPlacement="Outside" SnapsTo="StepValues" VerticalAlignment="Center" Width="200"/>
+            <Slider Margin="4" TickFrequency="1" Value="{x:Bind ViewModel.AnzahlLernVokabeln, Mode=TwoWay}" TickPlacement="Outside" SnapsTo="StepValues" VerticalAlignment="Center" Width="200"/>
             <Button Margin="4" Content="Start" Command="{x:Bind ViewModel.StartCommand}"/>
             <Button Margin="4" Content="Stopp" Command="{x:Bind ViewModel.StopCommand}"/>
         </StackPanel>
