@@ -9,6 +9,8 @@ public class VokabelDataContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=Vokabel.db");
+        string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        string filePath = Path.Combine(documentsPath, "Vokabel.db");
+        optionsBuilder.UseSqlite($"Data Source={filePath}");
     }
 }

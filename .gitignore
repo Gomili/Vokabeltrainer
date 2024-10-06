@@ -361,10 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/.idea
-/.idea/.idea.Vokabeltrainer
-.idea/.idea.Vokabeltrainer/.idea/workspace.xml
-.idea/.idea.Vokabeltrainer/.idea/workspace.xml
-.idea/.idea.Vokabeltrainer/.idea/workspace.xml
-.idea/.idea.Vokabeltrainer/.idea/workspace.xml
-.idea/.idea.Vokabeltrainer/.idea/workspace.xml
+
+.idea/*
+!.idea/vcs.xml
+!.idea/modules.xml
+!.idea/misc.xml
