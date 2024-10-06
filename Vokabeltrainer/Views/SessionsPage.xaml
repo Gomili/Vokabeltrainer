@@ -8,8 +8,13 @@
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:models="using:Vokabeltrainer.Core.Models"
     xmlns:ct="using:CommunityToolkit.WinUI.Controls"
+    xmlns:converter="using:Vokabeltrainer.Converter"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <converter:DateTimeToTimeConverter x:Key="DateTimeToTimeConverter"/>
+    </Page.Resources>
+    
     <Grid x:Name="ContentArea">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -44,7 +49,7 @@
                     <ct:DataRow>
                         <TextBlock Text="{x:Bind StartTime}" VerticalAlignment="Center" />
                         <TextBlock Text="{x:Bind StopTime}" VerticalAlignment="Center" />
-                        <TextBlock Text="{x:Bind Zeit}" VerticalAlignment="Center" />
+                        <TextBlock Text="{x:Bind Zeit, Converter={StaticResource DateTimeToTimeConverter}}" VerticalAlignment="Center" />
                         <TextBlock Text="{x:Bind Anzahl}" VerticalAlignment="Center" />
                         <TextBlock Text="{x:Bind Richtige}" VerticalAlignment="Center" Foreground="{ThemeResource SystemFillColorSuccessBrush}"/>
                         <TextBlock Text="{x:Bind Falsche}" VerticalAlignment="Center" Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
