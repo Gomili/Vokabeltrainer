@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.UI.Xaml;
 using Vokabeltrainer.Core.Contracts.Services;
 using Vokabeltrainer.Core.Models;
 using Vokabeltrainer.Core.Services;
@@ -41,11 +42,12 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
 
         return Task.CompletedTask;
     }
-    
-    [RelayCommand]
-    private async Task NeueVokabelAsync()
+
+    public async Task AddNewVokabelAsync(string deutsch, string englisch)
     {
-        Vokabel vokabel = new Vokabel { Deutsch = TextDeutsch, Englisch = TextEnglisch, Zaehler = 100 };
+        if (string.IsNullOrWhiteSpace(deutsch) || string.IsNullOrWhiteSpace(englisch)) return;
+        
+        Vokabel vokabel = new Vokabel { Deutsch = deutsch, Englisch = englisch, Zaehler = 100 };
         if (await _dataService.SaveAsync(vokabel))
         {
             TextDeutsch = string.Empty;
@@ -55,7 +57,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
             AnzahlVokabeln++;
         }
     }
-
+    
     [RelayCommand]
     private async Task VokabelSpeichernAsync()
     {

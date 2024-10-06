@@ -33,7 +33,7 @@
         </StackPanel>
         
         <CommandBar Grid.Row="2" Margin="8" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Left" >
-            <AppBarButton Icon="Add" Label="Neu" Command="{x:Bind ViewModel.NeueVokabelCommand}"/>
+            <AppBarButton Icon="Add" Label="Neu" Tapped="UIElement_OnTapped"/>
             <AppBarButton Icon="Save" Label="Speichern" Command="{x:Bind ViewModel.VokabelSpeichernCommand}"/>
             <AppBarButton Icon="Delete" Label="Löschen" Command="{x:Bind ViewModel.VokabelLoeschenCommand}"
                           Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
