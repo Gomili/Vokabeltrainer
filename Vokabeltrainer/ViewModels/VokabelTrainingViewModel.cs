@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using Vokabeltrainer.Core.Contracts.Services;
+using Vokabeltrainer.Core.Models;
 
 namespace Vokabeltrainer.ViewModels;
 
@@ -9,9 +10,9 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
 {
     private readonly IDataService _dataService;
     [ObservableProperty] private string _laufzeit = string.Empty;
-    [ObservableProperty] private string _richtige = "0";
-    [ObservableProperty] private string _falsche = "0";
-    [ObservableProperty] private string _anzahl = "0";
+    [ObservableProperty] private int _richtige = 0;
+    [ObservableProperty] private int _falsche = 0;
+    [ObservableProperty] private int _anzahl = 0;
     
     private readonly DispatcherTimer _timer = new ();
     private DateTime _startTime;
@@ -35,6 +36,10 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     private void Stop()
     {
         _timer.Stop();
+        _dataService.SaveSessionAsync(new Session()
+        {
+            Anzahl = Anzahl, Falsche = Falsche, Richtige = Richtige, StartTime = _startTime, StopTime = DateTime.Now
+        });
     }
     
     private void Timer_Tick(object sender, object e)

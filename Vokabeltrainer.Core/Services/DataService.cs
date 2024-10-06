@@ -67,11 +67,59 @@ public class DataService : IDataService
         return false;
     }
 
-    public Task<List<Session>> ReadAllSessionAsync() => throw new NotImplementedException();
+    public async Task<List<Session>> ReadAllSessionAsync()
+    {
+        await using var context = new VokabelDataContext();
+        return await context.Sessions.ToListAsync();
+    }
 
-    public Task<Session> ReadSessionAsync(Guid id) => throw new NotImplementedException();
+    public async Task<Session?> ReadSessionAsync(Guid id)
+    {
+        await using var context = new VokabelDataContext();
+        return await context.Sessions.FirstOrDefaultAsync(x => x.Id == id);
+    }
 
-    public Task<bool> SaveSessionAsync(Session content) => throw new NotImplementedException();
+    public async Task<bool> SaveSessionAsync(Session content)
+    {
+        await using var context = new VokabelDataContext();
+        
+        if (content.Id == Guid.Empty)
+        {
+            content.Id = Guid.NewGuid();
+            context.Add(content);
+        }
+        else
+        {
+            var org = await ReadSessionAsync(content.Id);
+            if (org is not null)
+            {
+                org.Anzahl = content.Anzahl;
+                org.Falsche = content.Falsche;
+                org.Richtige = content.Richtige;
+                org.StopTime = content.StopTime;
+                org.StartTime = content.StartTime;
+                context.Update(org);
+            }
+        }
 
-    public Task<bool> DeleteSessionAsync(Session content) => throw new NotImplementedException();
+        int r = await context.SaveChangesAsync();
+        if (r > 0) return true;
+        
+        return false;
+    }
+
+    public async Task<bool> DeleteSessionAsync(Session content)
+    {
+        await using var context = new VokabelDataContext();
+        
+        var org = await ReadSessionAsync(content.Id);
+        
+        if (org is not null)
+            context.Remove(org);
+        
+        int r = await context.SaveChangesAsync();
+        if (r > 0) return true;
+        
+        return false;
+    }
 }

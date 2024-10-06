@@ -15,7 +15,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     private readonly IDataService _dataService;
     [ObservableProperty] private string _textDeutsch = string.Empty;
     [ObservableProperty] private string _textEnglisch = string.Empty;
-    [ObservableProperty] private ObservableCollection<Vokabel> _displayListe = new() ;
+    [ObservableProperty] private ObservableCollection<Vokabel> _displayListe = new();
     [ObservableProperty] private Vokabel? _selectedVokabel;
     [ObservableProperty] private int _anzahlVokabeln;
 
