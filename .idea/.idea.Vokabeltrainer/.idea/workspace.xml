@@ -12,8 +12,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Session.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/VokabelContext/VokabelDataContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/VokabelContext/VokabelDataContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +32,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.4.231008000/include/MddBootstrapAutoInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.4.231008000/include/WindowsAppSDK-VersionInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.6.240923002/include/MddBootstrapAutoInitializer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -148,7 +151,8 @@
       <workItem from="1728149865840" duration="133000" />
       <workItem from="1728150161265" duration="1880000" />
       <workItem from="1728203528892" duration="644000" />
-      <workItem from="1728204306799" duration="3196000" />
+      <workItem from="1728204306799" duration="3289000" />
+      <workItem from="1728218064943" duration="776000" />
     </task>
     <servers />
   </component>

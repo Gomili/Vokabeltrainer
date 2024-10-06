@@ -23,7 +23,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     {
         _dataService = dataService;
         
-        List<Vokabel> sourceListe = _dataService.ReadAllAsync().GetAwaiter().GetResult();
+        List<Vokabel> sourceListe = _dataService.ReadAllVokabelAsync().GetAwaiter().GetResult();
 
         AnzahlVokabeln = sourceListe.Count;
         
@@ -48,7 +48,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
         if (string.IsNullOrWhiteSpace(deutsch) || string.IsNullOrWhiteSpace(englisch)) return;
         
         Vokabel vokabel = new Vokabel { Deutsch = deutsch, Englisch = englisch, Zaehler = 100 };
-        if (await _dataService.SaveAsync(vokabel))
+        if (await _dataService.SaveVokabelAsync(vokabel))
         {
             TextDeutsch = string.Empty;
             TextEnglisch = string.Empty;
@@ -64,7 +64,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
         if (SelectedVokabel is null) return;
         SelectedVokabel.Deutsch = TextDeutsch;
         SelectedVokabel.Englisch = TextEnglisch;
-        if (await _dataService.SaveAsync(SelectedVokabel))
+        if (await _dataService.SaveVokabelAsync(SelectedVokabel))
         {
             ListHelper.UpdateListEntry(DisplayListe, SelectedVokabel);
         }
@@ -74,7 +74,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     private async Task VokabelLoeschenAsync()
     {
         if (SelectedVokabel is null) return;
-        if (await _dataService.DeleteAsync(SelectedVokabel))
+        if (await _dataService.DeleteVokabelAsync(SelectedVokabel))
         {
             ListHelper.DeleteListEntry(DisplayListe, SelectedVokabel);
             AnzahlVokabeln--;

@@ -6,6 +6,7 @@ namespace Vokabeltrainer.Core.VokabelContext;
 public class VokabelDataContext : DbContext
 {
     public DbSet<Vokabel> Vokabeln { get; set; }
+    public DbSet<Session> Sessions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

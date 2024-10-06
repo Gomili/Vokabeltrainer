@@ -7,26 +7,25 @@ namespace Vokabeltrainer.Core.Services;
 
 public class DataService : IDataService
 {
-
     public DataService()
     {
         using var context = new VokabelDataContext();
         context.Database.Migrate();
     }
     
-    public async Task<List<Vokabel>> ReadAllAsync()
+    public async Task<List<Vokabel>> ReadAllVokabelAsync()
     {
         await using var context = new VokabelDataContext();
         return await context.Vokabeln.ToListAsync();
     }
 
-    public async Task<Vokabel?> ReadAsync(Guid id)
+    public async Task<Vokabel?> ReadVokabelAsync(Guid id)
     {
         await using var context = new VokabelDataContext();
         return await context.Vokabeln.FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task<bool> SaveAsync(Vokabel content)
+    public async Task<bool> SaveVokabelAsync(Vokabel content)
     {
         await using var context = new VokabelDataContext();
         
@@ -37,7 +36,7 @@ public class DataService : IDataService
         }
         else
         {
-            var org = await ReadAsync(content.Id);
+            var org = await ReadVokabelAsync(content.Id);
             if (org is not null)
             {
                 org.Deutsch = content.Deutsch;
@@ -53,11 +52,11 @@ public class DataService : IDataService
         return false;
     }
 
-    public async Task<bool> DeleteAsync(Vokabel content)
+    public async Task<bool> DeleteVokabelAsync(Vokabel content)
     {
         await using var context = new VokabelDataContext();
         
-        var org = await ReadAsync(content.Id);
+        var org = await ReadVokabelAsync(content.Id);
         
         if (org is not null)
             context.Remove(org);
@@ -67,4 +66,12 @@ public class DataService : IDataService
         
         return false;
     }
+
+    public Task<List<Session>> ReadAllSessionAsync() => throw new NotImplementedException();
+
+    public Task<Session> ReadSessionAsync(Guid id) => throw new NotImplementedException();
+
+    public Task<bool> SaveSessionAsync(Session content) => throw new NotImplementedException();
+
+    public Task<bool> DeleteSessionAsync(Session content) => throw new NotImplementedException();
 }
