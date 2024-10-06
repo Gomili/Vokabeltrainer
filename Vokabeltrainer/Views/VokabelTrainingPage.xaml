@@ -4,8 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
+    xmlns:models="using:Vokabeltrainer.DisplayClasses"
+    xmlns:ct="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
+    
     <Grid x:Name="ContentArea"> 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -32,12 +40,37 @@
             <TextBlock Margin="4" Text="Status:" VerticalAlignment="Center"/>
             <TextBlock Margin="4" Text="{x:Bind ViewModel.Laufzeit, Mode=OneWay}" VerticalAlignment="Center"/>
             <TextBlock Margin="4" Text="Laufzeit" VerticalAlignment="Center"/>
-            <TextBlock Margin="4" Text="Richtig:" VerticalAlignment="Center"/>
-            <TextBlock Margin="4" Text="{x:Bind ViewModel.Richtige, Mode=OneWay}" VerticalAlignment="Center"/>
-            <TextBlock Margin="4" Text="Falsch:" VerticalAlignment="Center"/>
-            <TextBlock Margin="4" Text="{x:Bind ViewModel.Falsche, Mode=OneWay}" VerticalAlignment="Center"/>
+            <!-- <TextBlock Margin="4" Text="Richtig:" VerticalAlignment="Center"/> -->
+            <!-- <TextBlock Margin="4" Text="{x:Bind ViewModel.Richtige, Mode=OneWay}" VerticalAlignment="Center"/> -->
+            <!-- <TextBlock Margin="4" Text="Falsch:" VerticalAlignment="Center"/> -->
+            <!-- <TextBlock Margin="4" Text="{x:Bind ViewModel.Falsche, Mode=OneWay}" VerticalAlignment="Center"/> -->
             <TextBlock Margin="4" Text="Vokabel:" VerticalAlignment="Center"/>
             <TextBlock Margin="4" Text="{x:Bind ViewModel.Anzahl, Mode=OneWay}" VerticalAlignment="Center"/>
         </StackPanel>
+        
+        <ListView x:Name="VokabelListe" Grid.Row="3" ItemsSource="{x:Bind ViewModel.Lernliste, Mode=OneWay}" Margin="4" HorizontalAlignment="Left" HorizontalContentAlignment="Left"
+                  ScrollViewer.HorizontalScrollMode="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.IsHorizontalRailEnabled="True">
+            
+            <ListView.Header>
+                <ct:DataTable Margin="8" MinWidth="1600">
+                    <ct:DataColumn Margin="8,0,0,0" Content="Überprüfung" DesiredWidth="100"/>
+                    <ct:DataColumn Margin="8,0,0,0" Content="Deutsch" DesiredWidth="280"/>
+                    <ct:DataColumn Margin="8,0,0,0" Content="Englisch" DesiredWidth="280"/>
+                    <ct:DataColumn Margin="8,0,0,0" Content="Korrekt" DesiredWidth="*"/>
+                </ct:DataTable>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:DisplayLernVokabel">
+                    <ct:DataRow>
+                        <TextBlock Margin="8,0,0,0" Text="{x:Bind Richtig, Mode=OneWay}" VerticalAlignment="Center" />
+                        <TextBlock Margin="8,0,0,0" Text="{x:Bind Deutsch, Mode=OneWay}" VerticalAlignment="Center" />
+                        <TextBox Margin="8,0,0,0" Text="{x:Bind Englisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                        <TextBlock Margin="18,0,0,0" Text="{x:Bind EnglischRichtig, Mode=OneWay}" VerticalAlignment="Center" />
+                    </ct:DataRow>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
