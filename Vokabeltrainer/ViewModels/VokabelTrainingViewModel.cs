@@ -41,11 +41,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     private void Stop()
     {
         _timer.Stop();
-        _dataService.SaveSessionAsync(new Session()
-        {
-            Anzahl = Anzahl, Falsche = Falsche, Richtige = Richtige, StartTime = _startTime, StopTime = DateTime.Now
-        });
-
+        _dataService.SaveSessionAsync(new Session(Anzahl, Richtige, Falsche, _startTime, DateTime.Now));
         Anzahl = 0;
         Falsche = 0;
         Richtige = 0;

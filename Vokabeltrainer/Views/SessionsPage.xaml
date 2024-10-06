@@ -4,9 +4,53 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:models="using:Vokabeltrainer.Core.Models"
+    xmlns:ct="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
 
     <Grid x:Name="ContentArea">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
+        <Border Grid.Row="0" Margin="0,0,0,8" Background="#FF004EAA" CornerRadius="4" BorderThickness="0" BorderBrush="#00488f" Padding="16 8">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="8,0,8,0" Text="Sessionliste:" Foreground="White"/>
+            </StackPanel>
+        </Border>
+        
+        <ListView x:Name="VokabelListe" Grid.Row="3" ItemsSource="{x:Bind ViewModel.DisplayListe, Mode=OneWay}" Margin="4" HorizontalAlignment="Left" HorizontalContentAlignment="Left"
+                  ScrollViewer.HorizontalScrollMode="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.IsHorizontalRailEnabled="True">
+            
+            <ListView.Header>
+                <ct:DataTable Margin="8" ColumnSpacing="12" MinWidth="1600">
+                    <ct:DataColumn Content="Startzeit" DesiredWidth="150"/>
+                    <ct:DataColumn Content="Stoppzeit" DesiredWidth="150"/>
+                    <ct:DataColumn Content="Zeit" DesiredWidth="150"/>
+                    <ct:DataColumn Content="Anzahl" DesiredWidth="100"/>
+                    <ct:DataColumn Content="Richtige" DesiredWidth="100"/>
+                    <ct:DataColumn Content="Falsche" DesiredWidth="*"/>
+                </ct:DataTable>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Session">
+                    <ct:DataRow>
+                        <TextBlock Text="{x:Bind StartTime}" VerticalAlignment="Center" />
+                        <TextBlock Text="{x:Bind StopTime}" VerticalAlignment="Center" />
+                        <TextBlock Text="{x:Bind Zeit}" VerticalAlignment="Center" />
+                        <TextBlock Text="{x:Bind Anzahl}" VerticalAlignment="Center" />
+                        <TextBlock Text="{x:Bind Richtige}" VerticalAlignment="Center" Foreground="{ThemeResource SystemFillColorSuccessBrush}"/>
+                        <TextBlock Text="{x:Bind Falsche}" VerticalAlignment="Center" Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                    </ct:DataRow>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

@@ -98,6 +98,7 @@ public class DataService : IDataService
                 org.Richtige = content.Richtige;
                 org.StopTime = content.StopTime;
                 org.StartTime = content.StartTime;
+                org.Zeit = content.Zeit;
                 context.Update(org);
             }
         }
