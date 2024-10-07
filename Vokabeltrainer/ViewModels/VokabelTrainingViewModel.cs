@@ -82,9 +82,21 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
 
         for (int i = 0; i < AnzahlLernVokabeln; i++)
         {
-            Vokabel? vokabel = WähleZufälligeVokabel(vokabelListe);
-            if (vokabel != null)
-                lernListe.Add(new DisplayLernVokabel(vokabel));
+            Vokabel? vokabel = null;
+            int x = 0;
+            
+            do
+            {
+                vokabel = WähleZufälligeVokabel(vokabelListe);
+                if (vokabel is not null && !lernListe.Any(x => x.Vokabel.Id == vokabel.Id)) break;
+                x++;
+            } while (x < 5);
+            
+            if (vokabel is not null)
+            {
+                if (!lernListe.Any(x => x.Vokabel.Id == vokabel.Id))
+                    lernListe.Add(new DisplayLernVokabel(vokabel));
+            }
         }
         
         return lernListe;
