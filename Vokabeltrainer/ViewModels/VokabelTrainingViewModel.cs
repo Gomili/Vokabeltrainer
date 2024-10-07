@@ -15,8 +15,9 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     [ObservableProperty] private int _richtige = 0;
     [ObservableProperty] private int _falsche = 0;
     [ObservableProperty] private int _anzahl = 0;
-    [ObservableProperty] private int _anzahlLernVokabeln = 0;
+    [ObservableProperty] private int _anzahlLernVokabeln = 5;
     [ObservableProperty] ObservableCollection<DisplayLernVokabel> _lernliste = [];
+    [ObservableProperty] private bool _running = true;
     
     private readonly DispatcherTimer _timer = new ();
     private DateTime _startTime;
@@ -34,7 +35,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         _vokabelListe = _dataService.ReadAllVokabelAsync().GetAwaiter().GetResult();
     }
 
-    private (int,int) Pruefen()
+    private async Task<(int,int)> PruefenAsync()
     {
         int richtige = 0;
         int falsche = 0;
@@ -44,11 +45,23 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
             {
                 if (lernVokabel.Englisch.Trim() == lernVokabel.Vokabel.Englisch.Trim())
                 {
+                    if (lernVokabel.Vokabel.Zaehler > 10)
+                    {
+                        lernVokabel.Vokabel.Zaehler -= 10;
+                        await _dataService.SaveVokabelAsync(lernVokabel.Vokabel);
+                    }
+                    
                     lernVokabel.Richtig = "👍";
                     richtige++;
                 }
                 else
                 {
+                    if (lernVokabel.Vokabel.Zaehler < 100)
+                    {
+                        lernVokabel.Vokabel.Zaehler += 10;
+                        await _dataService.SaveVokabelAsync(lernVokabel.Vokabel);
+                    }
+                    
                     lernVokabel.Richtig = "👎";
                     lernVokabel.EnglischRichtig = lernVokabel.Vokabel.Englisch;
                     falsche++;
@@ -68,6 +81,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
                 Lernliste = ErstelleLernListe(_vokabelListe);
                 _timer.Start();
                 _startTime = DateTime.Now;
+                Running = false;
             }
             else
             {
@@ -124,15 +138,16 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     }
 
     [RelayCommand]
-    private void Stop()
+    private async Task StopSync()
     {
         _timer.Stop();
-        (Richtige, Falsche) = Pruefen();
-        _dataService.SaveSessionAsync(new Session(Anzahl, Richtige, Falsche, _startTime, DateTime.Now));
+        (Richtige, Falsche) = await PruefenAsync();
+        await _dataService.SaveSessionAsync(new Session(Anzahl, Richtige, Falsche, _startTime, DateTime.Now));
         Anzahl = AnzahlLernVokabeln;
         Falsche = 0;
         Richtige = 0;
         Laufzeit = "00:00:00";
+        Running = true;
     }
     
     private void Timer_Tick(object sender, object e)

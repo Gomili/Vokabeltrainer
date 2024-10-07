@@ -31,19 +31,15 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <TextBlock Margin="4" Text="Wie viele Vokabeln möchtest du lernen?" VerticalAlignment="Center"/>
-            <Slider Margin="4" TickFrequency="1" Value="{x:Bind ViewModel.AnzahlLernVokabeln, Mode=TwoWay}" TickPlacement="Outside" SnapsTo="StepValues" VerticalAlignment="Center" Width="200"/>
-            <Button Margin="4" Content="Start" Command="{x:Bind ViewModel.StartCommand}"/>
-            <Button Margin="4" Content="Stopp" Command="{x:Bind ViewModel.StopCommand}"/>
+            <Slider Margin="4" Minimum="5" TickFrequency="1" Value="{x:Bind ViewModel.AnzahlLernVokabeln, Mode=TwoWay}" TickPlacement="Outside" SnapsTo="StepValues" VerticalAlignment="Center" Width="200"/>
+            <Button Margin="4" Content="Start" Command="{x:Bind ViewModel.StartCommand}" IsEnabled="{x:Bind ViewModel.Running, Mode=OneWay}"/>
+            <Button Margin="4" Content="Stopp" Command="{x:Bind ViewModel.StopSyncCommand}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <TextBlock Margin="4" Text="Status:" VerticalAlignment="Center"/>
             <TextBlock Margin="4" Text="{x:Bind ViewModel.Laufzeit, Mode=OneWay}" VerticalAlignment="Center"/>
             <TextBlock Margin="4" Text="Laufzeit" VerticalAlignment="Center"/>
-            <!-- <TextBlock Margin="4" Text="Richtig:" VerticalAlignment="Center"/> -->
-            <!-- <TextBlock Margin="4" Text="{x:Bind ViewModel.Richtige, Mode=OneWay}" VerticalAlignment="Center"/> -->
-            <!-- <TextBlock Margin="4" Text="Falsch:" VerticalAlignment="Center"/> -->
-            <!-- <TextBlock Margin="4" Text="{x:Bind ViewModel.Falsche, Mode=OneWay}" VerticalAlignment="Center"/> -->
             <TextBlock Margin="4" Text="Vokabel:" VerticalAlignment="Center"/>
             <TextBlock Margin="4" Text="{x:Bind ViewModel.Anzahl, Mode=OneWay}" VerticalAlignment="Center"/>
         </StackPanel>
@@ -64,9 +60,9 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:DisplayLernVokabel">
                     <ct:DataRow>
-                        <TextBlock Margin="8,0,0,0" Text="{x:Bind Richtig, Mode=OneWay}" VerticalAlignment="Center" />
+                        <TextBlock Margin="8,0,0,0" Text="{x:Bind Richtig, Mode=OneWay}" VerticalAlignment="Center" FontSize="20"/>
                         <TextBlock Margin="8,0,0,0" Text="{x:Bind Deutsch, Mode=OneWay}" VerticalAlignment="Center" />
-                        <TextBox Margin="8,0,0,0" Text="{x:Bind Englisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                        <TextBox Margin="8,0,0,0" Text="{x:Bind Englisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsSpellCheckEnabled="False" VerticalAlignment="Center" />
                         <TextBlock Margin="18,0,0,0" Text="{x:Bind EnglischRichtig, Mode=OneWay}" VerticalAlignment="Center" />
                     </ct:DataRow>
                 </DataTemplate>
