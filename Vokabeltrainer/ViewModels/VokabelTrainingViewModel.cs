@@ -120,21 +120,15 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     {
         Random random1 = new Random();
         Random random2 = new Random();
-        int maxLoop = 10;
+        
         do
         {
-            maxLoop--;
-            foreach (Vokabel vokabel in vokabelListe)
-            {
-                int w1 = random1.Next(0, 100);
-                if (w1 > 20) continue;
-                
-                int w2 = random2.Next(0, 100);
-                if (w2 < vokabel.Zaehler) return vokabel;
-            }
-        } while (maxLoop > 0);
-        
-        return null;
+            int w1 = random1.Next(0, vokabelListe.Count - 1);
+            Vokabel vokabel = vokabelListe[w1];
+            
+            int w2 = random2.Next(0, 100);
+            if (w2 < vokabel.Zaehler) return vokabel;    
+        } while (true);
     }
 
     [RelayCommand]
