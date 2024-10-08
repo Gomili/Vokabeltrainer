@@ -60,8 +60,8 @@
              <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Vokabel">
                     <ct:DataRow>
-                        <TextBlock Text="{x:Bind Deutsch}" VerticalAlignment="Center" />
-                        <TextBlock Text="{x:Bind Englisch}" VerticalAlignment="Center" />
+                        <TextBlock Text="{x:Bind Deutsch}" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        <TextBlock Text="{x:Bind Englisch}" VerticalAlignment="Center" TextWrapping="Wrap"/>
                         <TextBlock Text="{x:Bind Zaehler}" VerticalAlignment="Center" />
                     </ct:DataRow>
                 </DataTemplate>

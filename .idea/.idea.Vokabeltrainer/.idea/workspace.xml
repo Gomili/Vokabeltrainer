@@ -12,11 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Vokabeltrainer/Converter/StringToColorConverter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vokabeltrainer/Converter/BoolInvertConverter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/DisplayClasses/DisplayLernVokabel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/DisplayClasses/DisplayLernVokabel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +162,8 @@
       <workItem from="1728286233558" duration="777000" />
       <workItem from="1728321258274" duration="2348000" />
       <workItem from="1728410073173" duration="3559000" />
-      <workItem from="1728414074526" duration="535000" />
+      <workItem from="1728414074526" duration="655000" />
+      <workItem from="1728414878267" duration="1233000" />
     </task>
     <servers />
   </component>

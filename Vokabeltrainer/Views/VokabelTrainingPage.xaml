@@ -11,6 +11,7 @@
 
     <Page.Resources>
         <converter:StringToColorConverter x:Key="StringToColorConverter"/>
+        <converter:BoolInvertConverter x:Key="BoolInvertConverter"/>
     </Page.Resources>
     
     <Grid x:Name="ContentArea"> 
@@ -32,7 +33,7 @@
             <TextBlock Margin="4" Text="Wie viele Vokabeln möchtest du lernen?" VerticalAlignment="Center"/>
             <Slider Margin="4" Minimum="5" TickFrequency="1" Value="{x:Bind ViewModel.AnzahlLernVokabeln, Mode=TwoWay}" TickPlacement="Outside" SnapsTo="StepValues" VerticalAlignment="Center" Width="200"/>
             <Button Margin="4" Content="Start" Command="{x:Bind ViewModel.StartCommand}" IsEnabled="{x:Bind ViewModel.Running, Mode=OneWay}"/>
-            <Button Margin="4" Content="Stopp" Command="{x:Bind ViewModel.StopSyncCommand}"/>
+            <Button Margin="4" Content="Stopp" Command="{x:Bind ViewModel.StopSyncCommand}" IsEnabled="{x:Bind ViewModel.Running, Mode=OneWay, Converter={StaticResource BoolInvertConverter}}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
@@ -63,9 +64,9 @@
                         <Border Background="{x:Bind Richtig, Mode=OneWay, Converter={StaticResource StringToColorConverter}}" CornerRadius="90" Width="30" HorizontalAlignment="Center">
                             <TextBlock Margin="2,2,0,0" Text="{x:Bind Richtig, Mode=OneWay}" FontSize="20" />
                         </Border>
-                        <TextBlock Text="{x:Bind Deutsch, Mode=OneWay}" VerticalAlignment="Center" />
+                        <TextBlock Text="{x:Bind Deutsch, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="Wrap"/>
                         <TextBox Text="{x:Bind Englisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" IsSpellCheckEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                        <TextBlock Text="{x:Bind EnglischRichtig, Mode=OneWay}" VerticalAlignment="Center" />
+                        <TextBlock Text="{x:Bind EnglischRichtig, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="Wrap"/>
                         <Button Content="Sprechen" Command="{x:Bind SpeakCommand}" CommandParameter="{x:Bind}" IsEnabled="{x:Bind SpeakButtonEnabled, Mode=OneWay}"/>
                     </ct:DataRow>
                 </DataTemplate>
