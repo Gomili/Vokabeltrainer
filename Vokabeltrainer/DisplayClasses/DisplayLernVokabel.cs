@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using CommunityToolkit.Mvvm.Input;
 using Vokabeltrainer.Core.Models;
 
 namespace Vokabeltrainer.DisplayClasses;
@@ -9,9 +10,12 @@ public class DisplayLernVokabel : INotifyPropertyChanged
     private string _englisch = "";
     private string _richtig = "";
     private string _englischRichtig = "";
+    private bool _speakButtonEnabled;
     public Vokabel Vokabel { get; set; }
     public string Deutsch { get; set; }
 
+    public IRelayCommand<DisplayLernVokabel> SpeakCommand { get; set; }
+    
     public string Englisch
     {
         get => _englisch;
@@ -30,12 +34,19 @@ public class DisplayLernVokabel : INotifyPropertyChanged
         set => SetField(ref _englischRichtig, value);
     }
 
-    public DisplayLernVokabel(Vokabel vokabel)
+    public bool SpeakButtonEnabled
+    {
+        get => _speakButtonEnabled;
+        set => SetField(ref _speakButtonEnabled, value);
+    }
+
+    public DisplayLernVokabel(Vokabel vokabel, Action<DisplayLernVokabel> speakAction)
     {
         Vokabel = vokabel;
-        Richtig = "O";
+        Richtig = "";
         Deutsch = Vokabel.Deutsch;
         EnglischRichtig = string.Empty;
+        SpeakCommand = new RelayCommand<DisplayLernVokabel>(speakAction);
     }
     
     public event PropertyChangedEventHandler? PropertyChanged;

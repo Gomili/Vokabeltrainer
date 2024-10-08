@@ -12,7 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Vokabeltrainer/Converter/StringToColorConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/DisplayClasses/DisplayLernVokabel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/DisplayClasses/DisplayLernVokabel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +31,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.4.231008000/include/MddBootstrapAutoInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.4.231008000/include/WindowsAppSDK-VersionInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.6.240923002/include/MddBootstrapAutoInitializer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -37,6 +43,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/752bbcc9cc4f8bd1a0d29d96d43040cdeaeb40f1ef3e19fde544683879d537ef/AsyncRelayCommand.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/93cc83e0618b5a13adb149e96b5513b5ea5e46921c2bdbef1ceaa6973363be36/TimeSpanFormat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9fc3658c64b5279b12c061382a9526533fdfcb5dbf114b5f9dd4dfde459/ObservableRecipient.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d5f9ed2178f3d3dcf1fd45e7604d8217cd25a16edff8d7dc27769ff7c958e6/RelayCommand{T}.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d882146b4f265f10bcbec2663fce248db9ffec5fa1aeaf76e32a11ba5eafcd6/MethodBaseInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/App.g.i.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -154,7 +161,9 @@
       <workItem from="1728229958353" duration="595000" />
       <workItem from="1728230796438" duration="11166000" />
       <workItem from="1728286233558" duration="777000" />
-      <workItem from="1728321258274" duration="2023000" />
+      <workItem from="1728321258274" duration="2348000" />
+      <workItem from="1728410073173" duration="3559000" />
+      <workItem from="1728414074526" duration="535000" />
     </task>
     <servers />
   </component>

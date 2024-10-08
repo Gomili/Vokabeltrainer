@@ -1,7 +1,12 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
+using Windows.Media.Core;
+using Windows.Media.Playback;
+using Windows.Media.SpeechSynthesis;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using Vokabeltrainer.Core.Contracts.Services;
 using Vokabeltrainer.Core.Models;
 using Vokabeltrainer.DisplayClasses;
@@ -10,6 +15,8 @@ namespace Vokabeltrainer.ViewModels;
 
 public partial class VokabelTrainingViewModel : ObservableRecipient
 {
+    private MediaPlayer _mediaPlayer;
+    
     private readonly IDataService _dataService;
     [ObservableProperty] private string _laufzeit = string.Empty;
     [ObservableProperty] private int _richtige = 0;
@@ -32,6 +39,8 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         _timer.Tick -= Timer_Tick;
         _timer.Tick += Timer_Tick;
         
+        _mediaPlayer = new MediaPlayer();
+        
         _vokabelListe = _dataService.ReadAllVokabelAsync().GetAwaiter().GetResult();
     }
 
@@ -43,6 +52,8 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         {
             foreach (DisplayLernVokabel lernVokabel in Lernliste)
             {
+                lernVokabel.SpeakButtonEnabled = true;
+                lernVokabel.EnglischRichtig = lernVokabel.Vokabel.Englisch;
                 if (lernVokabel.Englisch.Trim() == lernVokabel.Vokabel.Englisch.Trim())
                 {
                     if (lernVokabel.Vokabel.Zaehler > 10)
@@ -63,7 +74,6 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
                     }
                     
                     lernVokabel.Richtig = "👎";
-                    lernVokabel.EnglischRichtig = lernVokabel.Vokabel.Englisch;
                     falsche++;
                 }
             }
@@ -109,13 +119,49 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
             if (vokabel is not null)
             {
                 if (!lernListe.Any(x => x.Vokabel.Id == vokabel.Id))
-                    lernListe.Add(new DisplayLernVokabel(vokabel));
+                    lernListe.Add(new DisplayLernVokabel(vokabel, SpeakText));
             }
         }
         
         return lernListe;
     }
 
+    private void SpeakText(DisplayLernVokabel displayLernVokabel)
+    {
+        SpeakText(displayLernVokabel.Vokabel.Englisch);
+    }
+    
+    private async void SpeakText(string text)
+    {
+        try
+        {
+            // Erstellen eines SpeechSynthesizer-Objekts
+            var synth = new SpeechSynthesizer();
+
+            // Suchen einer englischen Stimme
+            var englishVoice = SpeechSynthesizer.AllVoices
+                .FirstOrDefault(voice => voice.Language.StartsWith("en"));
+
+            // Setzen der Stimme auf die gefundene englische Stimme
+            if (englishVoice != null)
+            {
+                synth.Voice = englishVoice;
+            }
+
+            // Erstellen eines SpeechSynthesisStream aus dem Text
+            SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(text);
+
+            // Setzen des Streams in den MediaPlayer
+            _mediaPlayer.Source = MediaSource.CreateFromStream(stream, stream.ContentType);
+            _mediaPlayer.Play();
+        }
+        catch (Exception ex)
+        {
+            // Fehlerbehandlung
+            Debug.WriteLine("Fehler bei der Sprachsynthese: " + ex.Message);
+        }
+    }
+    
     private Vokabel? WähleZufälligeVokabel(List<Vokabel> vokabelListe)
     {
         Random random1 = new Random();

@@ -4,14 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
+    xmlns:converter="using:Vokabeltrainer.Converter"
     xmlns:models="using:Vokabeltrainer.DisplayClasses"
     xmlns:ct="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converter:StringToColorConverter x:Key="StringToColorConverter"/>
     </Page.Resources>
     
     <Grid x:Name="ContentArea"> 
@@ -21,7 +20,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        
         <Border Grid.Row="0" Margin="0,0,0,8" Background="#FF004EAA" CornerRadius="4" BorderThickness="0" BorderBrush="#00488f" Padding="16 8">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="8,0,8,0" Text="Anzahl der Vokabeln:" Foreground="White"/>
@@ -51,19 +50,23 @@
             
             <ListView.Header>
                 <ct:DataTable Margin="8" MinWidth="1600">
-                    <ct:DataColumn Margin="8,0,0,0" Content="Überprüfung" DesiredWidth="100"/>
-                    <ct:DataColumn Margin="8,0,0,0" Content="Deutsch" DesiredWidth="280"/>
-                    <ct:DataColumn Margin="8,0,0,0" Content="Englisch" DesiredWidth="280"/>
-                    <ct:DataColumn Margin="8,0,0,0" Content="Korrekt" DesiredWidth="*"/>
+                    <ct:DataColumn Content="Überprüfung" Width="100"/>
+                    <ct:DataColumn Content="Deutsch" DesiredWidth="280"/>
+                    <ct:DataColumn Content="Englisch" DesiredWidth="280"/>
+                    <ct:DataColumn Content="Korrekt" DesiredWidth="280"/>
+                    <ct:DataColumn Content="Ausgabe" DesiredWidth="*"/>
                 </ct:DataTable>
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:DisplayLernVokabel">
                     <ct:DataRow>
-                        <TextBlock Margin="8,0,0,0" Text="{x:Bind Richtig, Mode=OneWay}" VerticalAlignment="Center" FontSize="20"/>
-                        <TextBlock Margin="8,0,0,0" Text="{x:Bind Deutsch, Mode=OneWay}" VerticalAlignment="Center" />
-                        <TextBox Margin="8,0,0,0" Text="{x:Bind Englisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsSpellCheckEnabled="False" VerticalAlignment="Center" />
-                        <TextBlock Margin="18,0,0,0" Text="{x:Bind EnglischRichtig, Mode=OneWay}" VerticalAlignment="Center" />
+                        <Border Background="{x:Bind Richtig, Mode=OneWay, Converter={StaticResource StringToColorConverter}}" CornerRadius="90" Width="30" HorizontalAlignment="Center">
+                            <TextBlock Margin="2,2,0,0" Text="{x:Bind Richtig, Mode=OneWay}" FontSize="20" />
+                        </Border>
+                        <TextBlock Text="{x:Bind Deutsch, Mode=OneWay}" VerticalAlignment="Center" />
+                        <TextBox Text="{x:Bind Englisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" IsSpellCheckEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{x:Bind EnglischRichtig, Mode=OneWay}" VerticalAlignment="Center" />
+                        <Button Content="Sprechen" Command="{x:Bind SpeakCommand}" CommandParameter="{x:Bind}" IsEnabled="{x:Bind SpeakButtonEnabled, Mode=OneWay}"/>
                     </ct:DataRow>
                 </DataTemplate>
             </ListView.ItemTemplate>
