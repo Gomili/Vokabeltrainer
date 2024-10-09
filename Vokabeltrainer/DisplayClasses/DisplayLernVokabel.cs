@@ -45,7 +45,12 @@ public class DisplayLernVokabel : INotifyPropertyChanged
         Vokabel = vokabel;
         Richtig = "";
         Deutsch = Vokabel.Deutsch;
-        EnglischRichtig = string.Empty;
+        
+        if (Vokabel.Zaehler == 100)
+            EnglischRichtig = Vokabel.Englisch;
+        else
+            EnglischRichtig = string.Empty;
+        
         SpeakCommand = new RelayCommand<DisplayLernVokabel>(speakAction);
     }
     
