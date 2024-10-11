@@ -46,6 +46,15 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     }
 
     [RelayCommand]
+    private async Task SwitchMarkedAsync(Vokabel? vokabel)
+    {
+        if (vokabel is not null)
+        {
+            await _dataService.SaveVokabelAsync(vokabel);
+        }
+    }
+    
+    [RelayCommand]
     private async Task StartSucheAsync(string text)
     {
         List<Vokabel> searchResults = await _dataService.ReadAllVokabelAsync();

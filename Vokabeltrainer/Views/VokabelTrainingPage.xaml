@@ -34,6 +34,10 @@
             <Slider Margin="4" Minimum="10" TickFrequency="1" Value="{x:Bind ViewModel.AnzahlLernVokabeln, Mode=TwoWay}" TickPlacement="Outside" SnapsTo="StepValues" VerticalAlignment="Center" Width="200"/>
             <Button Margin="4" Content="Start" Command="{x:Bind ViewModel.StartCommand}" IsEnabled="{x:Bind ViewModel.Running, Mode=OneWay}"/>
             <Button Margin="4" Content="Stopp" Command="{x:Bind ViewModel.StopSyncCommand}" IsEnabled="{x:Bind ViewModel.Running, Mode=OneWay, Converter={StaticResource BoolInvertConverter}}"/>
+            <TextBlock Margin="4" Text="Wie viele priorisierte Vokabeln?" VerticalAlignment="Center"/>
+            <Slider Margin="4" Minimum="0" Maximum="10" TickFrequency="1"
+                    Value="{x:Bind ViewModel.AnzahlPrioVokabeln, Mode=TwoWay}" TickPlacement="Outside"
+                    SnapsTo="StepValues" VerticalAlignment="Center" Width="200" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">

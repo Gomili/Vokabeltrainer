@@ -42,6 +42,7 @@ public class DataService : IDataService
                 org.Deutsch = content.Deutsch;
                 org.Englisch = content.Englisch;
                 org.Zaehler = content.Zaehler;
+                org.IsMarked = content.IsMarked;
                 context.Update(org);
             }
         }

@@ -25,6 +25,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     [ObservableProperty] private int _anzahlLernVokabeln = 10;
     [ObservableProperty] ObservableCollection<DisplayLernVokabel> _lernliste = [];
     [ObservableProperty] private bool _running = true;
+    [ObservableProperty] private int _anzahlPrioVokabeln = 0;
     
     private readonly DispatcherTimer _timer = new ();
     private DateTime _startTime;
@@ -88,7 +89,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         {
             if (_vokabelListe.Count > AnzahlLernVokabeln)
             {
-                Lernliste = ErstelleLernListe(_vokabelListe);
+                Lernliste = ErstelleLernListe(_vokabelListe, AnzahlPrioVokabeln);
                 _timer.Start();
                 _startTime = DateTime.Now;
                 Running = false;
@@ -100,32 +101,74 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         }
     }
 
-    private ObservableCollection<DisplayLernVokabel> ErstelleLernListe(List<Vokabel> vokabelListe)
+    private ObservableCollection<DisplayLernVokabel> ErstelleLernListe(List<Vokabel> vokabelListe, int anzahlprio)
     {
-        ObservableCollection<DisplayLernVokabel> lernListe = [];
+        ObservableCollection<DisplayLernVokabel> ausgabeListe = [];
+        List<Vokabel> lernListe = [];
+        List<Vokabel> prioList = vokabelListe.Where(x => x.IsMarked).ToList();
+        List<Vokabel> prioFoundList = [];
 
-        for (int i = 0; i < AnzahlLernVokabeln; i++)
+        for (int i = 0; i < anzahlprio; i++)
+        {
+            Vokabel? vokabel = WähleZufälligeVokabel(prioList, prioFoundList);
+            if (vokabel != null) prioFoundList.Add(vokabel);    
+        }
+
+        for (int i = 0; i < AnzahlLernVokabeln - prioFoundList.Count; i++)
         {
             Vokabel? vokabel = null;
-            int x = 0;
-            
-            do
-            {
-                vokabel = WähleZufälligeVokabel(vokabelListe);
-                if (vokabel is not null && !lernListe.Any(x => x.Vokabel.Id == vokabel.Id)) break;
-                x++;
-            } while (x < 5);
-            
+
+            vokabel = WähleZufälligeVokabel(vokabelListe, lernListe);
             if (vokabel is not null)
-            {
-                if (!lernListe.Any(x => x.Vokabel.Id == vokabel.Id))
-                    lernListe.Add(new DisplayLernVokabel(vokabel, SpeakText));
-            }
+                lernListe.Add(vokabel);
+        }
+
+        foreach (Vokabel vokabel in prioFoundList)
+        {
+            InsertInList(lernListe,vokabel);
+        }        
+        
+        foreach (Vokabel vokabel in lernListe)
+        {
+            ausgabeListe.Add(new DisplayLernVokabel(vokabel, SpeakText));
         }
         
-        return lernListe;
+        return ausgabeListe;
     }
 
+    private void InsertInList(List<Vokabel> list, Vokabel vokabel)
+    {
+        Random random = new Random();
+        int insert = random.Next(list.Count);
+        if (insert == list.Count) list.Add(vokabel);
+        else list.Insert(insert, vokabel);
+    }
+    
+    private Vokabel? WähleZufälligeVokabel(List<Vokabel> vokabelListe, List<Vokabel> foundListe)
+    {
+        Random random = new Random();
+        
+        if (!vokabelListe.Any()) return null;
+
+        int x = 0;
+        do
+        {
+            int w1 = random.Next(0, vokabelListe.Count);
+            Vokabel vokabel = vokabelListe[w1];
+            
+            int w2 = random.Next(0, 100);
+            if (w2 < vokabel.Zaehler)
+            {
+                if (!foundListe.Any(x => x.Id == vokabel.Id))
+                    return vokabel;
+            }
+
+            x++;
+        } while (x < 20);
+        
+        return null;
+    }
+    
     private void SpeakText(DisplayLernVokabel displayLernVokabel)
     {
         SpeakText(displayLernVokabel.Vokabel.Englisch);
@@ -162,21 +205,6 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         }
     }
     
-    private Vokabel? WähleZufälligeVokabel(List<Vokabel> vokabelListe)
-    {
-        Random random1 = new Random();
-        Random random2 = new Random();
-        
-        do
-        {
-            int w1 = random1.Next(0, vokabelListe.Count - 1);
-            Vokabel vokabel = vokabelListe[w1];
-            
-            int w2 = random2.Next(0, 100);
-            if (w2 < vokabel.Zaehler) return vokabel;    
-        } while (true);
-    }
-
     [RelayCommand]
     private async Task StopSync()
     {

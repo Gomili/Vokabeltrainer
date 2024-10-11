@@ -8,6 +8,7 @@
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:models="using:Vokabeltrainer.Core.Models"
     xmlns:ct="using:CommunityToolkit.WinUI.Controls"
+    x:Name="EingabePage"
     mc:Ignorable="d">
 
     <Grid x:Name="ContentArea">
@@ -60,6 +61,7 @@
             
             <ListView.Header>
                 <ct:DataTable Margin="8" ColumnSpacing="12" MinWidth="1600">
+                    <ct:DataColumn Content="Markiert" DesiredWidth="100"/>
                     <ct:DataColumn Content="Deutsch" DesiredWidth="280"/>
                     <ct:DataColumn Content="Englisch" DesiredWidth="280"/>
                     <ct:DataColumn Content="Zähler" DesiredWidth="*"/>
@@ -68,6 +70,10 @@
              <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Vokabel">
                     <ct:DataRow>
+                        <CheckBox IsChecked="{x:Bind IsMarked, Mode=TwoWay}"
+                                  Command="{Binding ElementName=EingabePage, Path=ViewModel.SwitchMarkedCommand}"
+                                  CommandParameter="{x:Bind}"
+                                  VerticalAlignment="Center" />
                         <TextBlock Text="{x:Bind Deutsch}" VerticalAlignment="Center" TextWrapping="Wrap"/>
                         <TextBlock Text="{x:Bind Englisch}" VerticalAlignment="Center" TextWrapping="Wrap"/>
                         <TextBlock Text="{x:Bind Zaehler}" VerticalAlignment="Center" />
