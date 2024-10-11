@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
@@ -18,6 +19,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     [ObservableProperty] private ObservableCollection<Vokabel> _displayListe = new();
     [ObservableProperty] private Vokabel? _selectedVokabel;
     [ObservableProperty] private int _anzahlVokabeln;
+    [ObservableProperty] private string _suchText;
 
     public VokabeleingabeViewModel(IDataService dataService)
     {
@@ -43,6 +45,28 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
         return Task.CompletedTask;
     }
 
+    [RelayCommand]
+    private async Task StartSucheAsync(string text)
+    {
+        List<Vokabel> searchResults = await _dataService.ReadAllVokabelAsync();
+        DisplayListe.Clear();
+        
+        if (!string.IsNullOrWhiteSpace(text))
+        {
+            foreach (Vokabel vokabel in searchResults.Where(x => x.Deutsch.ToLower().Contains(text.ToLower()) || x.Englisch.ToLower().Contains(text.ToLower())))
+            {
+                DisplayListe.Add(vokabel);
+            }    
+        }
+        else
+        {
+            foreach (Vokabel vokabel in searchResults)
+            {
+                DisplayListe.Add(vokabel);
+            }    
+        }
+    }
+    
     public async Task AddNewVokabelAsync(string deutsch, string englisch)
     {
         if (string.IsNullOrWhiteSpace(deutsch) || string.IsNullOrWhiteSpace(englisch)) return;

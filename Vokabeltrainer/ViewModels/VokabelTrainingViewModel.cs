@@ -22,7 +22,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     [ObservableProperty] private int _richtige = 0;
     [ObservableProperty] private int _falsche = 0;
     [ObservableProperty] private int _anzahl = 0;
-    [ObservableProperty] private int _anzahlLernVokabeln = 5;
+    [ObservableProperty] private int _anzahlLernVokabeln = 10;
     [ObservableProperty] ObservableCollection<DisplayLernVokabel> _lernliste = [];
     [ObservableProperty] private bool _running = true;
     

@@ -9,4 +9,5 @@ public class Vokabel : IEntity
     [MaxLength(256)]public string Deutsch { get; set; }
     [MaxLength(256)]public string Englisch { get; set; }
     public int Zaehler { get; set; }
+    public bool IsMarked { get; set; }
 }
