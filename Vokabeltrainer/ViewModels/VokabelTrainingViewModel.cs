@@ -26,6 +26,9 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     [ObservableProperty] ObservableCollection<DisplayLernVokabel> _lernliste = [];
     [ObservableProperty] private bool _running = true;
     [ObservableProperty] private int _anzahlPrioVokabeln = 0;
+    [ObservableProperty] private int _gesammtRichtige = 0;
+    [ObservableProperty] private int _gesammtFalsche = 0;
+    [ObservableProperty] private int _gesammtAnzahl = 0;
     
     private readonly DispatcherTimer _timer = new ();
     private DateTime _startTime;
@@ -41,8 +44,12 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         _timer.Tick += Timer_Tick;
         
         _mediaPlayer = new MediaPlayer();
+
+        _dataService.FixData().GetAwaiter();
         
         _vokabelListe = _dataService.ReadAllVokabelAsync().GetAwaiter().GetResult();
+        
+        (GesammtAnzahl, GesammtRichtige, GesammtFalsche) = _dataService.ReadSessionCountAsync(DateTime.Today).GetAwaiter().GetResult();
     }
 
     private async Task<(int,int)> PruefenAsync()
@@ -89,6 +96,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         {
             if (_vokabelListe.Count > AnzahlLernVokabeln)
             {
+                Anzahl = AnzahlLernVokabeln;
                 Lernliste = ErstelleLernListe(_vokabelListe, AnzahlPrioVokabeln);
                 _timer.Start();
                 _startTime = DateTime.Now;
@@ -211,6 +219,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         _timer.Stop();
         (Richtige, Falsche) = await PruefenAsync();
         await _dataService.SaveSessionAsync(new Session(Anzahl, Richtige, Falsche, _startTime, DateTime.Now));
+        (GesammtAnzahl, GesammtRichtige, GesammtFalsche) = await _dataService.ReadSessionCountAsync(DateTime.Today);
         Anzahl = AnzahlLernVokabeln;
         Falsche = 0;
         Richtige = 0;

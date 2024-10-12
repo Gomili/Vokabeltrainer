@@ -12,11 +12,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources/187a1d8e-ad0c-4b5e-a45f-384e7ac8b33a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources/187a1d8e-ad0c-4b5e-a45f-384e7ac8b33a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" afterDir="false" />
     </list>
@@ -32,6 +34,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.4.231008000/include/MddBootstrapAutoInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.4.231008000/include/WindowsAppSDK-VersionInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.6.240923002/include/MddBootstrapAutoInitializer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -170,7 +173,10 @@
       <workItem from="1728502108023" duration="1343000" />
       <workItem from="1728595332006" duration="600000" />
       <workItem from="1728651500539" duration="6899000" />
-      <workItem from="1728664731008" duration="1251000" />
+      <workItem from="1728664731008" duration="1534000" />
+      <workItem from="1728668914698" duration="279000" />
+      <workItem from="1728724606749" duration="2850000" />
+      <workItem from="1728731160329" duration="388000" />
     </task>
     <servers />
   </component>
@@ -180,37 +186,5 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs</url>
-          <line>105</line>
-          <properties documentPath="C:\Users\micha\source\repos\Vokabeltrainer\Vokabeltrainer\ViewModels\VokabelTrainingViewModel.cs" containingFunctionPresentation="Method 'ErstelleLernListe'">
-            <startOffsets>
-              <option value="3618" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3677" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs</url>
-          <line>87</line>
-          <properties documentPath="C:\Users\micha\source\repos\Vokabeltrainer\Vokabeltrainer\ViewModels\VokabelTrainingViewModel.cs" containingFunctionPresentation="Method 'Start'">
-            <startOffsets>
-              <option value="3021" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3048" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

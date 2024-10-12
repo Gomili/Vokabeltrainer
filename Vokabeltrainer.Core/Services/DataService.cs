@@ -124,4 +124,36 @@ public class DataService : IDataService
         
         return false;
     }
+
+    public async Task<(int, int, int)> ReadSessionCountAsync(DateTime dateTime)
+    {
+        int anzahl = 0, falsche = 0, richtige = 0;
+        
+        await using var context = new VokabelDataContext();
+        var data = await context.Sessions.Where(x => x.StartTime >= dateTime).ToListAsync();
+
+        foreach (Session session in data)
+        {
+            anzahl += session.Anzahl;
+            falsche += session.Falsche;
+            richtige += session.Richtige;
+        }
+
+        return (anzahl, richtige, falsche);
+    }
+
+    public async Task FixData()
+    {
+        await using var context = new VokabelDataContext();
+        var data = await context.Sessions.ToListAsync();
+        foreach (Session session in data)
+        {
+            if (session.Richtige + session.Falsche != session.Anzahl)
+            {
+                session.Anzahl = session.Richtige + session.Falsche;
+                context.Update(session);
+            }
+        }
+        await context.SaveChangesAsync();
+    }
 }

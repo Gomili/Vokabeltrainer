@@ -24,8 +24,12 @@
         
         <Border Grid.Row="0" Margin="0,0,0,8" Background="#FF004EAA" CornerRadius="4" BorderThickness="0" BorderBrush="#00488f" Padding="16 8">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="8,0,8,0" Text="Anzahl der Vokabeln:" Foreground="White"/>
-                <TextBlock Margin="4,0,8,0" Text="0" Foreground="White"/>
+                <TextBlock Margin="8,0,8,0" Text="Heute gelernte Vokabeln gesammt:" Foreground="White"/>
+                <TextBlock Margin="4,0,8,0" Text="{x:Bind ViewModel.GesammtAnzahl, Mode=OneWay}" Foreground="White"/>
+                <TextBlock Margin="8,0,8,0" Text="Richtige:" Foreground="White"/>
+                <TextBlock Margin="4,0,8,0" Text="{x:Bind ViewModel.GesammtRichtige, Mode=OneWay}" Foreground="Green"/>
+                <TextBlock Margin="8,0,8,0" Text="Falsche:" Foreground="White"/>
+                <TextBlock Margin="4,0,8,0" Text="{x:Bind ViewModel.GesammtFalsche, Mode=OneWay}" Foreground="Red"/>
             </StackPanel>
         </Border>
 

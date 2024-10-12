@@ -28,9 +28,9 @@
         
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <TextBlock Margin="8,0,0,0" Text="Deutsch:" VerticalAlignment="Center"/>
-            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextDeutsch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="256" Width="180"/>
+            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextDeutsch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsSpellCheckEnabled="False" MaxLength="256" Width="280"/>
             <TextBlock Margin="8,0,0,0" Text="Englisch:" VerticalAlignment="Center"/>
-            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextEnglisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="256" Width="180"/>
+            <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextEnglisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsSpellCheckEnabled="False" MaxLength="256" Width="280"/>
             <TextBlock Margin="8,0,0,0" Text="Suche:" VerticalAlignment="Center"/>
             <TextBox Margin="8,0,0,0" x:Name="SuchTextBox" Text="{x:Bind ViewModel.SuchText, Mode=TwoWay}" MaxLength="256" Width="180">
                 <interactivity:Interaction.Behaviors>

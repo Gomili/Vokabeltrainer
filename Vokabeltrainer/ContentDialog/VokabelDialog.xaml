@@ -11,9 +11,11 @@
     <Grid>
         <StackPanel Orientation="Horizontal">
             <TextBlock Margin="8,0,0,0" Text="Deutsch:" VerticalAlignment="Center"/>
-            <TextBox Margin="8,0,0,0" Text="{x:Bind Deutsch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="256" Width="170"/>
+            <TextBox Margin="8,0,0,0" Text="{x:Bind Deutsch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     MaxLength="256" Width="170" IsSpellCheckEnabled="False" />
             <TextBlock Margin="8,0,0,0" Text="Englisch:" VerticalAlignment="Center"/>
-            <TextBox Margin="8,0,0,0" Text="{x:Bind Englisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="256" Width="170"/>
+            <TextBox Margin="8,0,0,0" Text="{x:Bind Englisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     MaxLength="256" Width="170" IsSpellCheckEnabled="False" />
         </StackPanel>
     </Grid>
 </Page>
