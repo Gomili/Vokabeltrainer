@@ -32,7 +32,7 @@
             <TextBlock Margin="8,0,0,0" Text="Englisch:" VerticalAlignment="Center"/>
             <TextBox Margin="8,0,0,0" Text="{x:Bind ViewModel.TextEnglisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsSpellCheckEnabled="False" MaxLength="256" Width="280"/>
             <TextBlock Margin="8,0,0,0" Text="Suche:" VerticalAlignment="Center"/>
-            <TextBox Margin="8,0,0,0" x:Name="SuchTextBox" Text="{x:Bind ViewModel.SuchText, Mode=TwoWay}" MaxLength="256" Width="180">
+            <TextBox Margin="8,0,0,0" x:Name="SuchTextBox" Text="{x:Bind ViewModel.SuchText, Mode=TwoWay}" MaxLength="256" Width="180" IsSpellCheckEnabled="False">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="TextChanged" SourceObject="{Binding ElementName=SuchTextBox}">
                         <core:InvokeCommandAction Command="{x:Bind ViewModel.StartSucheCommand}" CommandParameter="{Binding ElementName=SuchTextBox, Path=Text}"/>

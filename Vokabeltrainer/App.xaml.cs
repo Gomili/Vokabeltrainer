@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CommunityToolkit.WinUI;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
 
@@ -21,6 +22,9 @@ public partial class App : Application
     // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
     // https://docs.microsoft.com/dotnet/core/extensions/configuration
     // https://docs.microsoft.com/dotnet/core/extensions/logging
+
+    private static Mutex mutex;
+    
     public IHost Host
     {
         get;
@@ -93,6 +97,17 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
+        const string mutexName = "Vokabeltrainer";
+        bool createdNew;
+
+        mutex = new Mutex(true, mutexName, out createdNew);
+
+        if (!createdNew)
+        {
+            Application.Current.Exit();
+            return;
+        }
+        
         await App.GetService<IActivationService>().ActivateAsync(args);
     }
 }
