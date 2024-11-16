@@ -12,9 +12,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Services/ActivationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Services/ActivationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Services/NavigationViewService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Services/NavigationViewService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Services/PageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Services/PageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Strings/en-us/Resources.resw" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Strings/en-us/Resources.resw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Vokabeltrainer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Vokabeltrainer.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +29,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DpaMonitoringSettings">
-    <option name="autoShow" value="false" />
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,6 +47,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3bd4df5aff92cabbc4d630be64227073db1b8539b3a1e47786b4b189d7cdb7/DbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/752bbcc9cc4f8bd1a0d29d96d43040cdeaeb40f1ef3e19fde544683879d537ef/AsyncRelayCommand.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/93cc83e0618b5a13adb149e96b5513b5ea5e46921c2bdbef1ceaa6973363be36/TimeSpanFormat.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9dd63934bdf2dcaeac18ff2bf4e6198cdb804aefcebdfcc5dffc51709ea286/CallSiteFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9fc3658c64b5279b12c061382a9526533fdfcb5dbf114b5f9dd4dfde459/ObservableRecipient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d5f9ed2178f3d3dcf1fd45e7604d8217cd25a16edff8d7dc27769ff7c958e6/RelayCommand{T}.cs" root0="FORCE_HIGHLIGHTING" />
@@ -56,23 +64,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.Vokabeltrainer: Vokabeltrainer (Unpackaged).executor&quot;: &quot;Debug&quot;,
-    &quot;Publish to folder.Publish Vokabeltrainer to folder.executor&quot;: &quot;Run&quot;,
-    &quot;Publish to folder.Vokabeltrainer.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;UWP.Vokabeltrainer.executor&quot;: &quot;Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.Vokabeltrainer: Vokabeltrainer (Unpackaged).executor": "Debug",
+    "Publish to folder.Publish Vokabeltrainer to folder.executor": "Run",
+    "Publish to folder.Vokabeltrainer.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "UWP.Vokabeltrainer.executor": "Debug",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "configurable.group.editor",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Vokabeltrainer: Vokabeltrainer (Unpackaged)">
     <configuration name="Publish Vokabeltrainer to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
       <riderPublish configuration="Release" platform="Any CPU" runtime="Portable" target_folder="$PROJECT_DIR$/Vokabeltrainer/bin/Release/net7.0-windows10.0.19041.0/publish" target_framework="net7.0-windows10.0.19041.0" uuid_high="-1888846428121117338" uuid_low="-8534667009385749406" />
@@ -178,7 +188,10 @@
       <workItem from="1728813952454" duration="543000" />
       <workItem from="1728814508251" duration="32000" />
       <workItem from="1728814564364" duration="30000" />
-      <workItem from="1728814744620" duration="148000" />
+      <workItem from="1728814744620" duration="270000" />
+      <workItem from="1729619511316" duration="417000" />
+      <workItem from="1731782236926" duration="251000" />
+      <workItem from="1731782872563" duration="7415000" />
     </task>
     <servers />
   </component>
@@ -188,5 +201,28 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs</url>
+          <line>36</line>
+          <properties documentPath="C:\Users\micha\source\repos\Vokabeltrainer\Vokabeltrainer\ViewModels\SettingsViewModel.cs" containingFunctionPresentation="Method 'ExportAsync'">
+            <startOffsets>
+              <option value="786" />
+            </startOffsets>
+            <endOffsets>
+              <option value="827" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

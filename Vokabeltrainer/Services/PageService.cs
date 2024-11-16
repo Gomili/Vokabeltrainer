@@ -17,6 +17,7 @@ public class PageService : IPageService
         Configure<VokabelTrainingViewModel, VokabelTrainingPage>();
         Configure<VokabeleingabeViewModel, VokabeleingabePage>();
         Configure<SessionsViewModel, SessionsPage>();
+        Configure<SettingsViewModel, SettingsPage>();
     }
 
     public Type GetPageType(string key)

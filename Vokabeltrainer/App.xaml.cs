@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.WinUI;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
@@ -8,6 +9,7 @@ using Vokabeltrainer.Contracts.Services;
 using Vokabeltrainer.Core.Contracts.Services;
 using Vokabeltrainer.Core.Services;
 using Vokabeltrainer.Helpers;
+using Vokabeltrainer.Models;
 using Vokabeltrainer.Services;
 using Vokabeltrainer.ViewModels;
 using Vokabeltrainer.Views;
@@ -60,6 +62,8 @@ public partial class App : Application
             // Other Activation Handlers
 
             // Services
+            services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
+            services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
             services.AddTransient<INavigationViewService, NavigationViewService>();
 
             services.AddSingleton<IActivationService, ActivationService>();
@@ -71,6 +75,8 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
+            services.AddTransient<SettingsViewModel>();
+            services.AddTransient<SettingsPage>();
             services.AddTransient<SessionsViewModel>();
             services.AddTransient<SessionsPage>();
             services.AddTransient<VokabeleingabeViewModel>();
@@ -81,6 +87,7 @@ public partial class App : Application
             services.AddTransient<ShellViewModel>();
 
             // Configuration
+            services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
         }).
         Build();
 

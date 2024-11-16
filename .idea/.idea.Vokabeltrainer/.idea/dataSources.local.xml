@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="RD-242.23339.62">
+  <component name="dataSourceStorageLocal" created-in="RD-243.21565.191">
     <data-source name="Vokabeln" uuid="187a1d8e-ad0c-4b5e-a45f-384e7ac8b33a">
       <database-info product="SQLite" version="3.45.1" jdbc-version="4.2" driver-name="SQLite JDBC" driver-version="3.45.1.0" dbms="SQLITE" exact-version="3.45.1" exact-driver-version="3.45">
         <identifier-quote-string>&quot;</identifier-quote-string>
