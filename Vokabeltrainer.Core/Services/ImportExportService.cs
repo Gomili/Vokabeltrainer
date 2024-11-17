@@ -8,7 +8,7 @@ public class ImportExportService : IImportExportService
 {
     public Task<string> ExportAsync(List<Vokabel> vokabeln)
     {
-        string json = JsonSerializer.Serialize(vokabeln);
+        string json = JsonSerializer.Serialize(vokabeln, new JsonSerializerOptions() { WriteIndented = true });
         return Task.FromResult(json);
     }
 

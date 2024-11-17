@@ -161,5 +161,19 @@ public class DataService : IDataService
             }
         }
         await context.SaveChangesAsync();
+        
+        var vokabeln = await context.Vokabeln.ToListAsync();
+        foreach (Vokabel vokabel in vokabeln)
+        {
+            if (vokabel.Cdt == DateTime.MinValue)
+                vokabel.Cdt = DateTime.Now;
+            
+            if (vokabel.Mdt == DateTime.MinValue)
+                vokabel.Mdt = DateTime.Now;
+            
+            context.Update(vokabel);
+        }
+        
+        await context.SaveChangesAsync();
     }
 }
