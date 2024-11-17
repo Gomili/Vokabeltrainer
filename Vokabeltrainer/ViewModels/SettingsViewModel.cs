@@ -1,98 +1,68 @@
 ﻿using System.Reflection;
 using System.Windows.Input;
-
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 using Microsoft.UI.Xaml;
-
 using Vokabeltrainer.Contracts.Services;
 using Vokabeltrainer.Helpers;
-
 using Windows.ApplicationModel;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.Storage.Provider;
+using Vokabeltrainer.Core.Contracts.Services;
+using Vokabeltrainer.Core.Models;
 
 namespace Vokabeltrainer.ViewModels;
 
 public partial class SettingsViewModel : ObservableRecipient
 {
     private readonly IThemeSelectorService _themeSelectorService;
+    private readonly IImportExportService _importExportService;
+    private readonly IDataService _dataService;
 
-    [ObservableProperty]
-    private ElementTheme _elementTheme;
-
-    [ObservableProperty]
-    private string _versionDescription;
-
-    public ICommand SwitchThemeCommand
-    {
-        get;
-    }
+    [ObservableProperty] private ElementTheme _elementTheme;
+    [ObservableProperty] private string _versionDescription;
+    [ObservableProperty] private int _progressVal;
+    [ObservableProperty] private int _progressMax;
+    [ObservableProperty] private Visibility _progressBarVisibility = Visibility.Collapsed;
+    
+    public ICommand SwitchThemeCommand { get; }
 
     [RelayCommand]
     private async Task ExportAsync()
     {
-        await SaveFileAsync("Das ist ein Test!");
+        List<Vokabel> vokabeln = await _dataService.ReadAllVokabelAsync();
+        string exportText = await _importExportService.ExportAsync(vokabeln);
+        await FileDialogHelper.SaveFileAsync(exportText);
     }
 
     [RelayCommand]
     private async Task ImportAsync()
     {
-        var a = await PickAFileAsync();
-    }
-    
-    private async Task<string> PickAFileAsync()
-    {
-        // Create a file picker
-        var openPicker = new FileOpenPicker();
-
-        // See the sample code below for how to make the window accessible from the App class.
-        var window = App.MainWindow;
-
-        // Retrieve the window handle (HWND) of the current WinUI 3 window.
-        var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
-
-        // Initialize the file picker with the window handle (HWND).
-        WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
-
-        // Set options for your file picker
-        openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-        openPicker.CommitButtonText = "Auswählen";
-        openPicker.ViewMode = PickerViewMode.Thumbnail;
-        openPicker.FileTypeFilter.Add("*");
-        openPicker.FileTypeFilter.Add(".csv");
-
-        // Open the picker for the user to pick a file
-        var file = await openPicker.PickSingleFileAsync();
-        if (file != null)
+        var a = await FileDialogHelper.PickAFileAsync();
+        string data = await File.ReadAllTextAsync(a);
+        if (!string.IsNullOrWhiteSpace(data))
         {
-            return file.Path;
+            List<Vokabel> vokabeln = await _importExportService.ImportAsync(data);
+            ProgressMax = vokabeln.Count;
+            ProgressVal = 0;
+            ProgressBarVisibility = Visibility.Visible;
+            await Task.Delay(200);
+            foreach (Vokabel vokabel in vokabeln)
+            {
+                var oldVokabel = await _dataService.ReadVokabelAsync(vokabel.Id);
+                await _dataService.SaveIsChangedAsync(oldVokabel, vokabel);
+                ProgressVal++;
+            }
+
+            ProgressVal = ProgressMax;
+            await Task.Delay(200);
+            ProgressBarVisibility = Visibility.Collapsed;
         }
-
-        return "";
     }
     
-    private async Task SaveFileAsync(string content)
-    {
-        FileSavePicker savePicker = new FileSavePicker();
-        var window = App.MainWindow;
-        var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
-        WinRT.Interop.InitializeWithWindow.Initialize(savePicker, hWnd);
-        savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-        savePicker.FileTypeChoices.Add("CSV", new List<string>() { ".csv" });
-        savePicker.SuggestedFileName = "Vokabeln.csv";
-
-        // Open the picker for the user to pick a file
-        StorageFile file= await savePicker.PickSaveFileAsync();
-        if (file != null)
-            await FileIO.WriteTextAsync(file, content);
-    }
-    
-    public SettingsViewModel(IThemeSelectorService themeSelectorService)
+    public SettingsViewModel(IThemeSelectorService themeSelectorService, IImportExportService importExportService, IDataService dataService)
     {
         _themeSelectorService = themeSelectorService;
+        _importExportService = importExportService;
+        _dataService = dataService;
         _elementTheme = _themeSelectorService.Theme;
         _versionDescription = GetVersionDescription();
 

@@ -142,6 +142,12 @@ public class DataService : IDataService
         return (anzahl, richtige, falsche);
     }
 
+    public async Task SaveIsChangedAsync(Vokabel oldVokabel, Vokabel newvokabel)
+    {
+        if (oldVokabel.Englisch != newvokabel.Englisch || oldVokabel.Deutsch != newvokabel.Deutsch)
+            await SaveVokabelAsync(newvokabel);
+    }
+
     public async Task FixData()
     {
         await using var context = new VokabelDataContext();

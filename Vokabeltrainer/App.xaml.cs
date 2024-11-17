@@ -73,6 +73,7 @@ public partial class App : Application
 
             // Core Services
             services.AddSingleton<IFileService, FileService>();
+            services.AddSingleton<IImportExportService, ImportExportService>();
 
             // Views and ViewModels
             services.AddTransient<SettingsViewModel>();

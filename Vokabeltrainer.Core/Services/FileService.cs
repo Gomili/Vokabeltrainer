@@ -1,7 +1,5 @@
 ﻿using System.Text;
-
 using Newtonsoft.Json;
-
 using Vokabeltrainer.Core.Contracts.Services;
 
 namespace Vokabeltrainer.Core.Services;

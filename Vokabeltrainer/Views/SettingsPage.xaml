@@ -17,6 +17,11 @@
                 <Button Margin="0,8,0,16" Content="Export" Command="{x:Bind ViewModel.ExportCommand}" />
                 <Button Margin="16,8,0,16" Content="Import" Command="{x:Bind ViewModel.ImportCommand}"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,16" Visibility="{x:Bind ViewModel.ProgressBarVisibility, Mode=OneWay}">
+                <TextBlock Text="Import:"/>
+                <ProgressBar Margin="8,0,0,0" Value="{x:Bind ViewModel.ProgressVal, Mode=OneWay}" Minimum="0" Height="20" Width="200"
+                             Maximum="{x:Bind ViewModel.ProgressMax, Mode=OneWay}" VerticalAlignment="Center"/>
+            </StackPanel>
             <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
             <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
                 <TextBlock x:Uid="Settings_Theme" />
