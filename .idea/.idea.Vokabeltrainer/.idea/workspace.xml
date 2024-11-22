@@ -13,8 +13,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Vokabel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Vokabel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/ImportExportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/ImportExportService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +188,9 @@
       <workItem from="1729619511316" duration="417000" />
       <workItem from="1731782236926" duration="251000" />
       <workItem from="1731782872563" duration="7555000" />
-      <workItem from="1731838814897" duration="6865000" />
+      <workItem from="1731838814897" duration="7000000" />
+      <workItem from="1731849450845" duration="1597000" />
+      <workItem from="1731862378782" duration="3430000" />
     </task>
     <servers />
   </component>
@@ -194,38 +200,6 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs</url>
-          <line>42</line>
-          <properties documentPath="C:\Users\micha\source\repos\Vokabeltrainer\Vokabeltrainer\ViewModels\SettingsViewModel.cs" containingFunctionPresentation="Method 'ImportAsync'">
-            <startOffsets>
-              <option value="1511" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1581" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs</url>
-          <line>164</line>
-          <properties documentPath="C:\Users\micha\source\repos\Vokabeltrainer\Vokabeltrainer.Core\Services\DataService.cs" containingFunctionPresentation="Method 'FixData'">
-            <startOffsets>
-              <option value="4839" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4891" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

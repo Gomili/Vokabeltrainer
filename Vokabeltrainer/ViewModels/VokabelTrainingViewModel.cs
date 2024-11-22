@@ -29,6 +29,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     [ObservableProperty] private int _gesammtRichtige = 0;
     [ObservableProperty] private int _gesammtFalsche = 0;
     [ObservableProperty] private int _gesammtAnzahl = 0;
+    [ObservableProperty] private bool _nurNeueVokabeln = false;
     
     private readonly DispatcherTimer _timer = new ();
     private DateTime _startTime;

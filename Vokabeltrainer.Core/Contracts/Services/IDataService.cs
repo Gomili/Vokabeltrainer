@@ -20,6 +20,8 @@ public interface IDataService
 
     Task<bool> DeleteSessionAsync(Session content);
 
+    Task SaveFromImport(Vokabel? oldvokabel, Vokabel newvokabel);
+    
     /// <summary>
     /// Reads the count of sessions that have started from a given date and time.
     /// </summary>
@@ -27,7 +29,7 @@ public interface IDataService
     /// <returns>A tuple containing three integers: the total number of sessions, the number of correct sessions, and the number of incorrect sessions.</returns>
     Task<(int, int, int)> ReadSessionCountAsync(DateTime dateTime);
 
-    Task SaveIsChangedAsync(Vokabel oldVokabel, Vokabel newvokabel);
+    Task SaveIsChangedAsync(Vokabel? oldVokabel, Vokabel newvokabel);
     
     Task FixData();
 }

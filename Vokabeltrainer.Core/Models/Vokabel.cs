@@ -5,7 +5,7 @@ namespace Vokabeltrainer.Core.Models;
 
 public class Vokabel : IEntity
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid Id { get; set; }
     public DateTime Cdt { get; set; } = DateTime.Now;
     public DateTime Mdt { get; set; } = DateTime.Now;
     [MaxLength(256)]public string Deutsch { get; set; } = "";

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Vokabeltrainer.Core.Contracts.Services;
+using Vokabeltrainer.Core.Migrations;
 using Vokabeltrainer.Core.Models;
 using Vokabeltrainer.Core.VokabelContext;
 
@@ -25,6 +26,8 @@ public class DataService : IDataService
         return await context.Vokabeln.FirstOrDefaultAsync(x => x.Id == id);
     }
 
+    
+    
     public async Task<bool> SaveVokabelAsync(Vokabel content)
     {
         await using var context = new VokabelDataContext();
@@ -125,6 +128,33 @@ public class DataService : IDataService
         return false;
     }
 
+    public async Task SaveFromImport(Vokabel? oldvokabel, Vokabel vokabel)
+    {
+        await using var context = new VokabelDataContext();
+        
+        if (oldvokabel is null)
+        {
+            Vokabel foundvokabel = new();
+            foundvokabel.Id = vokabel.Id;
+            foundvokabel.Cdt = vokabel.Cdt;
+            foundvokabel.Mdt = vokabel.Mdt;
+            foundvokabel.Deutsch = vokabel.Deutsch;
+            foundvokabel.Englisch = vokabel.Englisch;
+            foundvokabel.IsMarked = false;
+            foundvokabel.Zaehler = 100;
+            context.Add(foundvokabel);
+        }
+        else
+        {
+            oldvokabel.Cdt = vokabel.Cdt;
+            oldvokabel.Mdt = vokabel.Mdt;
+            oldvokabel.Deutsch = vokabel.Deutsch;
+            oldvokabel.Englisch = vokabel.Englisch;
+            context.Update(oldvokabel);
+        }
+        int i = await context.SaveChangesAsync();
+    }
+
     public async Task<(int, int, int)> ReadSessionCountAsync(DateTime dateTime)
     {
         int anzahl = 0, falsche = 0, richtige = 0;
@@ -142,10 +172,13 @@ public class DataService : IDataService
         return (anzahl, richtige, falsche);
     }
 
-    public async Task SaveIsChangedAsync(Vokabel oldVokabel, Vokabel newvokabel)
+    public async Task SaveIsChangedAsync(Vokabel? oldVokabel, Vokabel newvokabel)
     {
-        if (oldVokabel.Englisch != newvokabel.Englisch || oldVokabel.Deutsch != newvokabel.Deutsch)
-            await SaveVokabelAsync(newvokabel);
+        if (oldVokabel is null) 
+            await SaveFromImport(oldVokabel, newvokabel);
+        else
+            if (oldVokabel.Englisch != newvokabel.Englisch || oldVokabel.Deutsch != newvokabel.Deutsch || oldVokabel.Mdt <= newvokabel.Mdt)
+                await SaveFromImport(oldVokabel, newvokabel);
     }
 
     public async Task FixData()
