@@ -22,6 +22,12 @@
                 <ProgressBar Margin="8,0,0,0" Value="{x:Bind ViewModel.ProgressVal, Mode=OneWay}" Minimum="0" Height="20" Width="200"
                              Maximum="{x:Bind ViewModel.ProgressMax, Mode=OneWay}" VerticalAlignment="Center"/>
             </StackPanel>
+            <TextBlock Text="Markierte zurücksetzen." Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Markierte Vokabeln:" VerticalAlignment="Center"/>
+                <TextBlock Margin="8,0,0,0" Text="{x:Bind ViewModel.Markierte, Mode=OneWay}" VerticalAlignment="Center"/>
+                <Button Margin="8,0,0,0" Content="löschen" Command="{x:Bind ViewModel.LoeschenCommand}" VerticalAlignment="Center"/>
+            </StackPanel>
             <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
             <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
                 <TextBlock x:Uid="Settings_Theme" />

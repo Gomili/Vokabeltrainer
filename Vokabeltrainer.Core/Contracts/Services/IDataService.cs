@@ -32,4 +32,6 @@ public interface IDataService
     Task SaveIsChangedAsync(Vokabel? oldVokabel, Vokabel newvokabel);
     
     Task FixData();
+
+    Task<int> GetMarketCountAsync();
 }

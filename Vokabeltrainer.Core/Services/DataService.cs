@@ -25,8 +25,6 @@ public class DataService : IDataService
         await using var context = new VokabelDataContext();
         return await context.Vokabeln.FirstOrDefaultAsync(x => x.Id == id);
     }
-
-    
     
     public async Task<bool> SaveVokabelAsync(Vokabel content)
     {
@@ -208,5 +206,11 @@ public class DataService : IDataService
         }
         
         await context.SaveChangesAsync();
+    }
+
+    public async Task<int> GetMarketCountAsync()
+    {
+        List<Vokabel> vokabels = await ReadAllVokabelAsync();
+        return vokabels.Count(x => x.IsMarked);
     }
 }

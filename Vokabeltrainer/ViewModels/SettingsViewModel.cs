@@ -22,9 +22,24 @@ public partial class SettingsViewModel : ObservableRecipient
     [ObservableProperty] private int _progressVal;
     [ObservableProperty] private int _progressMax;
     [ObservableProperty] private Visibility _progressBarVisibility = Visibility.Collapsed;
+    [ObservableProperty] private int _markierte = 0;
     
     public ICommand SwitchThemeCommand { get; }
 
+    [RelayCommand]
+    private async Task LoeschenAsync()
+    {
+        List<Vokabel> vokabeln = await _dataService.ReadAllVokabelAsync();
+
+        foreach (Vokabel vokabel in vokabeln.Where(x => x.IsMarked))
+        {
+            vokabel.IsMarked = false;
+            await _dataService.SaveVokabelAsync(vokabel);
+        }
+        
+        Markierte = await _dataService.GetMarketCountAsync();
+    }
+    
     [RelayCommand]
     private async Task ExportAsync()
     {
@@ -75,6 +90,8 @@ public partial class SettingsViewModel : ObservableRecipient
                     await _themeSelectorService.SetThemeAsync(param);
                 }
             });
+
+        Markierte = _dataService.GetMarketCountAsync().GetAwaiter().GetResult();
     }
 
     private static string GetVersionDescription()
