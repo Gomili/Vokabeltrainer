@@ -80,7 +80,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     {
         if (string.IsNullOrWhiteSpace(deutsch) || string.IsNullOrWhiteSpace(englisch)) return;
         
-        Vokabel vokabel = new Vokabel { Deutsch = deutsch, Englisch = englisch, Zaehler = 100 };
+        Vokabel vokabel = new Vokabel { Deutsch = deutsch, Englisch = englisch, Zaehler = 100, IsMarked = true };
         if (await _dataService.SaveVokabelAsync(vokabel))
         {
             TextDeutsch = string.Empty;

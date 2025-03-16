@@ -11,14 +11,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="Alle Markierten Vokabeln können unter Settings gelöscht werden.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Strings/en-us/Resources.resw" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Strings/en-us/Resources.resw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +47,7 @@
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/App.g.i.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/Views/VokabeleingabePage.g.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 1
@@ -194,16 +190,28 @@
       <workItem from="1731862378782" duration="3430000" />
       <workItem from="1740156431063" duration="121000" />
       <workItem from="1740159700533" duration="94000" />
-      <workItem from="1742129680036" duration="1599000" />
+      <workItem from="1742129680036" duration="2122000" />
     </task>
+    <task id="LOCAL-00001" summary="Alle Markierten Vokabeln können unter Settings gelöscht werden.">
+      <option name="closed" value="true" />
+      <created>1742131416250</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742131416250</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Alle Markierten Vokabeln können unter Settings gelöscht werden." />
+    <option name="LAST_COMMIT_MESSAGE" value="Alle Markierten Vokabeln können unter Settings gelöscht werden." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
