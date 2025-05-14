@@ -48,7 +48,7 @@
             </StackPanel>            
             <StackPanel Margin="0,-4,0,0" Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="4" Text="Nur neue Vokabeln!" VerticalAlignment="Center"/>
-                <ToggleSwitch Margin="4" IsOn="{x:Bind ViewModel.NurNeueVokabeln, Mode=OneWay}"/>    
+                <ToggleSwitch Margin="4" IsOn="{x:Bind ViewModel.NurNeueVokabeln, Mode=TwoWay}"/>    
             </StackPanel>
             
             <Border BorderThickness="1" BorderBrush="LightGray"/>

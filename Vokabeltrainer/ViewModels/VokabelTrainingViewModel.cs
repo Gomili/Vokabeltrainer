@@ -98,7 +98,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
             if (_vokabelListe.Count > AnzahlLernVokabeln)
             {
                 Anzahl = AnzahlLernVokabeln;
-                Lernliste = ErstelleLernListe(_vokabelListe, AnzahlPrioVokabeln);
+                Lernliste = ErstelleLernListe(_vokabelListe, AnzahlPrioVokabeln, NurNeueVokabeln);
                 _timer.Start();
                 _startTime = DateTime.Now;
                 Running = false;
@@ -110,13 +110,22 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         }
     }
 
-    private ObservableCollection<DisplayLernVokabel> ErstelleLernListe(List<Vokabel> vokabelListe, int anzahlprio)
+    private ObservableCollection<DisplayLernVokabel> ErstelleLernListe(List<Vokabel> vokabelListe, int anzahlprio, bool nurNeueVokabeln = false)
     {
         ObservableCollection<DisplayLernVokabel> ausgabeListe = [];
         List<Vokabel> lernListe = [];
         List<Vokabel> prioList = vokabelListe.Where(x => x.IsMarked).ToList();
         List<Vokabel> prioFoundList = [];
 
+        if (nurNeueVokabeln)
+        {
+            for (int i = 0; i < AnzahlLernVokabeln; i++)
+            {
+                Vokabel? vokabel = WähleZufälligeVokabel(prioList, prioFoundList);
+                if (vokabel != null) prioFoundList.Add(vokabel);
+            }
+        }
+        
         for (int i = 0; i < anzahlprio; i++)
         {
             Vokabel? vokabel = WähleZufälligeVokabel(prioList, prioFoundList);
