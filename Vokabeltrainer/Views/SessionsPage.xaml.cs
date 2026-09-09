@@ -12,8 +12,13 @@ public sealed partial class SessionsPage : Page
     }
 
     public SessionsPage()
+        : this(App.GetService<SessionsViewModel>())
     {
-        ViewModel = App.GetService<SessionsViewModel>();
+    }
+
+    public SessionsPage(SessionsViewModel viewModel)
+    {
+        ViewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
         InitializeComponent();
     }
 }

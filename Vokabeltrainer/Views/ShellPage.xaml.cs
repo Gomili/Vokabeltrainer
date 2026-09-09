@@ -14,6 +14,7 @@ namespace Vokabeltrainer.Views;
 // TODO: Update NavigationViewItem titles and icons in ShellPage.xaml.
 public sealed partial class ShellPage : Page
 {
+    private bool _tastaturkuerzelRegistriert;
     public ShellViewModel ViewModel
     {
         get;
@@ -39,9 +40,22 @@ public sealed partial class ShellPage : Page
     private void OnLoaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         TitleBarHelper.UpdateTitleBar(RequestedTheme);
+        AktualisiereSeitenleistenDarstellung(NavigationViewControl.IsPaneOpen);
 
-        KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
-        KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
+        if (!_tastaturkuerzelRegistriert)
+        {
+            KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
+            KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
+            _tastaturkuerzelRegistriert = true;
+        }
+    }
+
+    private void OnUnloaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        // Warum: Fenster- und Navigationsereignisse halten die Shell sonst auch nach
+        // dem Schließen im Speicher und erschweren wiederholbare UI-Tests.
+        App.MainWindow.Activated -= MainWindow_Activated;
+        ViewModel.Dispose();
     }
 
     private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
@@ -58,6 +72,49 @@ public sealed partial class ShellPage : Page
             Right = AppTitleBar.Margin.Right,
             Bottom = AppTitleBar.Margin.Bottom
         };
+    }
+
+    private void NavigationViewControl_PaneOpening(NavigationView sender, object args)
+    {
+        AktualisiereSeitenleistenDarstellung(true);
+    }
+
+    private void NavigationViewControl_PaneClosing(NavigationView sender, NavigationViewPaneClosingEventArgs args)
+    {
+        AktualisiereSeitenleistenDarstellung(false);
+    }
+
+    private void AktualisiereSeitenleistenDarstellung(bool istGeoeffnet)
+    {
+        var detailSichtbarkeit = istGeoeffnet ? Visibility.Visible : Visibility.Collapsed;
+
+        PaneMarkenbereich.Visibility = detailSichtbarkeit;
+        PaneStatusbereich.Visibility = detailSichtbarkeit;
+        LernenUeberschrift.Visibility = detailSichtbarkeit;
+        VerwaltungUeberschrift.Visibility = detailSichtbarkeit;
+        SystemUeberschrift.Visibility = detailSichtbarkeit;
+
+        var eintraege = new[]
+        {
+            TrainingNavigationItem,
+            VokabelNavigationItem,
+            VerlaufNavigationItem,
+            EinstellungenNavigationItem
+        };
+
+        foreach (var eintrag in eintraege)
+        {
+            // Warum: Die geöffneten Abstände würden im 48-Pixel-Kompaktmodus die
+            // Auswahlfläche und das Symbol über den rechten Rand hinausschieben.
+            eintrag.Margin = istGeoeffnet
+                ? new Thickness(8, 2, 8, 2)
+                : new Thickness(0, 2, 0, 2);
+            eintrag.Padding = istGeoeffnet
+                ? new Thickness(10, 0, 10, 0)
+                : new Thickness(0);
+
+            ToolTipService.SetToolTip(eintrag, istGeoeffnet ? null : eintrag.Content?.ToString());
+        }
     }
 
     private static KeyboardAccelerator BuildKeyboardAccelerator(VirtualKey key, VirtualKeyModifiers? modifiers = null)

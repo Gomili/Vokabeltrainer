@@ -13,9 +13,11 @@ using Vokabeltrainer.DisplayClasses;
 
 namespace Vokabeltrainer.ViewModels;
 
-public partial class VokabelTrainingViewModel : ObservableRecipient
+public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
 {
-    private MediaPlayer _mediaPlayer;
+    private readonly MediaPlayer _mediaPlayer;
+    private SpeechSynthesisStream? _speechStream;
+    private bool _istFreigegeben;
     
     private readonly IDataService _dataService;
     [ObservableProperty] private string _laufzeit = string.Empty;
@@ -24,7 +26,10 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     [ObservableProperty] private int _anzahl = 0;
     [ObservableProperty] private int _anzahlLernVokabeln = 10;
     [ObservableProperty] ObservableCollection<DisplayLernVokabel> _lernliste = [];
-    [ObservableProperty] private bool _running = true;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(TrainingsstatusText))]
+    [NotifyPropertyChangedFor(nameof(TrainingsstatusHinweis))]
+    private bool _running = true;
     [ObservableProperty] private int _anzahlPrioVokabeln = 0;
     [ObservableProperty] private int _gesammtRichtige = 0;
     [ObservableProperty] private int _gesammtFalsche = 0;
@@ -35,7 +40,13 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     private DateTime _startTime;
     private List<Vokabel> _vokabelListe = [];
 
-    public Action<string> Message { get; set; }
+    public Action<string> Message { get; set; } = _ => { };
+
+    public string TrainingsstatusText => Running ? "Bereit für eine neue Runde" : "Training läuft";
+
+    public string TrainingsstatusHinweis => Running
+        ? "Stelle dein Training zusammen und beginne, wenn du bereit bist."
+        : "Trage deine Übersetzungen ein und werte danach die Runde aus.";
     
     public VokabelTrainingViewModel(IDataService dataService)
     {
@@ -196,8 +207,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
     {
         try
         {
-            // Erstellen eines SpeechSynthesizer-Objekts
-            var synth = new SpeechSynthesizer();
+            using var synth = new SpeechSynthesizer();
 
             // Suchen einer englischen Stimme
             var englishVoice = SpeechSynthesizer.AllVoices
@@ -210,10 +220,19 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
             }
 
             // Erstellen eines SpeechSynthesisStream aus dem Text
-            SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(text);
+            var neuerStream = await synth.SynthesizeTextToStreamAsync(text);
 
-            // Setzen des Streams in den MediaPlayer
-            _mediaPlayer.Source = MediaSource.CreateFromStream(stream, stream.ContentType);
+            if (_istFreigegeben)
+            {
+                neuerStream.Dispose();
+                return;
+            }
+
+            // Warum: Der MediaPlayer liest den Stream zeitversetzt. Deshalb bleibt der
+            // aktuelle Stream bis zur nächsten Ausgabe bzw. bis Dispose im Besitz des ViewModels.
+            _speechStream?.Dispose();
+            _speechStream = neuerStream;
+            _mediaPlayer.Source = MediaSource.CreateFromStream(_speechStream, _speechStream.ContentType);
             _mediaPlayer.Play();
         }
         catch (Exception ex)
@@ -237,8 +256,24 @@ public partial class VokabelTrainingViewModel : ObservableRecipient
         Running = true;
     }
     
-    private void Timer_Tick(object sender, object e)
+    private void Timer_Tick(object? sender, object e)
     {
         Laufzeit = (DateTime.Now - _startTime).ToString(@"hh\:mm\:ss");
+    }
+
+    public void Dispose()
+    {
+        if (_istFreigegeben)
+        {
+            return;
+        }
+
+        _istFreigegeben = true;
+        _timer.Stop();
+        _timer.Tick -= Timer_Tick;
+        _mediaPlayer.Source = null;
+        _speechStream?.Dispose();
+        _mediaPlayer.Dispose();
+        GC.SuppressFinalize(this);
     }
 }

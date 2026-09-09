@@ -12,8 +12,13 @@ public sealed partial class SettingsPage : Page
     }
 
     public SettingsPage()
+        : this(App.GetService<SettingsViewModel>())
     {
-        ViewModel = App.GetService<SettingsViewModel>();
+    }
+
+    public SettingsPage(SettingsViewModel viewModel)
+    {
+        ViewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
         InitializeComponent();
     }
 }

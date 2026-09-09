@@ -1,12 +1,8 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.UI.Xaml;
 using Vokabeltrainer.Core.Contracts.Services;
 using Vokabeltrainer.Core.Models;
-using Vokabeltrainer.Core.Services;
-using Vokabeltrainer.Core.VokabelContext;
 using Vokabeltrainer.Helpers;
 
 namespace Vokabeltrainer.ViewModels;
@@ -17,9 +13,13 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     [ObservableProperty] private string _textDeutsch = string.Empty;
     [ObservableProperty] private string _textEnglisch = string.Empty;
     [ObservableProperty] private ObservableCollection<Vokabel> _displayListe = new();
-    [ObservableProperty] private Vokabel? _selectedVokabel;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HatAusgewaehlteVokabel))]
+    private Vokabel? _selectedVokabel;
     [ObservableProperty] private int _anzahlVokabeln;
-    [ObservableProperty] private string _suchText;
+    [ObservableProperty] private string _suchText = string.Empty;
+
+    public bool HatAusgewaehlteVokabel => SelectedVokabel is not null;
 
     public VokabeleingabeViewModel(IDataService dataService)
     {
@@ -75,6 +75,13 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
             }    
         }
     }
+
+    partial void OnSuchTextChanged(string value)
+    {
+        // Warum: Die Suche hängt am ViewModel statt an einem XAML-Event. Dadurch ist
+        // dasselbe Verhalten ohne gerenderte Oberfläche automatisiert prüfbar.
+        StartSucheCommand.Execute(value);
+    }
     
     public async Task AddNewVokabelAsync(string deutsch, string englisch)
     {
@@ -111,6 +118,9 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
         {
             ListHelper.DeleteListEntry(DisplayListe, SelectedVokabel);
             AnzahlVokabeln--;
+            SelectedVokabel = null;
+            TextDeutsch = string.Empty;
+            TextEnglisch = string.Empty;
         }
     }
 }

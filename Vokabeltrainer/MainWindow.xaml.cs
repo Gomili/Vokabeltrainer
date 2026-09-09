@@ -1,14 +1,15 @@
 ﻿using Vokabeltrainer.Helpers;
 
+using Microsoft.UI.Xaml;
 using Windows.UI.ViewManagement;
 
 namespace Vokabeltrainer;
 
 public sealed partial class MainWindow : WindowEx
 {
-    private Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
+    private readonly Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
 
-    private UISettings settings;
+    private readonly UISettings settings;
 
     public MainWindow()
     {
@@ -22,6 +23,7 @@ public sealed partial class MainWindow : WindowEx
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         settings = new UISettings();
         settings.ColorValuesChanged += Settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event
+        Closed += MainWindow_Closed;
     }
 
     // this handles updating the caption button colors correctly when indows system theme is changed
@@ -33,5 +35,13 @@ public sealed partial class MainWindow : WindowEx
         {
             TitleBarHelper.ApplySystemThemeToCaptionButtons();
         });
+    }
+
+    private void MainWindow_Closed(object sender, WindowEventArgs args)
+    {
+        // Warum: UISettings hält einen nativen Windows-Callback. Ohne Abmeldung bliebe
+        // das Fenster über den Callback länger als erforderlich erreichbar.
+        settings.ColorValuesChanged -= Settings_ColorValuesChanged;
+        Closed -= MainWindow_Closed;
     }
 }

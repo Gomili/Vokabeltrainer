@@ -12,6 +12,13 @@ public class DateTimeToTimeConverter : IValueConverter
         }
         if (value is DateTime dateTime)
         {
+            if (string.Equals(parameter as string, "DatumZeit", StringComparison.Ordinal))
+            {
+                // Warum: Im Verlauf muss neben der Uhrzeit auch der Kalendertag sichtbar
+                // bleiben, damit gleichzeitige Uhrzeiten verschiedener Tage unterscheidbar sind.
+                return dateTime.ToString("dd.MM.yyyy · HH:mm");
+            }
+
             return dateTime.ToString("HH:mm:ss");
         }
         return string.Empty;

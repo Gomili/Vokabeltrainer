@@ -7,8 +7,9 @@ using Vokabeltrainer.Views;
 
 namespace Vokabeltrainer.ViewModels;
 
-public partial class ShellViewModel : ObservableRecipient
+public partial class ShellViewModel : ObservableRecipient, IDisposable
 {
+    private bool _istFreigegeben;
     [ObservableProperty]
     private bool isBackEnabled;
 
@@ -38,7 +39,9 @@ public partial class ShellViewModel : ObservableRecipient
 
         if (e.SourcePageType == typeof(SettingsPage))
         {
-            Selected = NavigationViewService.SettingsItem;
+            // Warum: Die Einstellungen sind ein regulärer Footer-Eintrag, damit sie
+            // dieselbe Gestaltung und AutomationId wie die übrige Navigation besitzen.
+            Selected = NavigationViewService.GetSelectedItem(e.SourcePageType);
             return;
         }
 
@@ -47,5 +50,18 @@ public partial class ShellViewModel : ObservableRecipient
         {
             Selected = selectedItem;
         }
+    }
+
+    public void Dispose()
+    {
+        if (_istFreigegeben)
+        {
+            return;
+        }
+
+        _istFreigegeben = true;
+        NavigationService.Navigated -= OnNavigated;
+        NavigationViewService.UnregisterEvents();
+        GC.SuppressFinalize(this);
     }
 }

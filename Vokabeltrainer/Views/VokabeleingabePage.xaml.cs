@@ -1,6 +1,5 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Input;
 using Vokabeltrainer.ContentDialog;
 using Vokabeltrainer.ViewModels;
 
@@ -14,20 +13,26 @@ public sealed partial class VokabeleingabePage : Page
     }
 
     public VokabeleingabePage()
+        : this(App.GetService<VokabeleingabeViewModel>())
     {
-        ViewModel = App.GetService<VokabeleingabeViewModel>();
+    }
+
+    public VokabeleingabePage(VokabeleingabeViewModel viewModel)
+    {
+        ViewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
         InitializeComponent();
     }
 
-    private async void UIElement_OnTapped(object sender, TappedRoutedEventArgs e)
+    private async void NeueVokabel_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new Microsoft.UI.Xaml.Controls.ContentDialog();
-        VokabelDialog dialogView = new VokabelDialog();
+        var dialogView = new VokabelDialog();
         
-        // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+        // Warum: Desktop-ContentDialogs besitzen keinen eigenen XAML-Baum und müssen
+        // deshalb explizit an die aktuelle Seite gebunden werden.
         dialog.XamlRoot = this.XamlRoot;
         dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-        dialog.Title = "Vokabel Eingabe:";
+        dialog.Title = "Neue Vokabel";
         dialog.PrimaryButtonText = "Speichern";
         dialog.SecondaryButtonText = "Nicht speichern";
         dialog.CloseButtonText = "Abbrechen";
@@ -40,5 +45,10 @@ public sealed partial class VokabeleingabePage : Page
         {
             await ViewModel.AddNewVokabelAsync(dialogView.Deutsch, dialogView.Englisch);
         }
+    }
+
+    private async void VokabelListe_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        await ViewModel.SelectionChangedCommand.ExecuteAsync(VokabelListe.SelectedItem);
     }
 }

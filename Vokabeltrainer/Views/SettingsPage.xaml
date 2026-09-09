@@ -1,82 +1,231 @@
-﻿<Page
+<Page
     x:Class="Vokabeltrainer.Views.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helpers="using:Vokabeltrainer.Helpers"
     xmlns:xaml="using:Microsoft.UI.Xaml"
-    mc:Ignorable="d">
+    AutomationProperties.AutomationId="EinstellungenSeite">
+
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+
+        <Style x:Key="EinstellungsSymbolKreis" TargetType="Border">
+            <Setter Property="Width" Value="44" />
+            <Setter Property="Height" Value="44" />
+            <Setter Property="CornerRadius" Value="22" />
+            <Setter Property="Background" Value="{ThemeResource SubtleFillColorSecondaryBrush}" />
+        </Style>
     </Page.Resources>
-    <Grid>
-        <StackPanel x:Name="ContentArea">
-            <TextBlock Text="Vokabeln Import / Export" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-            <StackPanel Orientation="Horizontal">
-                <Button Margin="0,8,0,16" Content="Export" Command="{x:Bind ViewModel.ExportCommand}" />
-                <Button Margin="16,8,0,16" Content="Import" Command="{x:Bind ViewModel.ImportCommand}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,16" Visibility="{x:Bind ViewModel.ProgressBarVisibility, Mode=OneWay}">
-                <TextBlock Text="Import:"/>
-                <ProgressBar Margin="8,0,0,0" Value="{x:Bind ViewModel.ProgressVal, Mode=OneWay}" Minimum="0" Height="20" Width="200"
-                             Maximum="{x:Bind ViewModel.ProgressMax, Mode=OneWay}" VerticalAlignment="Center"/>
-            </StackPanel>
-            <TextBlock Text="Markierte zurücksetzen." Style="{ThemeResource SubtitleTextBlockStyle}"/>
-            <StackPanel Orientation="Horizontal" >
-                <TextBlock Text="Markierte Vokabeln:" VerticalAlignment="Center"/>
-                <TextBlock Margin="8,0,0,0" Text="{x:Bind ViewModel.Markierte, Mode=OneWay}" VerticalAlignment="Center"/>
-                <Button Margin="8,0,0,0" Content="löschen" Command="{x:Bind ViewModel.LoeschenCommand}" VerticalAlignment="Center"/>
-            </StackPanel>
-            <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
-            <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
-                <TextBlock x:Uid="Settings_Theme" />
 
-                <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                    <RadioButton
-                        x:Uid="Settings_Theme_Light"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Light</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-                    <RadioButton
-                        x:Uid="Settings_Theme_Dark"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Dark</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-                    <RadioButton
-                        x:Uid="Settings_Theme_Default"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Default</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-                </StackPanel>
-            </StackPanel>
+    <ScrollViewer Style="{StaticResource FluentPageScrollViewerStyle}">
+        <StackPanel Spacing="16">
+            <Border Style="{StaticResource FluentAccentCardStyle}">
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Width="56" Height="56" CornerRadius="28" Background="#20FFFFFF">
+                        <FontIcon Glyph="&#xE713;" FontSize="25"
+                                  Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
+                    </Border>
+                    <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                        <TextBlock Text="Deine App, deine Einstellungen"
+                                   FontSize="24" FontWeight="SemiBold"
+                                   Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
+                        <TextBlock Text="Verwalte Sicherungen, Lernprioritäten und das Erscheinungsbild."
+                                   Foreground="{ThemeResource TextOnAccentFillColorSecondaryBrush}"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+            </Border>
 
-            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
+            <!-- Warum zweispaltig: Die fachlich unabhängigen Bereiche bleiben visuell
+                 getrennt und nutzen auf Desktop-Fenstern die verfügbare Breite sinnvoll. -->
+            <Grid ColumnSpacing="16" RowSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.15*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-            <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
+                <Border Style="{StaticResource FluentCardStyle}">
+                    <StackPanel Spacing="18">
+                        <StackPanel Spacing="3">
+                            <TextBlock Text="Datensicherung" Style="{StaticResource FluentSectionTitleStyle}" />
+                            <TextBlock Text="Schütze deinen Wortschatz oder übertrage ihn auf ein anderes Gerät."
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
+                        </StackPanel>
 
-                <TextBlock
-                    x:Uid="Settings_AboutDescription"
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{ThemeResource BodyTextBlockStyle}" />
-                <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" Margin="{StaticResource SettingsPageHyperlinkButtonMargin}" />
-            </StackPanel>
+                        <Grid ColumnSpacing="14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Border Style="{StaticResource EinstellungsSymbolKreis}">
+                                <FontIcon Glyph="&#xE898;" FontSize="18" />
+                            </Border>
+                            <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
+                                <TextBlock Text="Vokabeln exportieren" FontWeight="SemiBold" />
+                                <TextBlock Text="Erstellt eine Sicherungsdatei mit deinem gesamten Wortschatz."
+                                           Style="{ThemeResource CaptionTextBlockStyle}"
+                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
+                            </StackPanel>
+                            <Button Grid.Column="2" Content="Exportieren"
+                                    Command="{x:Bind ViewModel.ExportCommand}"
+                                    VerticalAlignment="Center"
+                                    AutomationProperties.AutomationId="VokabelnExportieren" />
+                        </Grid>
+
+                        <Rectangle Height="1" Fill="{ThemeResource DividerStrokeColorDefaultBrush}" />
+
+                        <Grid ColumnSpacing="14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Border Style="{StaticResource EinstellungsSymbolKreis}">
+                                <FontIcon Glyph="&#xE896;" FontSize="18" />
+                            </Border>
+                            <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
+                                <TextBlock Text="Sicherung importieren" FontWeight="SemiBold" />
+                                <TextBlock Text="Fügt Vokabeln aus einer vorhandenen Sicherungsdatei hinzu."
+                                           Style="{ThemeResource CaptionTextBlockStyle}"
+                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
+                            </StackPanel>
+                            <Button Grid.Column="2" Content="Importieren"
+                                    Command="{x:Bind ViewModel.ImportCommand}"
+                                    Style="{StaticResource AccentButtonStyle}"
+                                    VerticalAlignment="Center"
+                                    AutomationProperties.AutomationId="VokabelnImportieren" />
+                        </Grid>
+
+                        <StackPanel Spacing="6" Visibility="{x:Bind ViewModel.ProgressBarVisibility, Mode=OneWay}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Import wird verarbeitet" Style="{ThemeResource CaptionTextBlockStyle}" />
+                                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.ProgressVal, Mode=OneWay}"
+                                           Style="{ThemeResource CaptionTextBlockStyle}" />
+                            </Grid>
+                            <ProgressBar Value="{x:Bind ViewModel.ProgressVal, Mode=OneWay}"
+                                         Minimum="0" Maximum="{x:Bind ViewModel.ProgressMax, Mode=OneWay}"
+                                         AutomationProperties.AutomationId="ImportFortschritt" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Style="{StaticResource FluentCardStyle}">
+                    <StackPanel Spacing="16">
+                        <StackPanel Spacing="3">
+                            <TextBlock Text="Darstellung" Style="{StaticResource FluentSectionTitleStyle}" />
+                            <TextBlock Text="Wähle das Farbschema, das für dich angenehm ist."
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
+                        </StackPanel>
+
+                        <StackPanel Spacing="8" AutomationProperties.AutomationId="FarbschemaAuswahl">
+                            <RadioButton Command="{x:Bind ViewModel.SwitchThemeCommand}"
+                                         IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
+                                         GroupName="AppTheme" HorizontalAlignment="Stretch"
+                                         AutomationProperties.AutomationId="FarbschemaHell">
+                                <RadioButton.CommandParameter><xaml:ElementTheme>Light</xaml:ElementTheme></RadioButton.CommandParameter>
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <FontIcon Glyph="&#xE706;" FontSize="16" />
+                                    <StackPanel>
+                                        <TextBlock Text="Hell" FontWeight="SemiBold" />
+                                        <TextBlock Text="Helle Flächen und dunkle Schrift" FontSize="12"
+                                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </RadioButton>
+                            <RadioButton Command="{x:Bind ViewModel.SwitchThemeCommand}"
+                                         IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}"
+                                         GroupName="AppTheme" HorizontalAlignment="Stretch"
+                                         AutomationProperties.AutomationId="FarbschemaDunkel">
+                                <RadioButton.CommandParameter><xaml:ElementTheme>Dark</xaml:ElementTheme></RadioButton.CommandParameter>
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <FontIcon Glyph="&#xE708;" FontSize="16" />
+                                    <StackPanel>
+                                        <TextBlock Text="Dunkel" FontWeight="SemiBold" />
+                                        <TextBlock Text="Dunkle Flächen für eine ruhigere Darstellung" FontSize="12"
+                                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </RadioButton>
+                            <RadioButton Command="{x:Bind ViewModel.SwitchThemeCommand}"
+                                         IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
+                                         GroupName="AppTheme" HorizontalAlignment="Stretch"
+                                         AutomationProperties.AutomationId="FarbschemaSystem">
+                                <RadioButton.CommandParameter><xaml:ElementTheme>Default</xaml:ElementTheme></RadioButton.CommandParameter>
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <FontIcon Glyph="&#xE770;" FontSize="16" />
+                                    <StackPanel>
+                                        <TextBlock Text="Systemeinstellung" FontWeight="SemiBold" />
+                                        <TextBlock Text="Übernimmt automatisch die Windows-Einstellung" FontSize="12"
+                                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </RadioButton>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="1" Style="{StaticResource FluentCardStyle}">
+                    <Grid ColumnSpacing="14">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border Style="{StaticResource EinstellungsSymbolKreis}">
+                            <FontIcon Glyph="&#xE74D;" FontSize="18"
+                                      Foreground="{ThemeResource SystemFillColorCautionBrush}" />
+                        </Border>
+                        <StackPanel Grid.Column="1" Spacing="3" VerticalAlignment="Center">
+                            <TextBlock Text="Priorisierungen zurücksetzen" FontSize="17" FontWeight="SemiBold" />
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <TextBlock Text="{x:Bind ViewModel.Markierte, Mode=OneWay}"
+                                           FontWeight="SemiBold"
+                                           AutomationProperties.AutomationId="AnzahlPriorisierungen" />
+                                <TextBlock Text="Vokabeln sind aktuell priorisiert."
+                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                            </StackPanel>
+                        </StackPanel>
+                        <Button Grid.Column="2" Content="Zurücksetzen"
+                                Command="{x:Bind ViewModel.LoeschenCommand}"
+                                Style="{StaticResource FluentDangerButtonStyle}"
+                                VerticalAlignment="Center"
+                                AutomationProperties.AutomationId="PriorisierungenZuruecksetzen" />
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource FluentCardStyle}">
+                    <Grid ColumnSpacing="14">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Style="{StaticResource EinstellungsSymbolKreis}">
+                            <FontIcon Glyph="&#xE946;" FontSize="18" />
+                        </Border>
+                        <StackPanel Grid.Column="1" Spacing="3" VerticalAlignment="Center">
+                            <TextBlock Text="Über diese App" FontSize="17" FontWeight="SemiBold" />
+                            <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}"
+                                       AutomationProperties.AutomationId="Versionsinformation" />
+                            <TextBlock Text="Vokabeltrainer für regelmäßiges, fokussiertes Lernen."
+                                       Style="{ThemeResource CaptionTextBlockStyle}"
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
         </StackPanel>
-    </Grid>
+    </ScrollViewer>
 </Page>

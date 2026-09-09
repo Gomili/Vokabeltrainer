@@ -12,6 +12,7 @@ public class NavigationViewHeaderBehavior : Behavior<NavigationView>
     private static NavigationViewHeaderBehavior? _current;
 
     private Page? _currentPage;
+    private INavigationService? _navigationService;
 
     public DataTemplate? DefaultHeaderTemplate
     {
@@ -52,8 +53,8 @@ public class NavigationViewHeaderBehavior : Behavior<NavigationView>
     {
         base.OnAttached();
 
-        var navigationService = App.GetService<INavigationService>();
-        navigationService.Navigated += OnNavigated;
+        _navigationService = App.GetService<INavigationService>();
+        _navigationService.Navigated += OnNavigated;
 
         _current = this;
     }
@@ -62,8 +63,20 @@ public class NavigationViewHeaderBehavior : Behavior<NavigationView>
     {
         base.OnDetaching();
 
-        var navigationService = App.GetService<INavigationService>();
-        navigationService.Navigated -= OnNavigated;
+        // Warum: Beim Schließen wird der DI-Host vor dem vollständigen Abbau des
+        // XAML-Baums freigegeben. Der beim Anfügen gespeicherte Service erlaubt die
+        // notwendige Ereignisabmeldung, ohne erneut auf den Provider zuzugreifen.
+        if (_navigationService is not null)
+        {
+            _navigationService.Navigated -= OnNavigated;
+            _navigationService = null;
+        }
+
+        _currentPage = null;
+        if (ReferenceEquals(_current, this))
+        {
+            _current = null;
+        }
     }
 
     private void OnNavigated(object sender, NavigationEventArgs e)

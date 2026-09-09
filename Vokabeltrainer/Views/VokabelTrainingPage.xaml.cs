@@ -12,10 +12,16 @@ public sealed partial class VokabelTrainingPage : Page
     }
 
     public VokabelTrainingPage()
+        : this(App.GetService<VokabelTrainingViewModel>())
     {
-        ViewModel = App.GetService<VokabelTrainingViewModel>();
+    }
+
+    public VokabelTrainingPage(VokabelTrainingViewModel viewModel)
+    {
+        ViewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
         ViewModel.Message = Message;
         InitializeComponent();
+        Unloaded += VokabelTrainingPage_Unloaded;
     }
 
     private async void Message(string message)
@@ -28,6 +34,12 @@ public sealed partial class VokabelTrainingPage : Page
             CloseButtonText = "OK"
         };
 
-        var result = await messageDialog.ShowAsync();
+        await messageDialog.ShowAsync();
+    }
+
+    private void VokabelTrainingPage_Unloaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        Unloaded -= VokabelTrainingPage_Unloaded;
+        ViewModel.Dispose();
     }
 }

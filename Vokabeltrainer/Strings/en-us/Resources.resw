@@ -65,13 +65,13 @@
 		<value>Vokabeltrainer</value>
   	</data>
   <data name="Shell_Main.Content" xml:space="preserve">
-    <value>Vokabeltrainer</value>
+    <value>Training</value>
   </data>
   <data name="Shell_Vokabeleingabe.Content" xml:space="preserve">
-    <value>Vokabeleingabe</value>
+    <value>Vokabeln</value>
   </data>
   <data name="Shell_Sessions.Content" xml:space="preserve">
-    <value>Sessions</value>
+    <value>Verlauf</value>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>

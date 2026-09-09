@@ -25,7 +25,7 @@ public partial class App : Application
     // https://docs.microsoft.com/dotnet/core/extensions/configuration
     // https://docs.microsoft.com/dotnet/core/extensions/logging
 
-    private static Mutex mutex;
+    private static Mutex? mutex;
     
     public IHost Host
     {
@@ -93,6 +93,18 @@ public partial class App : Application
         Build();
 
         UnhandledException += App_UnhandledException;
+        MainWindow.Closed += MainWindow_Closed;
+    }
+
+    private void MainWindow_Closed(object sender, WindowEventArgs args)
+    {
+        // Warum: Host und Mutex besitzen native bzw. verwaltete Ressourcen, die beim
+        // regulären Schließen deterministisch freigegeben werden sollen.
+        MainWindow.Closed -= MainWindow_Closed;
+        UnhandledException -= App_UnhandledException;
+        mutex?.Dispose();
+        mutex = null;
+        Host.Dispose();
     }
 
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
