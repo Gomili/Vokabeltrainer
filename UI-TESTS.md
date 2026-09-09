@@ -37,3 +37,14 @@ keine Tests brechen.
 Die Seiten besitzen zusätzlich Konstruktoren, die ihr ViewModel entgegennehmen.
 Dadurch können Seitentests ein ViewModel mit einem simulierten `IDataService`
 verwenden, ohne die produktive Datenbank zu öffnen.
+
+## Automatisierte Tests
+
+Der exemplarische Test `ThemeSelectorServiceTests` prüft, dass die Anwendung
+zwischen hellem und dunklem Farbschema wechselt und beide Auswahlen speichert.
+Er verwendet ausschließlich Test-Doubles und verändert deshalb weder das echte
+Fenster noch die lokalen Einstellungen des Benutzers.
+
+```powershell
+dotnet test Vokabeltrainer.Tests\Vokabeltrainer.Tests.csproj -c Debug
+```
