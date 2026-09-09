@@ -48,3 +48,11 @@ Fenster noch die lokalen Einstellungen des Benutzers.
 ```powershell
 dotnet test Vokabeltrainer.Tests\Vokabeltrainer.Tests.csproj -c Debug
 ```
+
+Der sichtbare End-to-End-Test startet die echte Anwendung und steuert die
+Einstellungsseite über ihre `AutomationId`-Werte. Vor dem Start darf keine zweite
+Instanz des Vokabeltrainers geöffnet sein.
+
+```powershell
+dotnet test Vokabeltrainer.Tests\Vokabeltrainer.Tests.csproj -c Debug --filter TestCategory=EndToEnd
+```
