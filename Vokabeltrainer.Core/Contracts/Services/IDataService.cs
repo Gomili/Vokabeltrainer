@@ -33,5 +33,8 @@ public interface IDataService
     
     Task FixData();
 
-    Task<int> GetMarketCountAsync();
+    /// <summary>
+    /// Ermittelt die Anzahl der Vokabeln, die für ein priorisiertes Training markiert sind.
+    /// </summary>
+    Task<int> GetAnzahlPriorisierterVokabelnAsync();
 }

@@ -20,7 +20,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI-TESTS.md" beforeDir="false" afterPath="$PROJECT_DIR$/UI-TESTS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,23 +71,23 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.9166776787415447" />
-      <entry key="MS500" value="3.1977863068940118" />
-      <entry key="S2" value="7.865386783955027" />
-      <entry key="S5" value="14.415183340733815" />
-      <entry key="S10" value="21.65687381279187" />
-      <entry key="S30" value="31.857459597106445" />
-      <entry key="S60" value="40.308745965650196" />
-      <entry key="M2" value="59.67198603414759" />
-      <entry key="M5" value="124.97972777790676" />
-      <entry key="M10" value="227.2991397443298" />
-      <entry key="M15" value="306.88769813310836" />
-      <entry key="M30" value="445.7245880945154" />
-      <entry key="H1" value="554.0905552025736" />
-      <entry key="H2" value="622.8470948156651" />
-      <entry key="H4" value="661.7254068256581" />
-      <entry key="D1" value="696.7045216860336" />
-      <entry key="W1" value="702.9514835655256" />
+      <entry key="MS100" value="1.0535336369796866" />
+      <entry key="MS500" value="2.873534210508417" />
+      <entry key="S2" value="9.390111528203754" />
+      <entry key="S5" value="20.72743879406169" />
+      <entry key="S10" value="38.42189092161916" />
+      <entry key="S30" value="92.70627714380187" />
+      <entry key="S60" value="139.72539002183723" />
+      <entry key="M2" value="195.23747608201447" />
+      <entry key="M5" value="328.2979978843655" />
+      <entry key="M10" value="504.1531926910606" />
+      <entry key="M15" value="636.8459898123382" />
+      <entry key="M30" value="883.8053778706079" />
+      <entry key="H1" value="1096.633109402315" />
+      <entry key="H2" value="1241.6747809063527" />
+      <entry key="H4" value="1327.1747723976894" />
+      <entry key="D1" value="1406.2510786939704" />
+      <entry key="W1" value="1420.58738803541" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -103,23 +109,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.8170409327030563" />
-      <entry key="MS500" value="3.164163206543196" />
-      <entry key="S2" value="7.844553919410911" />
-      <entry key="S5" value="14.396449908211157" />
-      <entry key="S10" value="21.6390657856245" />
-      <entry key="S30" value="31.846869477423848" />
-      <entry key="S60" value="40.30223941158084" />
-      <entry key="M2" value="59.66793947502107" />
-      <entry key="M5" value="124.97725515619742" />
-      <entry key="M10" value="227.29725218009855" />
-      <entry key="M15" value="306.8860987129536" />
-      <entry key="M30" value="445.7234878733832" />
-      <entry key="H1" value="554.0898868433005" />
-      <entry key="H2" value="622.8467229572015" />
-      <entry key="H4" value="661.7252102197373" />
-      <entry key="D1" value="696.704487315166" />
-      <entry key="W1" value="702.9514786144697" />
+      <entry key="MS100" value="1.0107748839238788" />
+      <entry key="MS500" value="2.8512391143507663" />
+      <entry key="S2" value="9.37274675119689" />
+      <entry key="S5" value="20.711963335232706" />
+      <entry key="S10" value="38.40725591407363" />
+      <entry key="S30" value="92.69431041601122" />
+      <entry key="S60" value="139.71633087787492" />
+      <entry key="M2" value="195.23110369565657" />
+      <entry key="M5" value="328.2935623815528" />
+      <entry key="M10" value="504.14967860776517" />
+      <entry key="M15" value="636.8430028745072" />
+      <entry key="M30" value="883.8032972364671" />
+      <entry key="H1" value="1096.631820258609" />
+      <entry key="H2" value="1241.6740522227497" />
+      <entry key="H4" value="1327.1743833564735" />
+      <entry key="D1" value="1406.251010054664" />
+      <entry key="W1" value="1420.587378131508" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -310,7 +316,7 @@
       <workItem from="1788976546786" duration="542000" />
       <workItem from="1788977115390" duration="175000" />
       <workItem from="1788977307302" duration="4253000" />
-      <workItem from="1788981586883" duration="572000" />
+      <workItem from="1788981586883" duration="1721000" />
     </task>
     <task id="LOCAL-00001" summary="Alle Markierten Vokabeln können unter Settings gelöscht werden.">
       <option name="closed" value="true" />
@@ -344,7 +350,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788981621272</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="NULL-Nutzung in Vokabelspalten entfernt, Modelländerung für .NET 10-Abgleich">
+      <option name="closed" value="true" />
+      <created>1788982211362</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1788982211362</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,7 +383,8 @@
     <MESSAGE value="Neue Vokabeln sind direkt markiert" />
     <MESSAGE value="Fluent Design für Trainings- und Sitzungsseiten implementiert, neue zentrale Ressourcen, UI-Testdokument erstellt" />
     <MESSAGE value="Zielplattform auf .NET 10 aktualisiert, Paketversionen angehoben" />
-    <option name="LAST_COMMIT_MESSAGE" value="Zielplattform auf .NET 10 aktualisiert, Paketversionen angehoben" />
+    <MESSAGE value="NULL-Nutzung in Vokabelspalten entfernt, Modelländerung für .NET 10-Abgleich" />
+    <option name="LAST_COMMIT_MESSAGE" value="NULL-Nutzung in Vokabelspalten entfernt, Modelländerung für .NET 10-Abgleich" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

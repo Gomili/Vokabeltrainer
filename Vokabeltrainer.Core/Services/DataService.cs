@@ -208,9 +208,12 @@ public class DataService : IDataService
         await context.SaveChangesAsync();
     }
 
-    public async Task<int> GetMarketCountAsync()
+    public async Task<int> GetAnzahlPriorisierterVokabelnAsync()
     {
-        List<Vokabel> vokabels = await ReadAllVokabelAsync();
-        return vokabels.Count(x => x.IsMarked);
+        await using var context = new VokabelDataContext();
+
+        // Warum: Die Datenbank kann die Markierungen zählen, ohne dafür den vollständigen
+        // Wortschatz inklusive aller Texte in den Arbeitsspeicher laden zu müssen.
+        return await context.Vokabeln.CountAsync(vokabel => vokabel.IsMarked);
     }
 }

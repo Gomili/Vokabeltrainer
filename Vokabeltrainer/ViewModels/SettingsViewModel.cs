@@ -37,7 +37,7 @@ public partial class SettingsViewModel : ObservableRecipient
             await _dataService.SaveVokabelAsync(vokabel);
         }
         
-        Markierte = await _dataService.GetMarketCountAsync();
+        Markierte = await _dataService.GetAnzahlPriorisierterVokabelnAsync();
     }
     
     [RelayCommand]
@@ -91,7 +91,7 @@ public partial class SettingsViewModel : ObservableRecipient
                 }
             });
 
-        Markierte = _dataService.GetMarketCountAsync().GetAwaiter().GetResult();
+        Markierte = _dataService.GetAnzahlPriorisierterVokabelnAsync().GetAwaiter().GetResult();
     }
 
     private static string GetVersionDescription()
