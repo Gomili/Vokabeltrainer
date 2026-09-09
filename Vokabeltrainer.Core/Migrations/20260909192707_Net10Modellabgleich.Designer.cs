@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vokabeltrainer.Core.VokabelContext;
 
@@ -10,9 +11,11 @@ using Vokabeltrainer.Core.VokabelContext;
 namespace Vokabeltrainer.Core.Migrations
 {
     [DbContext(typeof(VokabelDataContext))]
-    partial class VokabelDataContextModelSnapshot : ModelSnapshot
+    [Migration("20260909192707_Net10Modellabgleich")]
+    partial class Net10Modellabgleich
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.12");

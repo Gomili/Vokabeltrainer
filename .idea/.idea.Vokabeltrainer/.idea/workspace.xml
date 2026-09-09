@@ -19,9 +19,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Vokabeltrainer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Vokabeltrainer.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +31,7 @@
     <option name="firstShow" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="1" />
+    <option name="cachedIndexableFilesCount" value="2" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -54,6 +53,7 @@
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.6.240923002/include/MddBootstrapAutoInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.windowsappsdk/1.6.240923002/include/WindowsAppSDK-VersionInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1fcf3715ba506b315733e9a36347d14b7d58544302ef1332998c7ad12e6361b/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d65d8dd6af5669905bd6d55baa11d05965d2c35dab0553524c64dd0c775311d/EventDefinition`.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/App.g.i.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/Views/VokabeleingabePage.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Immediate Window" root0="FORCE_HIGHLIGHTING" />
@@ -65,23 +65,23 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.1940788212065128" />
-      <entry key="MS500" value="3.4362752217816053" />
-      <entry key="S2" value="8.077863589549734" />
-      <entry key="S5" value="16.354119042088488" />
-      <entry key="S10" value="26.231537390167507" />
-      <entry key="S30" value="41.14064555121564" />
-      <entry key="S60" value="49.90963423980018" />
-      <entry key="M2" value="69.1955321777321" />
-      <entry key="M5" value="135.38440150144288" />
-      <entry key="M10" value="235.64044625904023" />
-      <entry key="M15" value="310.9475233217363" />
-      <entry key="M30" value="438.1132712300957" />
-      <entry key="H1" value="534.5767196643642" />
-      <entry key="H2" value="594.7831970770478" />
-      <entry key="H4" value="628.5292772804347" />
-      <entry key="D1" value="658.7220502945977" />
-      <entry key="W1" value="664.0981240775242" />
+      <entry key="MS100" value="1.9166776787415447" />
+      <entry key="MS500" value="3.1977863068940118" />
+      <entry key="S2" value="7.865386783955027" />
+      <entry key="S5" value="14.415183340733815" />
+      <entry key="S10" value="21.65687381279187" />
+      <entry key="S30" value="31.857459597106445" />
+      <entry key="S60" value="40.308745965650196" />
+      <entry key="M2" value="59.67198603414759" />
+      <entry key="M5" value="124.97972777790676" />
+      <entry key="M10" value="227.2991397443298" />
+      <entry key="M15" value="306.88769813310836" />
+      <entry key="M30" value="445.7245880945154" />
+      <entry key="H1" value="554.0905552025736" />
+      <entry key="H2" value="622.8470948156651" />
+      <entry key="H4" value="661.7254068256581" />
+      <entry key="D1" value="696.7045216860336" />
+      <entry key="W1" value="702.9514835655256" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -103,23 +103,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.1534380256487111" />
-      <entry key="MS500" value="3.412867406870064" />
-      <entry key="S2" value="8.063562178338973" />
-      <entry key="S5" value="16.342253750352366" />
-      <entry key="S10" value="26.221923120774473" />
-      <entry key="S30" value="41.13558825892349" />
-      <entry key="S60" value="49.90656881627658" />
-      <entry key="M2" value="69.1934171667312" />
-      <entry key="M5" value="135.38274186934882" />
-      <entry key="M10" value="235.63898327085616" />
-      <entry key="M15" value="310.9462252014241" />
-      <entry key="M30" value="438.1123463092655" />
-      <entry key="H1" value="534.5761516418155" />
-      <entry key="H2" value="594.7828799738135" />
-      <entry key="H4" value="628.529109433633" />
-      <entry key="D1" value="658.722020932123" />
-      <entry key="W1" value="664.0981198475537" />
+      <entry key="MS100" value="1.8170409327030563" />
+      <entry key="MS500" value="3.164163206543196" />
+      <entry key="S2" value="7.844553919410911" />
+      <entry key="S5" value="14.396449908211157" />
+      <entry key="S10" value="21.6390657856245" />
+      <entry key="S30" value="31.846869477423848" />
+      <entry key="S60" value="40.30223941158084" />
+      <entry key="M2" value="59.66793947502107" />
+      <entry key="M5" value="124.97725515619742" />
+      <entry key="M10" value="227.29725218009855" />
+      <entry key="M15" value="306.8860987129536" />
+      <entry key="M30" value="445.7234878733832" />
+      <entry key="H1" value="554.0898868433005" />
+      <entry key="H2" value="622.8467229572015" />
+      <entry key="H4" value="661.7252102197373" />
+      <entry key="D1" value="696.704487315166" />
+      <entry key="W1" value="702.9514786144697" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -310,6 +310,7 @@
       <workItem from="1788976546786" duration="542000" />
       <workItem from="1788977115390" duration="175000" />
       <workItem from="1788977307302" duration="4253000" />
+      <workItem from="1788981586883" duration="572000" />
     </task>
     <task id="LOCAL-00001" summary="Alle Markierten Vokabeln können unter Settings gelöscht werden.">
       <option name="closed" value="true" />
@@ -335,7 +336,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788980958899</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Zielplattform auf .NET 10 aktualisiert, Paketversionen angehoben">
+      <option name="closed" value="true" />
+      <created>1788981621272</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1788981621272</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,12 +352,24 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Alle Markierten Vokabeln können unter Settings gelöscht werden." />
     <MESSAGE value="Neue Vokabeln sind direkt markiert" />
     <MESSAGE value="Fluent Design für Trainings- und Sitzungsseiten implementiert, neue zentrale Ressourcen, UI-Testdokument erstellt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fluent Design für Trainings- und Sitzungsseiten implementiert, neue zentrale Ressourcen, UI-Testdokument erstellt" />
+    <MESSAGE value="Zielplattform auf .NET 10 aktualisiert, Paketversionen angehoben" />
+    <option name="LAST_COMMIT_MESSAGE" value="Zielplattform auf .NET 10 aktualisiert, Paketversionen angehoben" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
