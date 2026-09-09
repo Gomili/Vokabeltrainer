@@ -6,6 +6,11 @@ public interface IDataService
 {
     Task<List<Vokabel>> ReadAllVokabelAsync();
 
+    /// <summary>
+    /// Liest ausschließlich Vokabeln, die am angegebenen Tag bereits gelernt werden dürfen.
+    /// </summary>
+    Task<List<Vokabel>> ReadFreigegebeneVokabelnAsync(DateTime stichtag);
+
     Task<Vokabel?> ReadVokabelAsync(Guid id);
     
     Task<bool> SaveVokabelAsync(Vokabel content);

@@ -21,7 +21,14 @@
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI-TESTS.md" beforeDir="false" afterPath="$PROJECT_DIR$/UI-TESTS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Tests/Vokabeltrainer.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Tests/Vokabeltrainer.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Vokabel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Vokabel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,23 +74,23 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.5639067775782456" />
-      <entry key="MS500" value="3.4669554788677615" />
-      <entry key="S2" value="11.626880461399484" />
-      <entry key="S5" value="22.23935259651129" />
-      <entry key="S10" value="31.005045000553466" />
-      <entry key="S30" value="40.92467413777282" />
-      <entry key="S60" value="44.42906098383088" />
-      <entry key="M2" value="49.220502580283245" />
-      <entry key="M5" value="86.87482444766863" />
-      <entry key="M10" value="207.36491292543124" />
-      <entry key="M15" value="349.2701768109178" />
-      <entry key="M30" value="715.2264471455825" />
-      <entry key="H1" value="1127.5488434032172" />
-      <entry key="H2" value="1457.0075928964782" />
-      <entry key="H4" value="1669.0224165774441" />
-      <entry key="D1" value="1876.6242901501964" />
-      <entry key="W1" value="1915.4337304597304" />
+      <entry key="MS100" value="1.4146477169462446" />
+      <entry key="MS500" value="4.838564382361268" />
+      <entry key="S2" value="12.849678013236225" />
+      <entry key="S5" value="24.393443642401255" />
+      <entry key="S10" value="39.9392576589752" />
+      <entry key="S30" value="72.03402048576162" />
+      <entry key="S60" value="93.89721729097008" />
+      <entry key="M2" value="121.00003873449565" />
+      <entry key="M5" value="191.36654989271" />
+      <entry key="M10" value="328.7372874089528" />
+      <entry key="M15" value="468.263942124794" />
+      <entry key="M30" value="856.0523589728506" />
+      <entry key="H1" value="1373.3440615431366" />
+      <entry key="H2" value="1844.018703264214" />
+      <entry key="H4" value="2171.069320209459" />
+      <entry key="D1" value="2508.194492331875" />
+      <entry key="W1" value="2572.9843533101134" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -105,23 +112,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.5060474327954805" />
-      <entry key="MS500" value="3.441903422099128" />
-      <entry key="S2" value="11.606549672404347" />
-      <entry key="S5" value="22.22362160859095" />
-      <entry key="S10" value="30.993956138053633" />
-      <entry key="S30" value="40.91974214005799" />
-      <entry key="S60" value="44.42637630494778" />
-      <entry key="M2" value="49.21901910323067" />
-      <entry key="M5" value="86.87377843837663" />
-      <entry key="M10" value="207.36362044464852" />
-      <entry key="M15" value="349.2686850765898" />
-      <entry key="M30" value="715.2248689601535" />
-      <entry key="H1" value="1127.5475807950497" />
-      <entry key="H2" value="1457.0067720377608" />
-      <entry key="H4" value="1669.0219451428975" />
-      <entry key="D1" value="1876.624201622953" />
-      <entry key="W1" value="1915.433717547157" />
+      <entry key="MS100" value="1.3709626074256656" />
+      <entry key="MS500" value="4.805784424885749" />
+      <entry key="S2" value="12.828308261691047" />
+      <entry key="S5" value="24.377241013740555" />
+      <entry key="S10" value="39.92596173027024" />
+      <entry key="S30" value="72.02600309716179" />
+      <entry key="S60" value="93.89198804796196" />
+      <entry key="M2" value="120.99666964400475" />
+      <entry key="M5" value="191.3643974423431" />
+      <entry key="M10" value="328.7354002748532" />
+      <entry key="M15" value="468.26211324690934" />
+      <entry key="M30" value="856.0506112409308" />
+      <entry key="H1" value="1373.3426133327255" />
+      <entry key="H2" value="1844.0177145038278" />
+      <entry key="H4" value="2171.068733421629" />
+      <entry key="D1" value="2508.194378617596" />
+      <entry key="W1" value="2572.9843366277187" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -312,7 +319,7 @@
       <workItem from="1788976546786" duration="542000" />
       <workItem from="1788977115390" duration="175000" />
       <workItem from="1788977307302" duration="4253000" />
-      <workItem from="1788981586883" duration="4079000" />
+      <workItem from="1788981586883" duration="5547000" />
     </task>
     <task id="LOCAL-00001" summary="Alle Markierten Vokabeln können unter Settings gelöscht werden.">
       <option name="closed" value="true" />
@@ -370,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788984141069</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="&quot;End-to-end-Test für das Umschalten des Farbschemas hinzugefügt, FlaUI-Pakete integriert und Testdokumentation erweitert&quot;">
+      <option name="closed" value="true" />
+      <created>1788985745013</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1788985745013</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,7 +413,8 @@
     <MESSAGE value="NULL-Nutzung in Vokabelspalten entfernt, Modelländerung für .NET 10-Abgleich" />
     <MESSAGE value="&quot;Implementiert Tagesgruppen für Vokabeln, fügt Prioritätszählung hinzu und integriert Erweiterungen für UI und ViewModel.&quot;" />
     <MESSAGE value="&quot;Unit-Tests für ThemeSelectorService hinzugefügt und Testprojekt in die Lösung integriert&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Unit-Tests für ThemeSelectorService hinzugefügt und Testprojekt in die Lösung integriert&quot;" />
+    <MESSAGE value="&quot;End-to-end-Test für das Umschalten des Farbschemas hinzugefügt, FlaUI-Pakete integriert und Testdokumentation erweitert&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;End-to-end-Test für das Umschalten des Farbschemas hinzugefügt, FlaUI-Pakete integriert und Testdokumentation erweitert&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

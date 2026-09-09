@@ -57,9 +57,11 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
         
         _mediaPlayer = new MediaPlayer();
 
-        _dataService.FixData().GetAwaiter();
+        // Warum: Die Bereinigung muss vor der Trainingsabfrage abgeschlossen sein, damit
+        // keine noch unvollständigen Datumswerte in die Freigabeentscheidung gelangen.
+        _dataService.FixData().GetAwaiter().GetResult();
         
-        _vokabelListe = _dataService.ReadAllVokabelAsync().GetAwaiter().GetResult();
+        _vokabelListe = _dataService.ReadFreigegebeneVokabelnAsync(DateTime.Today).GetAwaiter().GetResult();
         
         (GesammtAnzahl, GesammtRichtige, GesammtFalsche) = _dataService.ReadSessionCountAsync(DateTime.Today).GetAwaiter().GetResult();
     }

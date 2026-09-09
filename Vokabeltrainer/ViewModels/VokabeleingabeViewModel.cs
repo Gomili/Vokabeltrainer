@@ -21,6 +21,8 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     [ObservableProperty] private int _anzahlVokabeln;
     [ObservableProperty] private int _anzahlPriorisierteVokabeln;
     [ObservableProperty] private string _suchText = string.Empty;
+    [ObservableProperty] private bool _freigabedatumFestlegen;
+    [ObservableProperty] private DateTimeOffset _freigabedatumNeueVokabeln = new(DateTime.Today);
 
     public bool HatAusgewaehlteVokabel => SelectedVokabel is not null;
 
@@ -101,7 +103,18 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     {
         if (string.IsNullOrWhiteSpace(deutsch) || string.IsNullOrWhiteSpace(englisch)) return;
         
-        Vokabel vokabel = new Vokabel { Deutsch = deutsch, Englisch = englisch, Zaehler = 100, IsMarked = true };
+        DateTime freigabedatum = FreigabedatumFestlegen
+            ? FreigabedatumNeueVokabeln.Date
+            : DateTime.Today;
+
+        Vokabel vokabel = new Vokabel
+        {
+            Deutsch = deutsch,
+            Englisch = englisch,
+            Zaehler = 100,
+            IsMarked = true,
+            Freigabedatum = freigabedatum
+        };
         if (await _dataService.SaveVokabelAsync(vokabel))
         {
             TextDeutsch = string.Empty;

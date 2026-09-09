@@ -20,6 +20,18 @@ public class DataService : IDataService
         return await context.Vokabeln.ToListAsync();
     }
 
+    public async Task<List<Vokabel>> ReadFreigegebeneVokabelnAsync(DateTime stichtag)
+    {
+        await using var context = new VokabelDataContext();
+        DateTime folgetag = stichtag.Date.AddDays(1);
+
+        // Warum: Die Freigabe wird bereits in der Datenbank gefiltert. Zukünftige
+        // Vokabeln gelangen dadurch gar nicht erst in die zufällige Trainingsauswahl.
+        return await context.Vokabeln
+            .Where(vokabel => vokabel.Freigabedatum < folgetag)
+            .ToListAsync();
+    }
+
     public async Task<Vokabel?> ReadVokabelAsync(Guid id)
     {
         await using var context = new VokabelDataContext();
@@ -29,6 +41,17 @@ public class DataService : IDataService
     public async Task<bool> SaveVokabelAsync(Vokabel content)
     {
         await using var context = new VokabelDataContext();
+
+        if (content.Freigabedatum == DateTime.MinValue)
+        {
+            content.Freigabedatum = content.Cdt == DateTime.MinValue
+                ? DateTime.Today
+                : content.Cdt.Date;
+        }
+        else
+        {
+            content.Freigabedatum = content.Freigabedatum.Date;
+        }
         
         if (content.Id == Guid.Empty)
         {
@@ -44,6 +67,7 @@ public class DataService : IDataService
                 org.Englisch = content.Englisch;
                 org.Zaehler = content.Zaehler;
                 org.IsMarked = content.IsMarked;
+                org.Freigabedatum = content.Freigabedatum;
                 context.Update(org);
             }
         }
@@ -140,6 +164,7 @@ public class DataService : IDataService
             foundvokabel.Englisch = vokabel.Englisch;
             foundvokabel.IsMarked = false;
             foundvokabel.Zaehler = 100;
+            foundvokabel.Freigabedatum = ErmittleFreigabedatum(vokabel);
             context.Add(foundvokabel);
         }
         else
@@ -148,6 +173,7 @@ public class DataService : IDataService
             oldvokabel.Mdt = vokabel.Mdt;
             oldvokabel.Deutsch = vokabel.Deutsch;
             oldvokabel.Englisch = vokabel.Englisch;
+            oldvokabel.Freigabedatum = ErmittleFreigabedatum(vokabel);
             context.Update(oldvokabel);
         }
         int i = await context.SaveChangesAsync();
@@ -175,7 +201,10 @@ public class DataService : IDataService
         if (oldVokabel is null) 
             await SaveFromImport(oldVokabel, newvokabel);
         else
-            if (oldVokabel.Englisch != newvokabel.Englisch || oldVokabel.Deutsch != newvokabel.Deutsch || oldVokabel.Mdt <= newvokabel.Mdt)
+            if (oldVokabel.Englisch != newvokabel.Englisch
+                || oldVokabel.Deutsch != newvokabel.Deutsch
+                || oldVokabel.Freigabedatum != newvokabel.Freigabedatum
+                || oldVokabel.Mdt <= newvokabel.Mdt)
                 await SaveFromImport(oldVokabel, newvokabel);
     }
 
@@ -201,6 +230,11 @@ public class DataService : IDataService
             
             if (vokabel.Mdt == DateTime.MinValue)
                 vokabel.Mdt = DateTime.Now;
+
+            if (vokabel.Freigabedatum == DateTime.MinValue)
+                vokabel.Freigabedatum = vokabel.Cdt.Date;
+            else
+                vokabel.Freigabedatum = vokabel.Freigabedatum.Date;
             
             context.Update(vokabel);
         }
@@ -215,5 +249,12 @@ public class DataService : IDataService
         // Warum: Die Datenbank kann die Markierungen zählen, ohne dafür den vollständigen
         // Wortschatz inklusive aller Texte in den Arbeitsspeicher laden zu müssen.
         return await context.Vokabeln.CountAsync(vokabel => vokabel.IsMarked);
+    }
+
+    private static DateTime ErmittleFreigabedatum(Vokabel vokabel)
+    {
+        return vokabel.Freigabedatum == DateTime.MinValue
+            ? (vokabel.Cdt == DateTime.MinValue ? DateTime.Today : vokabel.Cdt.Date)
+            : vokabel.Freigabedatum.Date;
     }
 }

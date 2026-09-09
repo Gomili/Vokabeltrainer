@@ -22,6 +22,7 @@ keine Tests brechen.
 
 - `DeutschEingabe`, `EnglischEingabe`, `VokabelSuche`
 - `NeueVokabel`, `VokabelSpeichern`, `VokabelLoeschen`
+- `FreigabedatumAktivieren`, `FreigabedatumNeueVokabeln`
 - `VokabelListe`, `VokabelAnzahl`, `PriorisierteVokabelAnzahl`
 - Tagesgruppen: `VokabelTag-yyyyMMdd`, zugehörige Tabelle: `VokabelTag-yyyyMMdd-Liste`
 - `NeueVokabelDeutsch`, `NeueVokabelEnglisch`
