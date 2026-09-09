@@ -19,36 +19,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/AndroidProjectSystem.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources/187a1d8e-ad0c-4b5e-a45f-384e7ac8b33a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/dataSources/187a1d8e-ad0c-4b5e-a45f-384e7ac8b33a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/App.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Behaviors/NavigationViewHeaderBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Behaviors/NavigationViewHeaderBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Converter/DateTimeToTimeConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Converter/DateTimeToTimeConverter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/MainWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/MainWindow.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Strings/en-us/Resources.resw" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Strings/en-us/Resources.resw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Styles/Thickness.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Styles/Thickness.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SessionsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SessionsViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/SessionsPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/SessionsPage.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/SessionsPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/SessionsPage.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Vokabeltrainer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Vokabeltrainer.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,23 +65,23 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000060579463734" />
-      <entry key="MS500" value="1.2710633097647717" />
-      <entry key="S2" value="4.995868197310604" />
-      <entry key="S5" value="14.170014784197127" />
-      <entry key="S10" value="28.178881006538436" />
-      <entry key="S30" value="53.47210162746352" />
-      <entry key="S60" value="67.5663773065682" />
-      <entry key="M2" value="89.15493238842619" />
-      <entry key="M5" value="154.07310181949117" />
-      <entry key="M10" value="248.64335861261588" />
-      <entry key="M15" value="316.5140211901625" />
-      <entry key="M30" value="426.17538417720573" />
-      <entry key="H1" value="506.1714704778406" />
-      <entry key="H2" value="554.9886266232028" />
-      <entry key="H4" value="582.0242359079525" />
-      <entry key="D1" value="606.0294786784285" />
-      <entry key="W1" value="610.2863787256758" />
+      <entry key="MS100" value="1.1940788212065128" />
+      <entry key="MS500" value="3.4362752217816053" />
+      <entry key="S2" value="8.077863589549734" />
+      <entry key="S5" value="16.354119042088488" />
+      <entry key="S10" value="26.231537390167507" />
+      <entry key="S30" value="41.14064555121564" />
+      <entry key="S60" value="49.90963423980018" />
+      <entry key="M2" value="69.1955321777321" />
+      <entry key="M5" value="135.38440150144288" />
+      <entry key="M10" value="235.64044625904023" />
+      <entry key="M15" value="310.9475233217363" />
+      <entry key="M30" value="438.1132712300957" />
+      <entry key="H1" value="534.5767196643642" />
+      <entry key="H2" value="594.7831970770478" />
+      <entry key="H4" value="628.5292772804347" />
+      <entry key="D1" value="658.7220502945977" />
+      <entry key="W1" value="664.0981240775242" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -130,23 +103,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9726607635945741" />
-      <entry key="MS500" value="1.2634605960838383" />
-      <entry key="S2" value="4.987022263820277" />
-      <entry key="S5" value="14.159718166392137" />
-      <entry key="S10" value="28.168711000362734" />
-      <entry key="S30" value="53.465737917414195" />
-      <entry key="S60" value="67.56235904543846" />
-      <entry key="M2" value="89.1522604629639" />
-      <entry key="M5" value="154.0712190795998" />
-      <entry key="M10" value="248.64181142325518" />
-      <entry key="M15" value="316.5126953967361" />
-      <entry key="M30" value="426.17448103646893" />
-      <entry key="H1" value="506.1709306129123" />
-      <entry key="H2" value="554.9883296456514" />
-      <entry key="H4" value="582.0240799156347" />
-      <entry key="D1" value="606.0294515679668" />
-      <entry key="W1" value="610.2863748245719" />
+      <entry key="MS100" value="1.1534380256487111" />
+      <entry key="MS500" value="3.412867406870064" />
+      <entry key="S2" value="8.063562178338973" />
+      <entry key="S5" value="16.342253750352366" />
+      <entry key="S10" value="26.221923120774473" />
+      <entry key="S30" value="41.13558825892349" />
+      <entry key="S60" value="49.90656881627658" />
+      <entry key="M2" value="69.1934171667312" />
+      <entry key="M5" value="135.38274186934882" />
+      <entry key="M10" value="235.63898327085616" />
+      <entry key="M15" value="310.9462252014241" />
+      <entry key="M30" value="438.1123463092655" />
+      <entry key="H1" value="534.5761516418155" />
+      <entry key="H2" value="594.7828799738135" />
+      <entry key="H4" value="628.529109433633" />
+      <entry key="D1" value="658.722020932123" />
+      <entry key="W1" value="664.0981198475537" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -336,7 +309,7 @@
       <workItem from="1772217476412" duration="2000" />
       <workItem from="1788976546786" duration="542000" />
       <workItem from="1788977115390" duration="175000" />
-      <workItem from="1788977307302" duration="3502000" />
+      <workItem from="1788977307302" duration="4253000" />
     </task>
     <task id="LOCAL-00001" summary="Alle Markierten Vokabeln können unter Settings gelöscht werden.">
       <option name="closed" value="true" />
@@ -354,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742131880754</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fluent Design für Trainings- und Sitzungsseiten implementiert, neue zentrale Ressourcen, UI-Testdokument erstellt">
+      <option name="closed" value="true" />
+      <created>1788980958899</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1788980958899</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,7 +347,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Alle Markierten Vokabeln können unter Settings gelöscht werden." />
     <MESSAGE value="Neue Vokabeln sind direkt markiert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Neue Vokabeln sind direkt markiert" />
+    <MESSAGE value="Fluent Design für Trainings- und Sitzungsseiten implementiert, neue zentrale Ressourcen, UI-Testdokument erstellt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fluent Design für Trainings- und Sitzungsseiten implementiert, neue zentrale Ressourcen, UI-Testdokument erstellt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
