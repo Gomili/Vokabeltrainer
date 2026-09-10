@@ -14,13 +14,13 @@ public class DataService : IDataService
         context.Database.Migrate();
     }
     
-    public async Task<List<Vokabel>> ReadAllVokabelAsync()
+    public async Task<List<Vokabel>> ReadAllVokabelAsync(Lernsprache sprache)
     {
         await using var context = new VokabelDataContext();
-        return await context.Vokabeln.ToListAsync();
+        return await context.Vokabeln.Where(vokabel => vokabel.Sprache == sprache).ToListAsync();
     }
 
-    public async Task<List<Vokabel>> ReadFreigegebeneVokabelnAsync(DateTime stichtag)
+    public async Task<List<Vokabel>> ReadFreigegebeneVokabelnAsync(DateTime stichtag, Lernsprache sprache)
     {
         await using var context = new VokabelDataContext();
         DateTime folgetag = stichtag.Date.AddDays(1);
@@ -28,7 +28,7 @@ public class DataService : IDataService
         // Warum: Die Freigabe wird bereits in der Datenbank gefiltert. Zukünftige
         // Vokabeln gelangen dadurch gar nicht erst in die zufällige Trainingsauswahl.
         return await context.Vokabeln
-            .Where(vokabel => vokabel.Freigabedatum < folgetag)
+            .Where(vokabel => vokabel.Sprache == sprache && vokabel.Freigabedatum < folgetag)
             .ToListAsync();
     }
 
@@ -68,6 +68,7 @@ public class DataService : IDataService
                 org.Zaehler = content.Zaehler;
                 org.IsMarked = content.IsMarked;
                 org.Freigabedatum = content.Freigabedatum;
+                org.Sprache = content.Sprache;
                 context.Update(org);
             }
         }
@@ -93,10 +94,10 @@ public class DataService : IDataService
         return false;
     }
 
-    public async Task<List<Session>> ReadAllSessionAsync()
+    public async Task<List<Session>> ReadAllSessionAsync(Lernsprache sprache)
     {
         await using var context = new VokabelDataContext();
-        return await context.Sessions.ToListAsync();
+        return await context.Sessions.Where(session => session.Sprache == sprache).ToListAsync();
     }
 
     public async Task<Session?> ReadSessionAsync(Guid id)
@@ -125,6 +126,7 @@ public class DataService : IDataService
                 org.StopTime = content.StopTime;
                 org.StartTime = content.StartTime;
                 org.Zeit = content.Zeit;
+                org.Sprache = content.Sprache;
                 context.Update(org);
             }
         }
@@ -165,6 +167,7 @@ public class DataService : IDataService
             foundvokabel.IsMarked = false;
             foundvokabel.Zaehler = 100;
             foundvokabel.Freigabedatum = ErmittleFreigabedatum(vokabel);
+            foundvokabel.Sprache = vokabel.Sprache;
             context.Add(foundvokabel);
         }
         else
@@ -174,17 +177,20 @@ public class DataService : IDataService
             oldvokabel.Deutsch = vokabel.Deutsch;
             oldvokabel.Englisch = vokabel.Englisch;
             oldvokabel.Freigabedatum = ErmittleFreigabedatum(vokabel);
+            oldvokabel.Sprache = vokabel.Sprache;
             context.Update(oldvokabel);
         }
         int i = await context.SaveChangesAsync();
     }
 
-    public async Task<(int, int, int)> ReadSessionCountAsync(DateTime dateTime)
+    public async Task<(int, int, int)> ReadSessionCountAsync(DateTime dateTime, Lernsprache sprache)
     {
         int anzahl = 0, falsche = 0, richtige = 0;
         
         await using var context = new VokabelDataContext();
-        var data = await context.Sessions.Where(x => x.StartTime >= dateTime).ToListAsync();
+        var data = await context.Sessions
+            .Where(x => x.Sprache == sprache && x.StartTime >= dateTime)
+            .ToListAsync();
 
         foreach (Session session in data)
         {
@@ -203,6 +209,7 @@ public class DataService : IDataService
         else
             if (oldVokabel.Englisch != newvokabel.Englisch
                 || oldVokabel.Deutsch != newvokabel.Deutsch
+                || oldVokabel.Sprache != newvokabel.Sprache
                 || oldVokabel.Freigabedatum != newvokabel.Freigabedatum
                 || oldVokabel.Mdt <= newvokabel.Mdt)
                 await SaveFromImport(oldVokabel, newvokabel);
@@ -242,13 +249,13 @@ public class DataService : IDataService
         await context.SaveChangesAsync();
     }
 
-    public async Task<int> GetAnzahlPriorisierterVokabelnAsync()
+    public async Task<int> GetAnzahlPriorisierterVokabelnAsync(Lernsprache sprache)
     {
         await using var context = new VokabelDataContext();
 
         // Warum: Die Datenbank kann die Markierungen zählen, ohne dafür den vollständigen
         // Wortschatz inklusive aller Texte in den Arbeitsspeicher laden zu müssen.
-        return await context.Vokabeln.CountAsync(vokabel => vokabel.IsMarked);
+        return await context.Vokabeln.CountAsync(vokabel => vokabel.Sprache == sprache && vokabel.IsMarked);
     }
 
     private static DateTime ErmittleFreigabedatum(Vokabel vokabel)

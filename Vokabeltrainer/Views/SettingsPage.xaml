@@ -50,9 +50,33 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Border Style="{StaticResource FluentCardStyle}">
+                <Border Grid.ColumnSpan="2" Style="{StaticResource FluentCardStyle}">
+                    <Grid ColumnSpacing="14">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="220" />
+                        </Grid.ColumnDefinitions>
+                        <Border Style="{StaticResource EinstellungsSymbolKreis}">
+                            <FontIcon Glyph="&#xE8C1;" FontSize="18" />
+                        </Border>
+                        <StackPanel Grid.Column="1" Spacing="3" VerticalAlignment="Center">
+                            <TextBlock Text="Lernsprache" FontSize="17" FontWeight="SemiBold" />
+                            <TextBlock Text="Eingabe, Training, Historie und Sicherungen verwenden diese Sprache."
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
+                        </StackPanel>
+                        <ComboBox Grid.Column="2"
+                                  ItemsSource="{x:Bind ViewModel.Lernsprachen}"
+                                  SelectedItem="{x:Bind ViewModel.AusgewaehlteLernsprache, Mode=TwoWay}"
+                                  HorizontalAlignment="Stretch"
+                                  AutomationProperties.AutomationId="LernspracheAuswahl" />
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" Style="{StaticResource FluentCardStyle}">
                     <StackPanel Spacing="18">
                         <StackPanel Spacing="3">
                             <TextBlock Text="Datensicherung" Style="{StaticResource FluentSectionTitleStyle}" />
@@ -71,7 +95,7 @@
                             </Border>
                             <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
                                 <TextBlock Text="Vokabeln exportieren" FontWeight="SemiBold" />
-                                <TextBlock Text="Erstellt eine Sicherungsdatei mit deinem gesamten Wortschatz."
+                                <TextBlock Text="Erstellt eine Sicherungsdatei für die ausgewählte Lernsprache."
                                            Style="{ThemeResource CaptionTextBlockStyle}"
                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
                             </StackPanel>
@@ -94,7 +118,7 @@
                             </Border>
                             <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
                                 <TextBlock Text="Sicherung importieren" FontWeight="SemiBold" />
-                                <TextBlock Text="Fügt Vokabeln aus einer vorhandenen Sicherungsdatei hinzu."
+                                <TextBlock Text="Fügt Vokabeln zur ausgewählten Lernsprache hinzu."
                                            Style="{ThemeResource CaptionTextBlockStyle}"
                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
                             </StackPanel>
@@ -122,7 +146,7 @@
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Column="1" Style="{StaticResource FluentCardStyle}">
+                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource FluentCardStyle}">
                     <StackPanel Spacing="16">
                         <StackPanel Spacing="3">
                             <TextBlock Text="Darstellung" Style="{StaticResource FluentSectionTitleStyle}" />
@@ -177,7 +201,7 @@
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="1" Style="{StaticResource FluentCardStyle}">
+                <Border Grid.Row="2" Style="{StaticResource FluentCardStyle}">
                     <Grid ColumnSpacing="14">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -206,7 +230,7 @@
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource FluentCardStyle}">
+                <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource FluentCardStyle}">
                     <Grid ColumnSpacing="14">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />

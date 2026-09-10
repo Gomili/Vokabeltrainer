@@ -27,4 +27,5 @@ public class Session : IEntity
     public int Anzahl { get; set; }
     public int Richtige { get; set; }
     public int Falsche { get; set; }
+    public Lernsprache Sprache { get; set; } = Lernsprache.Englisch;
 }

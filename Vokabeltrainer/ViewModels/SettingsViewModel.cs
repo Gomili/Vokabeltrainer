@@ -16,6 +16,7 @@ public partial class SettingsViewModel : ObservableRecipient
     private readonly IThemeSelectorService _themeSelectorService;
     private readonly IImportExportService _importExportService;
     private readonly IDataService _dataService;
+    private readonly ILernspracheService _lernspracheService;
 
     [ObservableProperty] private ElementTheme _elementTheme;
     [ObservableProperty] private string _versionDescription;
@@ -23,13 +24,17 @@ public partial class SettingsViewModel : ObservableRecipient
     [ObservableProperty] private int _progressMax;
     [ObservableProperty] private Visibility _progressBarVisibility = Visibility.Collapsed;
     [ObservableProperty] private int _markierte = 0;
+    [ObservableProperty] private Lernsprache _ausgewaehlteLernsprache;
+
+    public IReadOnlyList<Lernsprache> Lernsprachen { get; } =
+        [Lernsprache.Englisch, Lernsprache.Latein];
     
     public ICommand SwitchThemeCommand { get; }
 
     [RelayCommand]
     private async Task LoeschenAsync()
     {
-        List<Vokabel> vokabeln = await _dataService.ReadAllVokabelAsync();
+        List<Vokabel> vokabeln = await _dataService.ReadAllVokabelAsync(AusgewaehlteLernsprache);
 
         foreach (Vokabel vokabel in vokabeln.Where(x => x.IsMarked))
         {
@@ -37,13 +42,13 @@ public partial class SettingsViewModel : ObservableRecipient
             await _dataService.SaveVokabelAsync(vokabel);
         }
         
-        Markierte = await _dataService.GetAnzahlPriorisierterVokabelnAsync();
+        Markierte = await _dataService.GetAnzahlPriorisierterVokabelnAsync(AusgewaehlteLernsprache);
     }
     
     [RelayCommand]
     private async Task ExportAsync()
     {
-        List<Vokabel> vokabeln = await _dataService.ReadAllVokabelAsync();
+        List<Vokabel> vokabeln = await _dataService.ReadAllVokabelAsync(AusgewaehlteLernsprache);
         string exportText = await _importExportService.ExportAsync(vokabeln);
         await FileDialogHelper.SaveFileAsync(exportText);
     }
@@ -62,7 +67,13 @@ public partial class SettingsViewModel : ObservableRecipient
             await Task.Delay(200);
             foreach (Vokabel vokabel in vokabeln)
             {
+                vokabel.Sprache = AusgewaehlteLernsprache;
                 var oldVokabel = await _dataService.ReadVokabelAsync(vokabel.Id);
+                if (oldVokabel is not null && oldVokabel.Sprache != AusgewaehlteLernsprache)
+                {
+                    vokabel.Id = Guid.NewGuid();
+                    oldVokabel = null;
+                }
                 await _dataService.SaveIsChangedAsync(oldVokabel, vokabel);
                 ProgressVal++;
             }
@@ -73,12 +84,18 @@ public partial class SettingsViewModel : ObservableRecipient
         }
     }
     
-    public SettingsViewModel(IThemeSelectorService themeSelectorService, IImportExportService importExportService, IDataService dataService)
+    public SettingsViewModel(
+        IThemeSelectorService themeSelectorService,
+        IImportExportService importExportService,
+        IDataService dataService,
+        ILernspracheService lernspracheService)
     {
         _themeSelectorService = themeSelectorService;
         _importExportService = importExportService;
         _dataService = dataService;
+        _lernspracheService = lernspracheService;
         _elementTheme = _themeSelectorService.Theme;
+        _ausgewaehlteLernsprache = _lernspracheService.AktuelleSprache;
         _versionDescription = GetVersionDescription();
 
         SwitchThemeCommand = new RelayCommand<ElementTheme>(
@@ -91,7 +108,18 @@ public partial class SettingsViewModel : ObservableRecipient
                 }
             });
 
-        Markierte = _dataService.GetAnzahlPriorisierterVokabelnAsync().GetAwaiter().GetResult();
+        Markierte = _dataService.GetAnzahlPriorisierterVokabelnAsync(AusgewaehlteLernsprache).GetAwaiter().GetResult();
+    }
+
+    partial void OnAusgewaehlteLernspracheChanged(Lernsprache value)
+    {
+        _ = SpeichereLernspracheAsync(value);
+    }
+
+    private async Task SpeichereLernspracheAsync(Lernsprache sprache)
+    {
+        await _lernspracheService.SetzeSpracheAsync(sprache);
+        Markierte = await _dataService.GetAnzahlPriorisierterVokabelnAsync(sprache);
     }
 
     private static string GetVersionDescription()

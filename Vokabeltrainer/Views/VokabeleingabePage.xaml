@@ -129,7 +129,8 @@
                              IsEnabled="{x:Bind ViewModel.HatAusgewaehlteVokabel, Mode=OneWay}"
                              IsSpellCheckEnabled="False" MaxLength="256"
                              AutomationProperties.AutomationId="DeutschEingabe" />
-                    <TextBox Grid.Column="1" Header="Englisch" PlaceholderText="Englische Übersetzung"
+                    <TextBox Grid.Column="1" Header="{x:Bind ViewModel.FremdsprachenBezeichnung}"
+                             PlaceholderText="{x:Bind ViewModel.FremdsprachenPlatzhalter}"
                              Text="{x:Bind ViewModel.TextEnglisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              IsEnabled="{x:Bind ViewModel.HatAusgewaehlteVokabel, Mode=OneWay}"
                              IsSpellCheckEnabled="False" MaxLength="256"
@@ -288,7 +289,8 @@
                                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                                             <TextBlock Grid.Column="1" Text="Deutsch" Style="{ThemeResource CaptionTextBlockStyle}"
                                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                                            <TextBlock Grid.Column="2" Text="Englisch" Style="{ThemeResource CaptionTextBlockStyle}"
+                                            <TextBlock Grid.Column="2" Text="{Binding ElementName=EingabePage, Path=ViewModel.FremdsprachenBezeichnung}"
+                                                       Style="{ThemeResource CaptionTextBlockStyle}"
                                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                                             <TextBlock Grid.Column="3" Text="Lernwert" Style="{ThemeResource CaptionTextBlockStyle}"
                                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />

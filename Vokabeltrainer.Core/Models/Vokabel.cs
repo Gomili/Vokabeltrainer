@@ -11,6 +11,7 @@ public class Vokabel : IEntity
     public DateTime Freigabedatum { get; set; }
     [MaxLength(256)]public string Deutsch { get; set; } = "";
     [MaxLength(256)]public string Englisch { get; set; } = "";
+    public Lernsprache Sprache { get; set; } = Lernsprache.Englisch;
     public int Zaehler { get; set; } = 0;
     public bool IsMarked { get; set; } = false;
 }

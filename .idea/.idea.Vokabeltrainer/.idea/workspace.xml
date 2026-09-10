@@ -20,15 +20,23 @@
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI-TESTS.md" beforeDir="false" afterPath="$PROJECT_DIR$/UI-TESTS.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Session.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Session.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Vokabel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Vokabel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Vokabeltrainer.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Tests/ViewModels/VokabeleingabeViewModelTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Tests/ViewModels/VokabeleingabeViewModelTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SessionsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SessionsViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +73,6 @@
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/App.g.i.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/Views/VokabeleingabePage.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Immediate Window" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/micha/source/repos/Vokabeltrainer/Vokabeltrainer.Core/Services/DataService.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -319,7 +326,8 @@
       <workItem from="1788976546786" duration="542000" />
       <workItem from="1788977115390" duration="175000" />
       <workItem from="1788977307302" duration="4253000" />
-      <workItem from="1788981586883" duration="5547000" />
+      <workItem from="1788981586883" duration="5706000" />
+      <workItem from="1789063586791" duration="1705000" />
     </task>
     <task id="LOCAL-00001" summary="Alle Markierten Vokabeln können unter Settings gelöscht werden.">
       <option name="closed" value="true" />
@@ -385,7 +393,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788985745013</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="&quot;Freigabedatum für Vokabeln hinzugefügt, Migration erstellt und Unterstützung im ViewModel, Service, und Tests implementiert&quot;">
+      <option name="closed" value="true" />
+      <created>1788987274701</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1788987274701</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,7 +430,8 @@
     <MESSAGE value="&quot;Implementiert Tagesgruppen für Vokabeln, fügt Prioritätszählung hinzu und integriert Erweiterungen für UI und ViewModel.&quot;" />
     <MESSAGE value="&quot;Unit-Tests für ThemeSelectorService hinzugefügt und Testprojekt in die Lösung integriert&quot;" />
     <MESSAGE value="&quot;End-to-end-Test für das Umschalten des Farbschemas hinzugefügt, FlaUI-Pakete integriert und Testdokumentation erweitert&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;End-to-end-Test für das Umschalten des Farbschemas hinzugefügt, FlaUI-Pakete integriert und Testdokumentation erweitert&quot;" />
+    <MESSAGE value="&quot;Freigabedatum für Vokabeln hinzugefügt, Migration erstellt und Unterstützung im ViewModel, Service, und Tests implementiert&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Freigabedatum für Vokabeln hinzugefügt, Migration erstellt und Unterstützung im ViewModel, Service, und Tests implementiert&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

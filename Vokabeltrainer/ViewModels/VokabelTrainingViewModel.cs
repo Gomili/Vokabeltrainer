@@ -9,6 +9,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Vokabeltrainer.Core.Contracts.Services;
 using Vokabeltrainer.Core.Models;
+using Vokabeltrainer.Contracts.Services;
 using Vokabeltrainer.DisplayClasses;
 
 namespace Vokabeltrainer.ViewModels;
@@ -20,6 +21,8 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
     private bool _istFreigegeben;
     
     private readonly IDataService _dataService;
+    private readonly Lernsprache _lernsprache;
+    private readonly VoiceInformation? _sprachstimme;
     [ObservableProperty] private string _laufzeit = string.Empty;
     [ObservableProperty] private int _richtige = 0;
     [ObservableProperty] private int _falsche = 0;
@@ -47,10 +50,18 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
     public string TrainingsstatusHinweis => Running
         ? "Stelle dein Training zusammen und beginne, wenn du bereit bist."
         : "Trage deine Übersetzungen ein und werte danach die Runde aus.";
+    public string AudioTooltip => _sprachstimme is null
+        ? $"Keine Stimme für {FremdsprachenBezeichnung} installiert"
+        : $"{(_lernsprache == Lernsprache.Latein ? "Lateinische" : "Englische")} Lösung anhören";
+    public string FremdsprachenBezeichnung => _lernsprache == Lernsprache.Latein ? "Latein" : "Englisch";
     
-    public VokabelTrainingViewModel(IDataService dataService)
+    public VokabelTrainingViewModel(IDataService dataService, ILernspracheService lernspracheService)
     {
         _dataService = dataService;
+        _lernsprache = lernspracheService.AktuelleSprache;
+        string sprachcode = _lernsprache == Lernsprache.Latein ? "la" : "en";
+        _sprachstimme = SpeechSynthesizer.AllVoices
+            .FirstOrDefault(voice => voice.Language.StartsWith(sprachcode, StringComparison.OrdinalIgnoreCase));
         _timer.Interval = TimeSpan.FromSeconds(1);
         _timer.Tick -= Timer_Tick;
         _timer.Tick += Timer_Tick;
@@ -61,9 +72,9 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
         // keine noch unvollständigen Datumswerte in die Freigabeentscheidung gelangen.
         _dataService.FixData().GetAwaiter().GetResult();
         
-        _vokabelListe = _dataService.ReadFreigegebeneVokabelnAsync(DateTime.Today).GetAwaiter().GetResult();
+        _vokabelListe = _dataService.ReadFreigegebeneVokabelnAsync(DateTime.Today, _lernsprache).GetAwaiter().GetResult();
         
-        (GesammtAnzahl, GesammtRichtige, GesammtFalsche) = _dataService.ReadSessionCountAsync(DateTime.Today).GetAwaiter().GetResult();
+        (GesammtAnzahl, GesammtRichtige, GesammtFalsche) = _dataService.ReadSessionCountAsync(DateTime.Today, _lernsprache).GetAwaiter().GetResult();
     }
 
     private async Task<(int,int)> PruefenAsync()
@@ -74,7 +85,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
         {
             foreach (DisplayLernVokabel lernVokabel in Lernliste)
             {
-                lernVokabel.SpeakButtonEnabled = true;
+                lernVokabel.SpeakButtonEnabled = _sprachstimme is not null;
                 lernVokabel.EnglischRichtig = lernVokabel.Vokabel.Englisch;
                 if (lernVokabel.Englisch.Trim() == lernVokabel.Vokabel.Englisch.Trim())
                 {
@@ -161,7 +172,11 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
         
         foreach (Vokabel vokabel in lernListe)
         {
-            ausgabeListe.Add(new DisplayLernVokabel(vokabel, SpeakText));
+            var lernVokabel = new DisplayLernVokabel(vokabel, SpeakText)
+            {
+                SpeakButtonEnabled = _sprachstimme is not null && vokabel.Zaehler == 100
+            };
+            ausgabeListe.Add(lernVokabel);
         }
         
         return ausgabeListe;
@@ -211,15 +226,8 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
         {
             using var synth = new SpeechSynthesizer();
 
-            // Suchen einer englischen Stimme
-            var englishVoice = SpeechSynthesizer.AllVoices
-                .FirstOrDefault(voice => voice.Language.StartsWith("en"));
-
-            // Setzen der Stimme auf die gefundene englische Stimme
-            if (englishVoice != null)
-            {
-                synth.Voice = englishVoice;
-            }
+            if (_sprachstimme is null) return;
+            synth.Voice = _sprachstimme;
 
             // Erstellen eines SpeechSynthesisStream aus dem Text
             var neuerStream = await synth.SynthesizeTextToStreamAsync(text);
@@ -249,8 +257,12 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
     {
         _timer.Stop();
         (Richtige, Falsche) = await PruefenAsync();
-        await _dataService.SaveSessionAsync(new Session(Anzahl, Richtige, Falsche, _startTime, DateTime.Now));
-        (GesammtAnzahl, GesammtRichtige, GesammtFalsche) = await _dataService.ReadSessionCountAsync(DateTime.Today);
+        var session = new Session(Anzahl, Richtige, Falsche, _startTime, DateTime.Now)
+        {
+            Sprache = _lernsprache
+        };
+        await _dataService.SaveSessionAsync(session);
+        (GesammtAnzahl, GesammtRichtige, GesammtFalsche) = await _dataService.ReadSessionCountAsync(DateTime.Today, _lernsprache);
         Anzahl = AnzahlLernVokabeln;
         Falsche = 0;
         Richtige = 0;

@@ -27,7 +27,9 @@ public sealed partial class VokabeleingabePage : Page
     private async void NeueVokabel_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new Microsoft.UI.Xaml.Controls.ContentDialog();
-        var dialogView = new VokabelDialog();
+        var dialogView = new VokabelDialog(
+            ViewModel.FremdsprachenBezeichnung,
+            ViewModel.FremdsprachenPlatzhalter);
         
         // Warum: Desktop-ContentDialogs besitzen keinen eigenen XAML-Baum und müssen
         // deshalb explizit an die aktuelle Seite gebunden werden.

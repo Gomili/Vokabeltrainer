@@ -4,12 +4,12 @@ namespace Vokabeltrainer.Core.Contracts.Services;
 
 public interface IDataService
 {
-    Task<List<Vokabel>> ReadAllVokabelAsync();
+    Task<List<Vokabel>> ReadAllVokabelAsync(Lernsprache sprache);
 
     /// <summary>
     /// Liest ausschließlich Vokabeln, die am angegebenen Tag bereits gelernt werden dürfen.
     /// </summary>
-    Task<List<Vokabel>> ReadFreigegebeneVokabelnAsync(DateTime stichtag);
+    Task<List<Vokabel>> ReadFreigegebeneVokabelnAsync(DateTime stichtag, Lernsprache sprache);
 
     Task<Vokabel?> ReadVokabelAsync(Guid id);
     
@@ -17,7 +17,7 @@ public interface IDataService
 
     Task<bool> DeleteVokabelAsync(Vokabel content);
     
-    Task<List<Session>> ReadAllSessionAsync();
+    Task<List<Session>> ReadAllSessionAsync(Lernsprache sprache);
 
     Task<Session?> ReadSessionAsync(Guid id);
     
@@ -32,7 +32,7 @@ public interface IDataService
     /// </summary>
     /// <param name="dateTime">The starting date and time to filter the sessions.</param>
     /// <returns>A tuple containing three integers: the total number of sessions, the number of correct sessions, and the number of incorrect sessions.</returns>
-    Task<(int, int, int)> ReadSessionCountAsync(DateTime dateTime);
+    Task<(int, int, int)> ReadSessionCountAsync(DateTime dateTime, Lernsprache sprache);
 
     Task SaveIsChangedAsync(Vokabel? oldVokabel, Vokabel newvokabel);
     
@@ -41,5 +41,5 @@ public interface IDataService
     /// <summary>
     /// Ermittelt die Anzahl der Vokabeln, die für ein priorisiertes Training markiert sind.
     /// </summary>
-    Task<int> GetAnzahlPriorisierterVokabelnAsync();
+    Task<int> GetAnzahlPriorisierterVokabelnAsync(Lernsprache sprache);
 }

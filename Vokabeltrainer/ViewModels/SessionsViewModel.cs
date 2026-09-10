@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using Vokabeltrainer.Core.Contracts.Services;
 using Vokabeltrainer.Core.Models;
+using Vokabeltrainer.Contracts.Services;
 
 namespace Vokabeltrainer.ViewModels;
 
@@ -16,11 +17,14 @@ public partial class SessionsViewModel : ObservableRecipient
 
     public int Trefferquote { get; }
     
-    public SessionsViewModel(IDataService dataService)
+    public SessionsViewModel(IDataService dataService, ILernspracheService lernspracheService)
     {
         _dataService = dataService;
         
-        List<Session> sourceListe = _dataService.ReadAllSessionAsync().GetAwaiter().GetResult();
+        List<Session> sourceListe = _dataService
+            .ReadAllSessionAsync(lernspracheService.AktuelleSprache)
+            .GetAwaiter()
+            .GetResult();
 
         AnzahlSitzungen = sourceListe.Count;
         GeuebteVokabeln = sourceListe.Sum(sitzung => sitzung.Anzahl);

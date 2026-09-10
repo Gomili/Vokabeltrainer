@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Vokabeltrainer.Core.Contracts.Services;
 using Vokabeltrainer.Core.Models;
+using Vokabeltrainer.Contracts.Services;
 using Vokabeltrainer.DisplayClasses;
 using Vokabeltrainer.Helpers;
 
@@ -11,6 +12,7 @@ namespace Vokabeltrainer.ViewModels;
 public partial class VokabeleingabeViewModel : ObservableRecipient
 {
     private readonly IDataService _dataService;
+    private readonly Lernsprache _lernsprache;
     [ObservableProperty] private string _textDeutsch = string.Empty;
     [ObservableProperty] private string _textEnglisch = string.Empty;
     [ObservableProperty] private ObservableCollection<Vokabel> _displayListe = new();
@@ -25,15 +27,20 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     [ObservableProperty] private DateTimeOffset _freigabedatumNeueVokabeln = new(DateTime.Today);
 
     public bool HatAusgewaehlteVokabel => SelectedVokabel is not null;
+    public string FremdsprachenBezeichnung => _lernsprache == Lernsprache.Latein ? "Latein" : "Englisch";
+    public string FremdsprachenPlatzhalter => _lernsprache == Lernsprache.Latein
+        ? "Lateinische Übersetzung"
+        : "Englische Übersetzung";
 
-    public VokabeleingabeViewModel(IDataService dataService)
+    public VokabeleingabeViewModel(IDataService dataService, ILernspracheService lernspracheService)
     {
         _dataService = dataService;
+        _lernsprache = lernspracheService.AktuelleSprache;
         
-        List<Vokabel> sourceListe = _dataService.ReadAllVokabelAsync().GetAwaiter().GetResult();
+        List<Vokabel> sourceListe = _dataService.ReadAllVokabelAsync(_lernsprache).GetAwaiter().GetResult();
 
         AnzahlVokabeln = sourceListe.Count;
-        AnzahlPriorisierteVokabeln = _dataService.GetAnzahlPriorisierterVokabelnAsync().GetAwaiter().GetResult();
+        AnzahlPriorisierteVokabeln = _dataService.GetAnzahlPriorisierterVokabelnAsync(_lernsprache).GetAwaiter().GetResult();
         
         foreach (Vokabel vokabel in sourceListe)
             DisplayListe.Add(vokabel);
@@ -63,7 +70,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
             vokabel.IsMarked = !vokabel.IsMarked;
             if (await _dataService.SaveVokabelAsync(vokabel))
             {
-                AnzahlPriorisierteVokabeln = await _dataService.GetAnzahlPriorisierterVokabelnAsync();
+                AnzahlPriorisierteVokabeln = await _dataService.GetAnzahlPriorisierterVokabelnAsync(_lernsprache);
             }
         }
     }
@@ -71,7 +78,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
     [RelayCommand]
     private async Task StartSucheAsync(string text)
     {
-        List<Vokabel> searchResults = await _dataService.ReadAllVokabelAsync();
+        List<Vokabel> searchResults = await _dataService.ReadAllVokabelAsync(_lernsprache);
         DisplayListe.Clear();
         
         if (!string.IsNullOrWhiteSpace(text))
@@ -113,7 +120,8 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
             Englisch = englisch,
             Zaehler = 100,
             IsMarked = true,
-            Freigabedatum = freigabedatum
+            Freigabedatum = freigabedatum,
+            Sprache = _lernsprache
         };
         if (await _dataService.SaveVokabelAsync(vokabel))
         {
@@ -122,7 +130,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
             
             ListHelper.AddListEntry(DisplayListe, vokabel);
             AnzahlVokabeln++;
-            AnzahlPriorisierteVokabeln = await _dataService.GetAnzahlPriorisierterVokabelnAsync();
+            AnzahlPriorisierteVokabeln = await _dataService.GetAnzahlPriorisierterVokabelnAsync(_lernsprache);
             AktualisiereTagesgruppen();
         }
     }
@@ -148,7 +156,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
         {
             ListHelper.DeleteListEntry(DisplayListe, SelectedVokabel);
             AnzahlVokabeln--;
-            AnzahlPriorisierteVokabeln = await _dataService.GetAnzahlPriorisierterVokabelnAsync();
+            AnzahlPriorisierteVokabeln = await _dataService.GetAnzahlPriorisierterVokabelnAsync(_lernsprache);
             SelectedVokabel = null;
             TextDeutsch = string.Empty;
             TextEnglisch = string.Empty;

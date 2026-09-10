@@ -5,6 +5,7 @@
     xmlns:converter="using:Vokabeltrainer.Converter"
     xmlns:ct="using:CommunityToolkit.WinUI.Controls"
     xmlns:models="using:Vokabeltrainer.DisplayClasses"
+    x:Name="TrainingPage"
     AutomationProperties.AutomationId="TrainingSeite">
 
     <Page.Resources>
@@ -265,8 +266,8 @@
                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                                 <Button Command="{x:Bind SpeakCommand}" CommandParameter="{x:Bind}"
                                         IsEnabled="{x:Bind SpeakButtonEnabled, Mode=OneWay}"
-                                        ToolTipService.ToolTip="Englische Lösung anhören"
-                                        AutomationProperties.Name="Englische Lösung anhören">
+                                        ToolTipService.ToolTip="{Binding ElementName=TrainingPage, Path=ViewModel.AudioTooltip}"
+                                        AutomationProperties.Name="{Binding ElementName=TrainingPage, Path=ViewModel.AudioTooltip}">
                                     <SymbolIcon Symbol="Volume" />
                                 </Button>
                             </ct:DataRow>

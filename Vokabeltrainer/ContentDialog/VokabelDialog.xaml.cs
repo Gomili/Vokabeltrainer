@@ -8,8 +8,13 @@ public sealed partial class VokabelDialog : Page
 
     public string Englisch { get; set; } = string.Empty;
 
-    public VokabelDialog()
+    public string FremdsprachenBezeichnung { get; }
+    public string FremdsprachenPlatzhalter { get; }
+
+    public VokabelDialog(string fremdsprachenBezeichnung, string fremdsprachenPlatzhalter)
     {
+        FremdsprachenBezeichnung = fremdsprachenBezeichnung;
+        FremdsprachenPlatzhalter = fremdsprachenPlatzhalter;
         InitializeComponent();
     }
 }

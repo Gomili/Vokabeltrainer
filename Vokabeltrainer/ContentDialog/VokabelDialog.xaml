@@ -9,9 +9,10 @@
                  Text="{x:Bind Deutsch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  MaxLength="256" IsSpellCheckEnabled="False"
                  AutomationProperties.AutomationId="NeueVokabelDeutsch" />
-        <TextBox Header="Englisch" PlaceholderText="Englische Übersetzung"
+        <TextBox Header="{x:Bind FremdsprachenBezeichnung}"
+                 PlaceholderText="{x:Bind FremdsprachenPlatzhalter}"
                  Text="{x:Bind Englisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  MaxLength="256" IsSpellCheckEnabled="False"
-                 AutomationProperties.AutomationId="NeueVokabelEnglisch" />
+                 AutomationProperties.AutomationId="NeueVokabelFremdsprache" />
     </StackPanel>
 </Page>
