@@ -31,6 +31,9 @@ public partial class SettingsViewModel : ObservableRecipient
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(WortfunkenBetrag))]
     private int _wortfunken;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(BelohnungsdetailsSichtbarkeit))]
+    private bool _belohnungssystemAktiv;
     [ObservableProperty] private bool _belohneNeueVokabeln;
 
     public IReadOnlyList<Lernsprache> Lernsprachen { get; } =
@@ -38,6 +41,10 @@ public partial class SettingsViewModel : ObservableRecipient
 
     public string WortfunkenBetrag => (Wortfunken * 0.10m)
         .ToString("C", CultureInfo.GetCultureInfo("de-DE"));
+
+    public Visibility BelohnungsdetailsSichtbarkeit => BelohnungssystemAktiv
+        ? Visibility.Visible
+        : Visibility.Collapsed;
     
     public ICommand SwitchThemeCommand { get; }
 
@@ -124,6 +131,7 @@ public partial class SettingsViewModel : ObservableRecipient
         _ausgewaehlteLernsprache = _lernspracheService.AktuelleSprache;
         _benutzername = _benutzerprofilService.Name;
         _wortfunken = _benutzerprofilService.Wortfunken;
+        _belohnungssystemAktiv = _benutzerprofilService.BelohnungssystemAktiv;
         _belohneNeueVokabeln = _benutzerprofilService.BelohneNeueVokabeln;
         _versionDescription = GetVersionDescription();
 
@@ -148,6 +156,11 @@ public partial class SettingsViewModel : ObservableRecipient
     partial void OnBelohneNeueVokabelnChanged(bool value)
     {
         _ = _benutzerprofilService.SetzeBelohnungFuerNeueVokabelnAsync(value);
+    }
+
+    partial void OnBelohnungssystemAktivChanged(bool value)
+    {
+        _ = _benutzerprofilService.SetzeBelohnungssystemAktivAsync(value);
     }
 
     private async Task SpeichereLernspracheAsync(Lernsprache sprache)

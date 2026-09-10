@@ -116,6 +116,8 @@ public sealed class VokabeleingabeViewModelTests
 
         public int Wortfunken { get; private set; }
 
+        public bool BelohnungssystemAktiv { get; private set; } = true;
+
         public bool BelohneNeueVokabeln { get; set; } = true;
 
         public Task InitializeAsync() => Task.CompletedTask;
@@ -123,6 +125,13 @@ public sealed class VokabeleingabeViewModelTests
         public Task SetzeNameAsync(string name)
         {
             Name = name;
+            ProfilGeaendert?.Invoke();
+            return Task.CompletedTask;
+        }
+
+        public Task SetzeBelohnungssystemAktivAsync(bool aktiviert)
+        {
+            BelohnungssystemAktiv = aktiviert;
             ProfilGeaendert?.Invoke();
             return Task.CompletedTask;
         }

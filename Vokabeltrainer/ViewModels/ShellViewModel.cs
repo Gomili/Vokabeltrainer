@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
 
 using Vokabeltrainer.Contracts.Services;
 using Vokabeltrainer.Core.Models;
@@ -28,6 +29,9 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
     [ObservableProperty]
     private string _wortfunkenBezeichnung;
 
+    [ObservableProperty]
+    private Visibility _wortfunkenSichtbarkeit;
+
     public INavigationService NavigationService
     {
         get;
@@ -49,6 +53,7 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
         _lernspracheBezeichnung = ErmittleSprachtext(lernspracheService.AktuelleSprache);
         _benutzernameBezeichnung = ErmittleNamenstext();
         _wortfunkenBezeichnung = ErmittleWortfunkentext();
+        _wortfunkenSichtbarkeit = ErmittleWortfunkenSichtbarkeit();
         _lernspracheService.SpracheGeaendert += OnSpracheGeaendert;
         _benutzerprofilService.ProfilGeaendert += OnProfilGeaendert;
         NavigationService = navigationService;
@@ -87,6 +92,7 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
     {
         BenutzernameBezeichnung = ErmittleNamenstext();
         WortfunkenBezeichnung = ErmittleWortfunkentext();
+        WortfunkenSichtbarkeit = ErmittleWortfunkenSichtbarkeit();
     }
 
     private string ErmittleNamenstext() => string.IsNullOrWhiteSpace(_benutzerprofilService.Name)
@@ -94,6 +100,10 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
         : $"Hallo, {_benutzerprofilService.Name}!";
 
     private string ErmittleWortfunkentext() => $"✨ {_benutzerprofilService.Wortfunken} Wortfunken";
+
+    private Visibility ErmittleWortfunkenSichtbarkeit() => _benutzerprofilService.BelohnungssystemAktiv
+        ? Visibility.Visible
+        : Visibility.Collapsed;
 
     public void Dispose()
     {

@@ -98,6 +98,7 @@
                                        AutomationProperties.AutomationId="AktiveLernsprache" />
                             <TextBlock Text="{x:Bind ViewModel.WortfunkenBezeichnung, Mode=OneWay}"
                                        FontSize="11" Foreground="#F4D35E"
+                                       Visibility="{x:Bind ViewModel.WortfunkenSichtbarkeit, Mode=OneWay}"
                                        AutomationProperties.AutomationId="WortfunkenAnzeige" />
                         </StackPanel>
                     </Border>

@@ -8,11 +8,15 @@ public interface IBenutzerprofilService
 
     int Wortfunken { get; }
 
+    bool BelohnungssystemAktiv { get; }
+
     bool BelohneNeueVokabeln { get; }
 
     Task InitializeAsync();
 
     Task SetzeNameAsync(string name);
+
+    Task SetzeBelohnungssystemAktivAsync(bool aktiviert);
 
     Task SetzeBelohnungFuerNeueVokabelnAsync(bool aktiviert);
 

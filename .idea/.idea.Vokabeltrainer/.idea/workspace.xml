@@ -19,8 +19,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Tests/Services/BenutzerprofilServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Tests/Services/BenutzerprofilServiceTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Tests/ViewModels/VokabeleingabeViewModelTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Tests/ViewModels/VokabeleingabeViewModelTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Contracts/Services/IBenutzerprofilService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Contracts/Services/IBenutzerprofilService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Services/BenutzerprofilService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Services/BenutzerprofilService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,9 +64,6 @@
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/App.g.i.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/Views/VokabeleingabePage.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Immediate Window" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/micha/source/repos/Vokabeltrainer/Vokabeltrainer.Core/Models/Vokabel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/micha/source/repos/Vokabeltrainer/Vokabeltrainer/ViewModels/ShellViewModel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/micha/source/repos/Vokabeltrainer/Vokabeltrainer/Views/VokabeleingabePage.xaml" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -314,7 +318,8 @@
       <workItem from="1788977115390" duration="175000" />
       <workItem from="1788977307302" duration="4253000" />
       <workItem from="1788981586883" duration="5706000" />
-      <workItem from="1789063586791" duration="5070000" />
+      <workItem from="1789063586791" duration="5306000" />
+      <workItem from="1789069641943" duration="409000" />
     </task>
     <task id="LOCAL-00001" summary="Alle Markierten Vokabeln können unter Settings gelöscht werden.">
       <option name="closed" value="true" />
@@ -412,7 +417,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789068595876</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="&quot;Wortfunken-Betrag hinzugefügt: Anzeige des Euro-Äquivalents, ViewModel-Logik und UI-Bindungen erweitert&quot;">
+      <option name="closed" value="true" />
+      <created>1789069023600</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1789069023600</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +458,8 @@
     <MESSAGE value="&quot;Unterstützung für mehrere Lernsprachen implementiert: Migration, Services, ViewModels und UI aktualisiert, Tests erweitert.&quot;" />
     <MESSAGE value="&quot;Sprachauswahl dynamisch aktualisiert: Lernsprache-Service erweitert, UI-Bindungen angepasst und Initialisierung hinzugefügt.&quot;" />
     <MESSAGE value="&quot;Benutzerprofilservice hinzugefügt: Profilverwaltung und Wortfunken-Belohnungssystem implementiert, Services, ViewModels und UI erweitert, Tests ergänzt.&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Benutzerprofilservice hinzugefügt: Profilverwaltung und Wortfunken-Belohnungssystem implementiert, Services, ViewModels und UI erweitert, Tests ergänzt.&quot;" />
+    <MESSAGE value="&quot;Wortfunken-Betrag hinzugefügt: Anzeige des Euro-Äquivalents, ViewModel-Logik und UI-Bindungen erweitert&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Wortfunken-Betrag hinzugefügt: Anzeige des Euro-Äquivalents, ViewModel-Logik und UI-Bindungen erweitert&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -112,7 +112,13 @@
 
                         <Rectangle Height="1" Fill="{ThemeResource DividerStrokeColorDefaultBrush}" />
 
-                        <Grid ColumnSpacing="14">
+                        <ToggleSwitch Header="Belohnungssystem aktivieren"
+                                      IsOn="{x:Bind ViewModel.BelohnungssystemAktiv, Mode=TwoWay}"
+                                      OnContent="Ein" OffContent="Aus"
+                                      AutomationProperties.AutomationId="BelohnungssystemAktiv" />
+
+                        <Grid ColumnSpacing="14"
+                              Visibility="{x:Bind ViewModel.BelohnungsdetailsSichtbarkeit, Mode=OneWay}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />

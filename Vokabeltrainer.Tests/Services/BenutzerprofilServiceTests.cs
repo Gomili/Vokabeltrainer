@@ -15,7 +15,27 @@ public sealed class BenutzerprofilServiceTests
 
         Assert.AreEqual(string.Empty, service.Name);
         Assert.AreEqual(0, service.Wortfunken);
+        Assert.IsTrue(service.BelohnungssystemAktiv);
         Assert.IsTrue(service.BelohneNeueVokabeln);
+    }
+
+    [TestMethod]
+    public async Task DeaktiviertesBelohnungssystem_VergibtKeineWortfunkenUndBleibtGespeichert()
+    {
+        var einstellungen = new LocalSettingsServiceFuerTests();
+        var service = new BenutzerprofilService(einstellungen);
+        await service.InitializeAsync();
+        await service.FuegeWortfunkenHinzuAsync(2);
+
+        await service.SetzeBelohnungssystemAktivAsync(false);
+        await service.FuegeWortfunkenHinzuAsync(5);
+
+        Assert.AreEqual(2, service.Wortfunken);
+
+        var neuGeladenerService = new BenutzerprofilService(einstellungen);
+        await neuGeladenerService.InitializeAsync();
+        Assert.IsFalse(neuGeladenerService.BelohnungssystemAktiv);
+        Assert.AreEqual(2, neuGeladenerService.Wortfunken);
     }
 
     [TestMethod]
