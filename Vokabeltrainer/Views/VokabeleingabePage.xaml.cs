@@ -62,9 +62,18 @@ public sealed partial class VokabeleingabePage : Page
     {
         // Warum: Der dünne UI-Adapter übergibt nur den angeklickten Datensatz. Die fachliche
         // Änderung und das Speichern bleiben dadurch unabhängig von der Oberfläche testbar.
-        if (sender is CheckBox { Tag: Vokabel vokabel })
+        if (sender is CheckBox { DataContext: Vokabel vokabel } priorisierung)
         {
+            vokabel.IsMarked = priorisierung.IsChecked == true;
             await ViewModel.SwitchMarkedCommand.ExecuteAsync(vokabel);
+        }
+    }
+
+    private void Priorisierung_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (sender is CheckBox { DataContext: Vokabel vokabel } priorisierung)
+        {
+            priorisierung.IsChecked = vokabel.IsMarked;
         }
     }
 }

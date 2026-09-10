@@ -3,6 +3,7 @@
 using Microsoft.UI.Xaml.Navigation;
 
 using Vokabeltrainer.Contracts.Services;
+using Vokabeltrainer.Core.Models;
 using Vokabeltrainer.Views;
 
 namespace Vokabeltrainer.ViewModels;
@@ -10,11 +11,15 @@ namespace Vokabeltrainer.ViewModels;
 public partial class ShellViewModel : ObservableRecipient, IDisposable
 {
     private bool _istFreigegeben;
+    private readonly ILernspracheService _lernspracheService;
     [ObservableProperty]
     private bool isBackEnabled;
 
     [ObservableProperty]
     private object? selected;
+
+    [ObservableProperty]
+    private string _lernspracheBezeichnung;
 
     public INavigationService NavigationService
     {
@@ -26,8 +31,14 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
         get;
     }
 
-    public ShellViewModel(INavigationService navigationService, INavigationViewService navigationViewService)
+    public ShellViewModel(
+        INavigationService navigationService,
+        INavigationViewService navigationViewService,
+        ILernspracheService lernspracheService)
     {
+        _lernspracheService = lernspracheService;
+        _lernspracheBezeichnung = ErmittleSprachtext(lernspracheService.AktuelleSprache);
+        _lernspracheService.SpracheGeaendert += OnSpracheGeaendert;
         NavigationService = navigationService;
         NavigationService.Navigated += OnNavigated;
         NavigationViewService = navigationViewService;
@@ -52,6 +63,14 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
         }
     }
 
+    private void OnSpracheGeaendert(Lernsprache sprache)
+    {
+        LernspracheBezeichnung = ErmittleSprachtext(sprache);
+    }
+
+    private static string ErmittleSprachtext(Lernsprache sprache) =>
+        $"Sprache: {(sprache == Lernsprache.Latein ? "Latein" : "Englisch")}";
+
     public void Dispose()
     {
         if (_istFreigegeben)
@@ -60,6 +79,7 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
         }
 
         _istFreigegeben = true;
+        _lernspracheService.SpracheGeaendert -= OnSpracheGeaendert;
         NavigationService.Navigated -= OnNavigated;
         NavigationViewService.UnregisterEvents();
         GC.SuppressFinalize(this);

@@ -20,21 +20,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Contracts/Services/IDataService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Migrations/VokabelDataContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Session.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Session.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Vokabel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Models/Vokabel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Core/Services/DataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Tests/Services/LernspracheServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Tests/Services/LernspracheServiceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Tests/ViewModels/VokabeleingabeViewModelTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Tests/ViewModels/VokabeleingabeViewModelTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ContentDialog/VokabelDialog.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SessionsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SessionsViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Contracts/Services/ILernspracheService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Contracts/Services/ILernspracheService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Services/ActivationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Services/ActivationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Services/LernspracheService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Services/LernspracheService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabeleingabePage.xaml.cs" afterDir="false" />
     </list>
@@ -73,6 +67,9 @@
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/App.g.i.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vokabeltrainer/obj/x64/Debug/net8.0-windows10.0.22621/win-x64/Views/VokabeleingabePage.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Immediate Window" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/micha/source/repos/Vokabeltrainer/Vokabeltrainer.Core/Models/Vokabel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/micha/source/repos/Vokabeltrainer/Vokabeltrainer/ViewModels/ShellViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/micha/source/repos/Vokabeltrainer/Vokabeltrainer/Views/VokabeleingabePage.xaml" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -81,23 +78,23 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.4146477169462446" />
-      <entry key="MS500" value="4.838564382361268" />
-      <entry key="S2" value="12.849678013236225" />
-      <entry key="S5" value="24.393443642401255" />
-      <entry key="S10" value="39.9392576589752" />
-      <entry key="S30" value="72.03402048576162" />
-      <entry key="S60" value="93.89721729097008" />
-      <entry key="M2" value="121.00003873449565" />
-      <entry key="M5" value="191.36654989271" />
-      <entry key="M10" value="328.7372874089528" />
-      <entry key="M15" value="468.263942124794" />
-      <entry key="M30" value="856.0523589728506" />
-      <entry key="H1" value="1373.3440615431366" />
-      <entry key="H2" value="1844.018703264214" />
-      <entry key="H4" value="2171.069320209459" />
-      <entry key="D1" value="2508.194492331875" />
-      <entry key="W1" value="2572.9843533101134" />
+      <entry key="MS100" value="1.8279758545182274" />
+      <entry key="MS500" value="4.501887621286786" />
+      <entry key="S2" value="12.983821191041189" />
+      <entry key="S5" value="24.264047097157952" />
+      <entry key="S10" value="32.50778273390392" />
+      <entry key="S30" value="41.20721872198943" />
+      <entry key="S60" value="51.0524844635817" />
+      <entry key="M2" value="79.49633715286737" />
+      <entry key="M5" value="161.8198373434924" />
+      <entry key="M10" value="302.08889327859237" />
+      <entry key="M15" value="442.5517984040229" />
+      <entry key="M30" value="833.8744875769896" />
+      <entry key="H1" value="1363.5537627379279" />
+      <entry key="H2" value="1852.1838706076633" />
+      <entry key="H4" value="2194.6836039837362" />
+      <entry key="D1" value="2549.8658902896677" />
+      <entry key="W1" value="2618.349546410908" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -119,23 +116,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3709626074256656" />
-      <entry key="MS500" value="4.805784424885749" />
-      <entry key="S2" value="12.828308261691047" />
-      <entry key="S5" value="24.377241013740555" />
-      <entry key="S10" value="39.92596173027024" />
-      <entry key="S30" value="72.02600309716179" />
-      <entry key="S60" value="93.89198804796196" />
-      <entry key="M2" value="120.99666964400475" />
-      <entry key="M5" value="191.3643974423431" />
-      <entry key="M10" value="328.7354002748532" />
-      <entry key="M15" value="468.26211324690934" />
-      <entry key="M30" value="856.0506112409308" />
-      <entry key="H1" value="1373.3426133327255" />
-      <entry key="H2" value="1844.0177145038278" />
-      <entry key="H4" value="2171.068733421629" />
-      <entry key="D1" value="2508.194378617596" />
-      <entry key="W1" value="2572.9843366277187" />
+      <entry key="MS100" value="1.75068906802424" />
+      <entry key="MS500" value="4.464868210923136" />
+      <entry key="S2" value="12.957551288930281" />
+      <entry key="S5" value="24.244446684061625" />
+      <entry key="S10" value="32.49465806697502" />
+      <entry key="S30" value="41.20168437066127" />
+      <entry key="S60" value="51.04913941447022" />
+      <entry key="M2" value="79.49386474754193" />
+      <entry key="M5" value="161.81791669606437" />
+      <entry key="M10" value="302.08711386897335" />
+      <entry key="M15" value="442.5500433184749" />
+      <entry key="M30" value="833.8727758561357" />
+      <entry key="H1" value="1363.5523217615416" />
+      <entry key="H2" value="1852.1828763344045" />
+      <entry key="H4" value="2194.683010346118" />
+      <entry key="D1" value="2549.865774621597" />
+      <entry key="W1" value="2618.3495294254817" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -327,7 +324,7 @@
       <workItem from="1788977115390" duration="175000" />
       <workItem from="1788977307302" duration="4253000" />
       <workItem from="1788981586883" duration="5706000" />
-      <workItem from="1789063586791" duration="1705000" />
+      <workItem from="1789063586791" duration="3277000" />
     </task>
     <task id="LOCAL-00001" summary="Alle Markierten Vokabeln können unter Settings gelöscht werden.">
       <option name="closed" value="true" />
@@ -401,7 +398,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788987274701</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="&quot;Unterstützung für mehrere Lernsprachen implementiert: Migration, Services, ViewModels und UI aktualisiert, Tests erweitert.&quot;">
+      <option name="closed" value="true" />
+      <created>1789065571661</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1789065571661</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +436,8 @@
     <MESSAGE value="&quot;Unit-Tests für ThemeSelectorService hinzugefügt und Testprojekt in die Lösung integriert&quot;" />
     <MESSAGE value="&quot;End-to-end-Test für das Umschalten des Farbschemas hinzugefügt, FlaUI-Pakete integriert und Testdokumentation erweitert&quot;" />
     <MESSAGE value="&quot;Freigabedatum für Vokabeln hinzugefügt, Migration erstellt und Unterstützung im ViewModel, Service, und Tests implementiert&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Freigabedatum für Vokabeln hinzugefügt, Migration erstellt und Unterstützung im ViewModel, Service, und Tests implementiert&quot;" />
+    <MESSAGE value="&quot;Unterstützung für mehrere Lernsprachen implementiert: Migration, Services, ViewModels und UI aktualisiert, Tests erweitert.&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Unterstützung für mehrere Lernsprachen implementiert: Migration, Services, ViewModels und UI aktualisiert, Tests erweitert.&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

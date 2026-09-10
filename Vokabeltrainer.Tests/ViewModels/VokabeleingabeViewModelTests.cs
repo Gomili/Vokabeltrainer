@@ -59,11 +59,16 @@ public sealed class VokabeleingabeViewModelTests
     private sealed class LernspracheServiceFuerTests(Lernsprache sprache = Lernsprache.Englisch)
         : ILernspracheService
     {
+        public event Action<Lernsprache>? SpracheGeaendert;
+
         public Lernsprache AktuelleSprache { get; private set; } = sprache;
+
+        public Task InitializeAsync() => Task.CompletedTask;
 
         public Task SetzeSpracheAsync(Lernsprache neueSprache)
         {
             AktuelleSprache = neueSprache;
+            SpracheGeaendert?.Invoke(neueSprache);
             return Task.CompletedTask;
         }
     }

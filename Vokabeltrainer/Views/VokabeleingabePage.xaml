@@ -220,7 +220,7 @@
                 <!-- Warum: Der Tag ist die fachliche Einheit einer Lektion. Ein Expander hält lange
                      Wortschätze übersichtlich, ohne Auswahl und Tabellenfunktionen zu verstecken. -->
                 <ListView Grid.Row="1"
-                          ItemsSource="{x:Bind ViewModel.TagesGruppen, Mode=OneWay}"
+                          ItemsSource="{x:Bind ViewModel.TagesGruppen, Mode=OneTime}"
                           SelectionMode="None"
                           ItemContainerStyle="{StaticResource TagesgruppenEintragStyle}"
                           HorizontalContentAlignment="Stretch"
@@ -307,8 +307,7 @@
                                                     <ColumnDefinition Width="1.1*" />
                                                     <ColumnDefinition Width="120" />
                                                 </Grid.ColumnDefinitions>
-                                                <CheckBox IsChecked="{x:Bind IsMarked, Mode=OneWay}"
-                                                          Tag="{x:Bind}"
+                                                <CheckBox Loaded="Priorisierung_Loaded"
                                                           Click="Priorisierung_Click"
                                                           VerticalAlignment="Center" HorizontalAlignment="Left"
                                                           AutomationProperties.Name="Vokabel priorisieren" />

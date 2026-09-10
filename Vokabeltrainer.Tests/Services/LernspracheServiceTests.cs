@@ -27,9 +27,23 @@ public sealed class LernspracheServiceTests
         Assert.AreEqual(Lernsprache.Latein, einstellungen.GespeicherteSprache);
     }
 
+    [TestMethod]
+    public async Task InitializeAsync_LiestGespeicherteSpracheOhneSynchronesBlockieren()
+    {
+        var einstellungen = new LocalSettingsServiceFuerTests
+        {
+            GespeicherteSprache = Lernsprache.Latein
+        };
+        var service = new LernspracheService(einstellungen);
+
+        await service.InitializeAsync();
+
+        Assert.AreEqual(Lernsprache.Latein, service.AktuelleSprache);
+    }
+
     private sealed class LocalSettingsServiceFuerTests : ILocalSettingsService
     {
-        public Lernsprache? GespeicherteSprache { get; private set; }
+        public Lernsprache? GespeicherteSprache { get; set; }
 
         public Task<T?> ReadSettingAsync<T>(string key)
         {

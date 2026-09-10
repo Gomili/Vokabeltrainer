@@ -67,7 +67,6 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
         {
             // Warum: Die CheckBox zeigt den Zustand nur an. Das ViewModel übernimmt die Änderung,
             // damit recycelte Listenelemente keinen ungeprüften UI-Standardwert ins Fachmodell schreiben.
-            vokabel.IsMarked = !vokabel.IsMarked;
             if (await _dataService.SaveVokabelAsync(vokabel))
             {
                 AnzahlPriorisierteVokabeln = await _dataService.GetAnzahlPriorisierterVokabelnAsync(_lernsprache);
