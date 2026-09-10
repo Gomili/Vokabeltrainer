@@ -90,11 +90,15 @@
                         <StackPanel Spacing="2">
                             <TextBlock Text="LERNMODUS" FontSize="10" FontWeight="SemiBold"
                                        CharacterSpacing="50" Foreground="#9EA8D4" />
-                            <TextBlock Text="Persönlicher Wortschatz" FontSize="13"
-                                       Foreground="White" />
+                            <TextBlock Text="{x:Bind ViewModel.BenutzernameBezeichnung, Mode=OneWay}"
+                                       FontSize="13" Foreground="White"
+                                       AutomationProperties.AutomationId="BenutzernameAnzeige" />
                             <TextBlock Text="{x:Bind ViewModel.LernspracheBezeichnung, Mode=OneWay}"
                                        FontSize="11" Foreground="#B7BDD6"
                                        AutomationProperties.AutomationId="AktiveLernsprache" />
+                            <TextBlock Text="{x:Bind ViewModel.WortfunkenBezeichnung, Mode=OneWay}"
+                                       FontSize="11" Foreground="#F4D35E"
+                                       AutomationProperties.AutomationId="WortfunkenAnzeige" />
                         </StackPanel>
                     </Border>
                 </StackPanel>

@@ -51,6 +51,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Border Grid.ColumnSpan="2" Style="{StaticResource FluentCardStyle}">
@@ -76,7 +77,75 @@
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="1" Style="{StaticResource FluentCardStyle}">
+                <Border Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource FluentCardStyle}">
+                    <StackPanel Spacing="18">
+                        <StackPanel Spacing="3">
+                            <TextBlock Text="Persönlich" Style="{StaticResource FluentSectionTitleStyle}" />
+                            <TextBlock Text="Passe deinen Lernbegleiter an und verwalte deine gesammelten Wortfunken."
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
+                        </StackPanel>
+
+                        <Grid ColumnSpacing="14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="220" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Border Style="{StaticResource EinstellungsSymbolKreis}">
+                                <FontIcon Glyph="&#xE77B;" FontSize="18" />
+                            </Border>
+                            <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
+                                <TextBlock Text="Dein Name" FontWeight="SemiBold" />
+                                <TextBlock Text="Der Name wird in deinem Lernmenü angezeigt."
+                                           Style="{ThemeResource CaptionTextBlockStyle}"
+                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                            </StackPanel>
+                            <TextBox Grid.Column="2" Text="{x:Bind ViewModel.Benutzername, Mode=TwoWay}"
+                                     MaxLength="40" PlaceholderText="Name eingeben"
+                                     AutomationProperties.AutomationId="BenutzernameEingabe" />
+                            <Button Grid.Column="3" Content="Speichern"
+                                    Command="{x:Bind ViewModel.BenutzernameSpeichernCommand}"
+                                    Style="{StaticResource AccentButtonStyle}"
+                                    AutomationProperties.AutomationId="BenutzernameSpeichern" />
+                        </Grid>
+
+                        <Rectangle Height="1" Fill="{ThemeResource DividerStrokeColorDefaultBrush}" />
+
+                        <Grid ColumnSpacing="14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Border Style="{StaticResource EinstellungsSymbolKreis}">
+                                <FontIcon Glyph="&#xE734;" FontSize="18"
+                                          Foreground="{ThemeResource SystemFillColorCautionBrush}" />
+                            </Border>
+                            <StackPanel Grid.Column="1" Spacing="3" VerticalAlignment="Center">
+                                <TextBlock Text="Wortfunken" FontWeight="SemiBold" />
+                                <StackPanel Orientation="Horizontal" Spacing="5">
+                                    <TextBlock Text="{x:Bind ViewModel.Wortfunken, Mode=OneWay}"
+                                               FontWeight="SemiBold"
+                                               AutomationProperties.AutomationId="WortfunkenStand" />
+                                    <TextBlock Text="Wortfunken gesammelt · 1 Wortfunken entspricht 0,10 €"
+                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                </StackPanel>
+                                <ToggleSwitch Header="Neue Vokabeln belohnen"
+                                              IsOn="{x:Bind ViewModel.BelohneNeueVokabeln, Mode=TwoWay}"
+                                              OnContent="Ein" OffContent="Aus"
+                                              AutomationProperties.AutomationId="BelohnungNeueVokabeln" />
+                            </StackPanel>
+                            <Button Grid.Column="2" Content="Auf 0 setzen"
+                                    Click="WortfunkenZuruecksetzen_Click"
+                                    Style="{StaticResource FluentDangerButtonStyle}"
+                                    VerticalAlignment="Center"
+                                    AutomationProperties.AutomationId="WortfunkenZuruecksetzen" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="2" Style="{StaticResource FluentCardStyle}">
                     <StackPanel Spacing="18">
                         <StackPanel Spacing="3">
                             <TextBlock Text="Datensicherung" Style="{StaticResource FluentSectionTitleStyle}" />
@@ -146,7 +215,7 @@
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource FluentCardStyle}">
+                <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource FluentCardStyle}">
                     <StackPanel Spacing="16">
                         <StackPanel Spacing="3">
                             <TextBlock Text="Darstellung" Style="{StaticResource FluentSectionTitleStyle}" />
@@ -201,7 +270,7 @@
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="2" Style="{StaticResource FluentCardStyle}">
+                <Border Grid.Row="3" Style="{StaticResource FluentCardStyle}">
                     <Grid ColumnSpacing="14">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -230,7 +299,7 @@
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource FluentCardStyle}">
+                <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource FluentCardStyle}">
                     <Grid ColumnSpacing="14">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />

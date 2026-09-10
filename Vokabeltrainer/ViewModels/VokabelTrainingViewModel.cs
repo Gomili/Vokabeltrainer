@@ -21,6 +21,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
     private bool _istFreigegeben;
     
     private readonly IDataService _dataService;
+    private readonly IBenutzerprofilService _benutzerprofilService;
     private readonly Lernsprache _lernsprache;
     private readonly VoiceInformation? _sprachstimme;
     [ObservableProperty] private string _laufzeit = string.Empty;
@@ -55,9 +56,13 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
         : $"{(_lernsprache == Lernsprache.Latein ? "Lateinische" : "Englische")} Lösung anhören";
     public string FremdsprachenBezeichnung => _lernsprache == Lernsprache.Latein ? "Latein" : "Englisch";
     
-    public VokabelTrainingViewModel(IDataService dataService, ILernspracheService lernspracheService)
+    public VokabelTrainingViewModel(
+        IDataService dataService,
+        ILernspracheService lernspracheService,
+        IBenutzerprofilService benutzerprofilService)
     {
         _dataService = dataService;
+        _benutzerprofilService = benutzerprofilService;
         _lernsprache = lernspracheService.AktuelleSprache;
         string sprachcode = _lernsprache == Lernsprache.Latein ? "la" : "en";
         _sprachstimme = SpeechSynthesizer.AllVoices
@@ -111,6 +116,8 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
                 }
             }
         }
+
+        await _benutzerprofilService.FuegeWortfunkenHinzuAsync(richtige);
         return (richtige, falsche);
     }
     

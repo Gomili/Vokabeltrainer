@@ -13,6 +13,7 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
 {
     private readonly IDataService _dataService;
     private readonly Lernsprache _lernsprache;
+    private readonly IBenutzerprofilService _benutzerprofilService;
     [ObservableProperty] private string _textDeutsch = string.Empty;
     [ObservableProperty] private string _textEnglisch = string.Empty;
     [ObservableProperty] private ObservableCollection<Vokabel> _displayListe = new();
@@ -32,10 +33,14 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
         ? "Lateinische Übersetzung"
         : "Englische Übersetzung";
 
-    public VokabeleingabeViewModel(IDataService dataService, ILernspracheService lernspracheService)
+    public VokabeleingabeViewModel(
+        IDataService dataService,
+        ILernspracheService lernspracheService,
+        IBenutzerprofilService benutzerprofilService)
     {
         _dataService = dataService;
         _lernsprache = lernspracheService.AktuelleSprache;
+        _benutzerprofilService = benutzerprofilService;
         
         List<Vokabel> sourceListe = _dataService.ReadAllVokabelAsync(_lernsprache).GetAwaiter().GetResult();
 
@@ -131,6 +136,10 @@ public partial class VokabeleingabeViewModel : ObservableRecipient
             AnzahlVokabeln++;
             AnzahlPriorisierteVokabeln = await _dataService.GetAnzahlPriorisierterVokabelnAsync(_lernsprache);
             AktualisiereTagesgruppen();
+            if (_benutzerprofilService.BelohneNeueVokabeln)
+            {
+                await _benutzerprofilService.FuegeWortfunkenHinzuAsync();
+            }
         }
     }
     

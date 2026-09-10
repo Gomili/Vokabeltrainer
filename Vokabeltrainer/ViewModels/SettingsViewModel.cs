@@ -17,6 +17,7 @@ public partial class SettingsViewModel : ObservableRecipient
     private readonly IImportExportService _importExportService;
     private readonly IDataService _dataService;
     private readonly ILernspracheService _lernspracheService;
+    private readonly IBenutzerprofilService _benutzerprofilService;
 
     [ObservableProperty] private ElementTheme _elementTheme;
     [ObservableProperty] private string _versionDescription;
@@ -25,6 +26,9 @@ public partial class SettingsViewModel : ObservableRecipient
     [ObservableProperty] private Visibility _progressBarVisibility = Visibility.Collapsed;
     [ObservableProperty] private int _markierte = 0;
     [ObservableProperty] private Lernsprache _ausgewaehlteLernsprache;
+    [ObservableProperty] private string _benutzername;
+    [ObservableProperty] private int _wortfunken;
+    [ObservableProperty] private bool _belohneNeueVokabeln;
 
     public IReadOnlyList<Lernsprache> Lernsprachen { get; } =
         [Lernsprache.Englisch, Lernsprache.Latein];
@@ -83,19 +87,38 @@ public partial class SettingsViewModel : ObservableRecipient
             ProgressBarVisibility = Visibility.Collapsed;
         }
     }
+
+    [RelayCommand]
+    private async Task BenutzernameSpeichernAsync()
+    {
+        Benutzername = Benutzername.Trim();
+        await _benutzerprofilService.SetzeNameAsync(Benutzername);
+    }
+
+    [RelayCommand]
+    private async Task WortfunkenZuruecksetzenAsync()
+    {
+        await _benutzerprofilService.SetzeWortfunkenZurueckAsync();
+        Wortfunken = _benutzerprofilService.Wortfunken;
+    }
     
     public SettingsViewModel(
         IThemeSelectorService themeSelectorService,
         IImportExportService importExportService,
         IDataService dataService,
-        ILernspracheService lernspracheService)
+        ILernspracheService lernspracheService,
+        IBenutzerprofilService benutzerprofilService)
     {
         _themeSelectorService = themeSelectorService;
         _importExportService = importExportService;
         _dataService = dataService;
         _lernspracheService = lernspracheService;
+        _benutzerprofilService = benutzerprofilService;
         _elementTheme = _themeSelectorService.Theme;
         _ausgewaehlteLernsprache = _lernspracheService.AktuelleSprache;
+        _benutzername = _benutzerprofilService.Name;
+        _wortfunken = _benutzerprofilService.Wortfunken;
+        _belohneNeueVokabeln = _benutzerprofilService.BelohneNeueVokabeln;
         _versionDescription = GetVersionDescription();
 
         SwitchThemeCommand = new RelayCommand<ElementTheme>(
@@ -114,6 +137,11 @@ public partial class SettingsViewModel : ObservableRecipient
     partial void OnAusgewaehlteLernspracheChanged(Lernsprache value)
     {
         _ = SpeichereLernspracheAsync(value);
+    }
+
+    partial void OnBelohneNeueVokabelnChanged(bool value)
+    {
+        _ = _benutzerprofilService.SetzeBelohnungFuerNeueVokabelnAsync(value);
     }
 
     private async Task SpeichereLernspracheAsync(Lernsprache sprache)

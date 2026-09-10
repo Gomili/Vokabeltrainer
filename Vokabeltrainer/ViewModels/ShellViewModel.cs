@@ -12,6 +12,7 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
 {
     private bool _istFreigegeben;
     private readonly ILernspracheService _lernspracheService;
+    private readonly IBenutzerprofilService _benutzerprofilService;
     [ObservableProperty]
     private bool isBackEnabled;
 
@@ -20,6 +21,12 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
 
     [ObservableProperty]
     private string _lernspracheBezeichnung;
+
+    [ObservableProperty]
+    private string _benutzernameBezeichnung;
+
+    [ObservableProperty]
+    private string _wortfunkenBezeichnung;
 
     public INavigationService NavigationService
     {
@@ -34,11 +41,16 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
     public ShellViewModel(
         INavigationService navigationService,
         INavigationViewService navigationViewService,
-        ILernspracheService lernspracheService)
+        ILernspracheService lernspracheService,
+        IBenutzerprofilService benutzerprofilService)
     {
         _lernspracheService = lernspracheService;
+        _benutzerprofilService = benutzerprofilService;
         _lernspracheBezeichnung = ErmittleSprachtext(lernspracheService.AktuelleSprache);
+        _benutzernameBezeichnung = ErmittleNamenstext();
+        _wortfunkenBezeichnung = ErmittleWortfunkentext();
         _lernspracheService.SpracheGeaendert += OnSpracheGeaendert;
+        _benutzerprofilService.ProfilGeaendert += OnProfilGeaendert;
         NavigationService = navigationService;
         NavigationService.Navigated += OnNavigated;
         NavigationViewService = navigationViewService;
@@ -71,6 +83,18 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
     private static string ErmittleSprachtext(Lernsprache sprache) =>
         $"Sprache: {(sprache == Lernsprache.Latein ? "Latein" : "Englisch")}";
 
+    private void OnProfilGeaendert()
+    {
+        BenutzernameBezeichnung = ErmittleNamenstext();
+        WortfunkenBezeichnung = ErmittleWortfunkentext();
+    }
+
+    private string ErmittleNamenstext() => string.IsNullOrWhiteSpace(_benutzerprofilService.Name)
+        ? "Persönlicher Wortschatz"
+        : $"Hallo, {_benutzerprofilService.Name}!";
+
+    private string ErmittleWortfunkentext() => $"✨ {_benutzerprofilService.Wortfunken} Wortfunken";
+
     public void Dispose()
     {
         if (_istFreigegeben)
@@ -80,6 +104,7 @@ public partial class ShellViewModel : ObservableRecipient, IDisposable
 
         _istFreigegeben = true;
         _lernspracheService.SpracheGeaendert -= OnSpracheGeaendert;
+        _benutzerprofilService.ProfilGeaendert -= OnProfilGeaendert;
         NavigationService.Navigated -= OnNavigated;
         NavigationViewService.UnregisterEvents();
         GC.SuppressFinalize(this);
