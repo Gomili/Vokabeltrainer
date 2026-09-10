@@ -128,8 +128,11 @@
                                     <TextBlock Text="{x:Bind ViewModel.Wortfunken, Mode=OneWay}"
                                                FontWeight="SemiBold"
                                                AutomationProperties.AutomationId="WortfunkenStand" />
-                                    <TextBlock Text="Wortfunken gesammelt · 1 Wortfunken entspricht 0,10 €"
+                                    <TextBlock Text="Wortfunken gesammelt · entspricht aktuell"
                                                Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                    <TextBlock Text="{x:Bind ViewModel.WortfunkenBetrag, Mode=OneWay}"
+                                               FontWeight="SemiBold"
+                                               AutomationProperties.AutomationId="WortfunkenBetrag" />
                                 </StackPanel>
                                 <ToggleSwitch Header="Neue Vokabeln belohnen"
                                               IsOn="{x:Bind ViewModel.BelohneNeueVokabeln, Mode=TwoWay}"

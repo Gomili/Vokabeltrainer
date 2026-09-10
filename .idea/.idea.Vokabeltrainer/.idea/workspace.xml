@@ -19,17 +19,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Tests/ViewModels/VokabeleingabeViewModelTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Tests/ViewModels/VokabeleingabeViewModelTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/App.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Services/ActivationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Services/ActivationService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabeleingabeViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,23 +68,23 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.3099269252028423" />
-      <entry key="MS500" value="1.80962677815522" />
-      <entry key="S2" value="3.060012840819187" />
-      <entry key="S5" value="5.3227933285773625" />
-      <entry key="S10" value="7.3667727336827875" />
-      <entry key="S30" value="28.144331773059584" />
-      <entry key="S60" value="84.71667257286607" />
-      <entry key="M2" value="201.9142137200848" />
-      <entry key="M5" value="463.22027749365657" />
-      <entry key="M10" value="712.8470429885266" />
-      <entry key="M15" value="892.824268367776" />
-      <entry key="M30" value="1334.0808078741204" />
-      <entry key="H1" value="1953.9948526615528" />
-      <entry key="H2" value="2574.0226748074665" />
-      <entry key="H4" value="3034.408552417616" />
-      <entry key="D1" value="3532.0645151705926" />
-      <entry key="W1" value="3630.23128115237" />
+      <entry key="MS100" value="1.897437385157939" />
+      <entry key="MS500" value="2.701869915650493" />
+      <entry key="S2" value="5.316094384307575" />
+      <entry key="S5" value="13.723026302564685" />
+      <entry key="S10" value="25.317492442371915" />
+      <entry key="S30" value="44.404277825468135" />
+      <entry key="S60" value="52.26197099280228" />
+      <entry key="M2" value="60.34147099097066" />
+      <entry key="M5" value="151.30280367974285" />
+      <entry key="M10" value="377.6284350243721" />
+      <entry key="M15" value="581.1224221293262" />
+      <entry key="M30" value="1079.6092124382064" />
+      <entry key="H1" value="1768.6872484093801" />
+      <entry key="H2" value="2467.6603929885514" />
+      <entry key="H4" value="2995.502744903567" />
+      <entry key="D1" value="3574.2133227407303" />
+      <entry key="W1" value="3689.309568908339" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -115,23 +106,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.2653060052902485" />
-      <entry key="MS500" value="1.7971319613563925" />
-      <entry key="S2" value="3.0548260361580253" />
-      <entry key="S5" value="5.31920712118721" />
-      <entry key="S10" value="7.364284456978838" />
-      <entry key="S30" value="28.141151693660223" />
-      <entry key="S60" value="84.71188339626575" />
-      <entry key="M2" value="201.9084694850283" />
-      <entry key="M5" value="463.2149353516176" />
-      <entry key="M10" value="712.8429001788832" />
-      <entry key="M15" value="892.8207921195744" />
-      <entry key="M30" value="1334.078162935052" />
-      <entry key="H1" value="1953.9928654438118" />
-      <entry key="H2" value="2574.0213412925486" />
-      <entry key="H4" value="3034.407758220488" />
-      <entry key="D1" value="3532.064359720309" />
-      <entry key="W1" value="3630.231258293019" />
+      <entry key="MS100" value="1.8349744085892719" />
+      <entry key="MS500" value="2.684303559217762" />
+      <entry key="S2" value="5.307325810896664" />
+      <entry key="S5" value="13.71388379039327" />
+      <entry key="S10" value="25.308966959976285" />
+      <entry key="S30" value="44.39923393067554" />
+      <entry key="S60" value="52.258992372284396" />
+      <entry key="M2" value="60.339748662605025" />
+      <entry key="M5" value="151.3010647771647" />
+      <entry key="M10" value="377.62624607691856" />
+      <entry key="M15" value="581.1201644648737" />
+      <entry key="M30" value="1079.607076700526" />
+      <entry key="H1" value="1768.6854535861828" />
+      <entry key="H2" value="2467.6591171386317" />
+      <entry key="H4" value="2995.501962338219" />
+      <entry key="D1" value="3574.2131657011746" />
+      <entry key="W1" value="3689.309545715544" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -323,7 +314,7 @@
       <workItem from="1788977115390" duration="175000" />
       <workItem from="1788977307302" duration="4253000" />
       <workItem from="1788981586883" duration="5706000" />
-      <workItem from="1789063586791" duration="4496000" />
+      <workItem from="1789063586791" duration="5070000" />
     </task>
     <task id="LOCAL-00001" summary="Alle Markierten Vokabeln können unter Settings gelöscht werden.">
       <option name="closed" value="true" />
@@ -413,7 +404,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789067100229</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="&quot;Benutzerprofilservice hinzugefügt: Profilverwaltung und Wortfunken-Belohnungssystem implementiert, Services, ViewModels und UI erweitert, Tests ergänzt.&quot;">
+      <option name="closed" value="true" />
+      <created>1789068595876</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1789068595876</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +444,8 @@
     <MESSAGE value="&quot;Freigabedatum für Vokabeln hinzugefügt, Migration erstellt und Unterstützung im ViewModel, Service, und Tests implementiert&quot;" />
     <MESSAGE value="&quot;Unterstützung für mehrere Lernsprachen implementiert: Migration, Services, ViewModels und UI aktualisiert, Tests erweitert.&quot;" />
     <MESSAGE value="&quot;Sprachauswahl dynamisch aktualisiert: Lernsprache-Service erweitert, UI-Bindungen angepasst und Initialisierung hinzugefügt.&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Sprachauswahl dynamisch aktualisiert: Lernsprache-Service erweitert, UI-Bindungen angepasst und Initialisierung hinzugefügt.&quot;" />
+    <MESSAGE value="&quot;Benutzerprofilservice hinzugefügt: Profilverwaltung und Wortfunken-Belohnungssystem implementiert, Services, ViewModels und UI erweitert, Tests ergänzt.&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Benutzerprofilservice hinzugefügt: Profilverwaltung und Wortfunken-Belohnungssystem implementiert, Services, ViewModels und UI erweitert, Tests ergänzt.&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

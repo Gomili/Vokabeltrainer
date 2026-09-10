@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Windows.Input;
+using System.Globalization;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
@@ -27,11 +28,16 @@ public partial class SettingsViewModel : ObservableRecipient
     [ObservableProperty] private int _markierte = 0;
     [ObservableProperty] private Lernsprache _ausgewaehlteLernsprache;
     [ObservableProperty] private string _benutzername;
-    [ObservableProperty] private int _wortfunken;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(WortfunkenBetrag))]
+    private int _wortfunken;
     [ObservableProperty] private bool _belohneNeueVokabeln;
 
     public IReadOnlyList<Lernsprache> Lernsprachen { get; } =
         [Lernsprache.Englisch, Lernsprache.Latein];
+
+    public string WortfunkenBetrag => (Wortfunken * 0.10m)
+        .ToString("C", CultureInfo.GetCultureInfo("de-DE"));
     
     public ICommand SwitchThemeCommand { get; }
 
