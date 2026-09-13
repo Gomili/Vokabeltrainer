@@ -4,6 +4,7 @@
     <projectFile kind="Uwp">Vokabeltrainer/Vokabeltrainer.csproj</projectFile>
     <projectFile profileName="Vokabeltrainer (Package)">Vokabeltrainer/Vokabeltrainer.csproj</projectFile>
     <projectFile profileName="Vokabeltrainer (Unpackaged)">Vokabeltrainer/Vokabeltrainer.csproj</projectFile>
+    <projectFile pubXmlPath="Vokabeltrainer/Properties/PublishProfiles/FolderProfile.pubxml">Vokabeltrainer/Vokabeltrainer.csproj</projectFile>
     <projectFile pubXmlPath="Vokabeltrainer/Properties/PublishProfiles/win10-arm64.pubxml">Vokabeltrainer/Vokabeltrainer.csproj</projectFile>
     <projectFile pubXmlPath="Vokabeltrainer/Properties/PublishProfiles/win10-x64.pubxml">Vokabeltrainer/Vokabeltrainer.csproj</projectFile>
     <projectFile pubXmlPath="Vokabeltrainer/Properties/PublishProfiles/win10-x86.pubxml">Vokabeltrainer/Vokabeltrainer.csproj</projectFile>
@@ -20,14 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b73f9fca-d903-42fe-a07f-9745efcfe8e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vokabeltrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Tests/Services/BenutzerprofilServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Tests/Services/BenutzerprofilServiceTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer.Tests/ViewModels/VokabeleingabeViewModelTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer.Tests/ViewModels/VokabeleingabeViewModelTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Contracts/Services/IBenutzerprofilService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Contracts/Services/IBenutzerprofilService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Services/BenutzerprofilService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Services/BenutzerprofilService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/SettingsViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/ShellViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/SettingsPage.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/ShellPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/ViewModels/VokabelTrainingViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Views/VokabelTrainingPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vokabeltrainer/Vokabeltrainer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vokabeltrainer/Vokabeltrainer.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +179,10 @@
       </riderPublish>
       <method v="2" />
     </configuration>
+    <configuration name="Vokabeltrainer: FolderProfile" type="DotNetMsBuildPublish" factoryName="Publish to IIS">
+      <riderPublish publish_profile="FolderProfile.pubxml" pubxml_path="$PROJECT_DIR$/Vokabeltrainer/Properties/PublishProfiles/FolderProfile.pubxml" uuid_high="-1888846428121117338" uuid_low="-8534667009385749406" />
+      <method v="2" />
+    </configuration>
     <configuration name="Vokabeltrainer: win10-arm64" type="DotNetMsBuildPublish" factoryName="Publish to IIS">
       <riderPublish publish_profile="win10-arm64.pubxml" pubxml_path="$PROJECT_DIR$/Vokabeltrainer/Properties/PublishProfiles/win10-arm64.pubxml" uuid_high="-1888846428121117338" uuid_low="-8534667009385749406" />
       <method v="2" />
@@ -239,6 +239,7 @@
       <item itemvalue=".NET Launch Settings Profile.Vokabeltrainer: Vokabeltrainer (Unpackaged)" />
       <item itemvalue="Publish to folder.Vokabeltrainer" />
       <item itemvalue="Publish to folder.Publish Vokabeltrainer to folder" />
+      <item itemvalue="Publish to IIS.Vokabeltrainer: FolderProfile" />
       <item itemvalue="Publish to IIS.Vokabeltrainer: win10-arm64" />
       <item itemvalue="Publish to IIS.Vokabeltrainer: win10-x64" />
       <item itemvalue="Publish to IIS.Vokabeltrainer: win10-x86" />
@@ -319,7 +320,9 @@
       <workItem from="1788977307302" duration="4253000" />
       <workItem from="1788981586883" duration="5706000" />
       <workItem from="1789063586791" duration="5306000" />
-      <workItem from="1789069641943" duration="409000" />
+      <workItem from="1789069641943" duration="542000" />
+      <workItem from="1789287208946" duration="139000" />
+      <workItem from="1789287418970" duration="840000" />
     </task>
     <task id="LOCAL-00001" summary="Alle Markierten Vokabeln können unter Settings gelöscht werden.">
       <option name="closed" value="true" />
@@ -425,7 +428,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789069023600</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="&quot;Belohnungssystem hinzugefügt: Unterstützung im Benutzerprofilservice, ViewModels, UI-Bindungen und Tests erweitert.&quot;">
+      <option name="closed" value="true" />
+      <created>1789070172785</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1789070172785</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,7 +470,8 @@
     <MESSAGE value="&quot;Sprachauswahl dynamisch aktualisiert: Lernsprache-Service erweitert, UI-Bindungen angepasst und Initialisierung hinzugefügt.&quot;" />
     <MESSAGE value="&quot;Benutzerprofilservice hinzugefügt: Profilverwaltung und Wortfunken-Belohnungssystem implementiert, Services, ViewModels und UI erweitert, Tests ergänzt.&quot;" />
     <MESSAGE value="&quot;Wortfunken-Betrag hinzugefügt: Anzeige des Euro-Äquivalents, ViewModel-Logik und UI-Bindungen erweitert&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Wortfunken-Betrag hinzugefügt: Anzeige des Euro-Äquivalents, ViewModel-Logik und UI-Bindungen erweitert&quot;" />
+    <MESSAGE value="&quot;Belohnungssystem hinzugefügt: Unterstützung im Benutzerprofilservice, ViewModels, UI-Bindungen und Tests erweitert.&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Belohnungssystem hinzugefügt: Unterstützung im Benutzerprofilservice, ViewModels, UI-Bindungen und Tests erweitert.&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

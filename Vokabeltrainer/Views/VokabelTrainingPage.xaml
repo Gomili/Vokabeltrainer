@@ -10,7 +10,6 @@
 
     <Page.Resources>
         <converter:StringToColorConverter x:Key="StringToColorConverter" />
-        <converter:BoolInvertConverter x:Key="BoolInvertConverter" />
 
         <Style x:Key="HeroKennzahlKarte" TargetType="Border">
             <Setter Property="Background" Value="#18FFFFFF" />
@@ -28,7 +27,6 @@
 
     <Grid Padding="{StaticResource FluentPagePadding}" RowSpacing="16">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -94,27 +92,55 @@
             </Grid>
         </Border>
 
-        <Border Grid.Row="1" Style="{StaticResource FluentCardStyle}">
-            <Grid RowSpacing="16">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+        <Expander Grid.Row="1"
+                  IsExpanded="{x:Bind ViewModel.TrainingseinstellungenGeoeffnet, Mode=TwoWay}"
+                  HorizontalAlignment="Stretch"
+                  HorizontalContentAlignment="Stretch"
+                  AutomationProperties.AutomationId="TrainingKonfiguration">
+            <Expander.Header>
+                <Grid MinHeight="52" ColumnSpacing="14" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Border Width="38" Height="38" CornerRadius="19"
+                            Background="{ThemeResource AccentFillColorSecondaryBrush}"
+                            VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE823;" FontSize="17"
+                                  Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
+                    </Border>
+                    <StackPanel Grid.Column="1" Spacing="1" VerticalAlignment="Center">
+                        <TextBlock Text="{x:Bind ViewModel.TrainingsstatusText, Mode=OneWay}"
+                                   FontSize="16" FontWeight="SemiBold" />
+                        <TextBlock Text="{x:Bind ViewModel.TrainingsstatusHinweis, Mode=OneWay}"
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Margin="8,0" VerticalAlignment="Center"
+                                Visibility="{x:Bind ViewModel.LaufendeRundeSichtbarkeit, Mode=OneWay}">
+                        <TextBlock Text="LAUFZEIT" FontSize="10" FontWeight="SemiBold"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                        <TextBlock Text="{x:Bind ViewModel.Laufzeit, Mode=OneWay}"
+                                   FontSize="17" FontWeight="SemiBold" />
+                    </StackPanel>
+                    <Button Grid.Column="3" Content="Runde auswerten"
+                            Command="{x:Bind ViewModel.StopSyncCommand}"
+                            Visibility="{x:Bind ViewModel.LaufendeRundeSichtbarkeit, Mode=OneWay}"
+                            AutomationProperties.AutomationId="TrainingBeenden" />
+                </Grid>
+            </Expander.Header>
 
-                <StackPanel Spacing="3">
-                    <TextBlock Text="Training zusammenstellen" Style="{StaticResource FluentSectionTitleStyle}" />
-                    <TextBlock Text="Passe den Umfang an und starte deine persönliche Lernrunde."
-                               Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                </StackPanel>
-
-                <Grid Grid.Row="1" ColumnSpacing="28">
+            <Border Style="{StaticResource FluentCardStyle}" Padding="16,12">
+                <Grid ColumnSpacing="24">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Spacing="8">
+                    <StackPanel Spacing="4">
                         <Grid ColumnSpacing="8">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -130,12 +156,9 @@
                                 Value="{x:Bind ViewModel.AnzahlLernVokabeln, Mode=TwoWay}"
                                 StepFrequency="1" SnapsTo="StepValues"
                                 AutomationProperties.AutomationId="TrainingsUmfang" />
-                        <TextBlock Text="Kleine Runden lassen sich leichter in den Alltag integrieren."
-                                   Style="{ThemeResource CaptionTextBlockStyle}"
-                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
                     </StackPanel>
 
-                    <StackPanel Grid.Column="1" Spacing="8">
+                    <StackPanel Grid.Column="1" Spacing="4">
                         <Grid ColumnSpacing="8">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -156,54 +179,22 @@
                                       AutomationProperties.AutomationId="NurNeueVokabeln" />
                     </StackPanel>
 
-                    <Button Grid.Column="2" MinWidth="170" Height="52"
+                    <Button Grid.Column="2" MinWidth="160" Height="46"
                             Command="{x:Bind ViewModel.StartCommand}"
                             IsEnabled="{x:Bind ViewModel.Running, Mode=OneWay}"
                             Style="{StaticResource AccentButtonStyle}"
                             VerticalAlignment="Center"
                             AutomationProperties.AutomationId="TrainingStarten">
-                        <StackPanel Orientation="Horizontal" Spacing="10">
-                            <FontIcon Glyph="&#xE768;" FontSize="16" />
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="&#xE768;" FontSize="15" />
                             <TextBlock Text="Training starten" FontWeight="SemiBold" />
                         </StackPanel>
                     </Button>
                 </Grid>
-            </Grid>
-        </Border>
+            </Border>
+        </Expander>
 
-        <Border Grid.Row="2" Style="{StaticResource FluentCardStyle}" Padding="16"
-                AutomationProperties.AutomationId="Trainingsstatus">
-            <Grid ColumnSpacing="14">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Border Width="40" Height="40" CornerRadius="20"
-                        Background="{ThemeResource AccentFillColorSecondaryBrush}">
-                    <FontIcon Glyph="&#xE823;" FontSize="18"
-                              Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
-                </Border>
-                <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
-                    <TextBlock Text="{x:Bind ViewModel.TrainingsstatusText, Mode=OneWay}" FontWeight="SemiBold" />
-                    <TextBlock Text="{x:Bind ViewModel.TrainingsstatusHinweis, Mode=OneWay}"
-                               Style="{ThemeResource CaptionTextBlockStyle}"
-                               Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                </StackPanel>
-                <StackPanel Grid.Column="2" Margin="8,0,12,0" VerticalAlignment="Center">
-                    <TextBlock Text="LAUFZEIT" FontSize="10" FontWeight="SemiBold"
-                               Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                    <TextBlock Text="{x:Bind ViewModel.Laufzeit, Mode=OneWay}" FontSize="18" FontWeight="SemiBold" />
-                </StackPanel>
-                <Button Grid.Column="3" Content="Runde auswerten"
-                        Command="{x:Bind ViewModel.StopSyncCommand}"
-                        IsEnabled="{x:Bind ViewModel.Running, Mode=OneWay, Converter={StaticResource BoolInvertConverter}}"
-                        AutomationProperties.AutomationId="TrainingBeenden" />
-            </Grid>
-        </Border>
-
-        <Border Grid.Row="3" Style="{StaticResource FluentCardStyle}" Padding="0">
+        <Border Grid.Row="2" Style="{StaticResource FluentCardStyle}" Padding="0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />

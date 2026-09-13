@@ -33,12 +33,14 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(TrainingsstatusText))]
     [NotifyPropertyChangedFor(nameof(TrainingsstatusHinweis))]
+    [NotifyPropertyChangedFor(nameof(LaufendeRundeSichtbarkeit))]
     private bool _running = true;
     [ObservableProperty] private int _anzahlPrioVokabeln = 0;
     [ObservableProperty] private int _gesammtRichtige = 0;
     [ObservableProperty] private int _gesammtFalsche = 0;
     [ObservableProperty] private int _gesammtAnzahl = 0;
     [ObservableProperty] private bool _nurNeueVokabeln = false;
+    [ObservableProperty] private bool _trainingseinstellungenGeoeffnet = true;
     
     private readonly DispatcherTimer _timer = new ();
     private DateTime _startTime;
@@ -51,6 +53,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
     public string TrainingsstatusHinweis => Running
         ? "Stelle dein Training zusammen und beginne, wenn du bereit bist."
         : "Trage deine Übersetzungen ein und werte danach die Runde aus.";
+    public Visibility LaufendeRundeSichtbarkeit => Running ? Visibility.Collapsed : Visibility.Visible;
     public string AudioTooltip => _sprachstimme is null
         ? $"Keine Stimme für {FremdsprachenBezeichnung} installiert"
         : $"{(_lernsprache == Lernsprache.Latein ? "Lateinische" : "Englische")} Lösung anhören";
@@ -133,6 +136,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
                 _timer.Start();
                 _startTime = DateTime.Now;
                 Running = false;
+                TrainingseinstellungenGeoeffnet = false;
             }
             else
             {
@@ -275,6 +279,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
         Richtige = 0;
         Laufzeit = "00:00:00";
         Running = true;
+        TrainingseinstellungenGeoeffnet = true;
     }
     
     private void Timer_Tick(object? sender, object e)
