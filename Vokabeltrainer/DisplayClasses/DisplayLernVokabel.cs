@@ -7,19 +7,20 @@ namespace Vokabeltrainer.DisplayClasses;
 
 public class DisplayLernVokabel : INotifyPropertyChanged
 {
-    private string _englisch = "";
+    private string _antwort = "";
     private string _richtig = "";
-    private string _englischRichtig = "";
+    private string _loesung = "";
     private bool _speakButtonEnabled;
     public Vokabel Vokabel { get; set; }
-    public string Deutsch { get; set; }
+    public string Vorgabe { get; }
+    public string ErwarteteAntwort { get; }
 
     public IRelayCommand<DisplayLernVokabel> SpeakCommand { get; set; }
     
-    public string Englisch
+    public string Antwort
     {
-        get => _englisch;
-        set => SetField(ref _englisch, value);
+        get => _antwort;
+        set => SetField(ref _antwort, value);
     }
 
     public string Richtig
@@ -28,10 +29,10 @@ public class DisplayLernVokabel : INotifyPropertyChanged
         set => SetField(ref _richtig, value);
     }
 
-    public string EnglischRichtig
+    public string Loesung
     {
-        get => _englischRichtig;
-        set => SetField(ref _englischRichtig, value);
+        get => _loesung;
+        set => SetField(ref _loesung, value);
     }
 
     public bool SpeakButtonEnabled
@@ -40,19 +41,32 @@ public class DisplayLernVokabel : INotifyPropertyChanged
         set => SetField(ref _speakButtonEnabled, value);
     }
 
-    public DisplayLernVokabel(Vokabel vokabel, Action<DisplayLernVokabel> speakAction)
+    public DisplayLernVokabel(
+        Vokabel vokabel,
+        Lernsprache lernsprache,
+        Action<DisplayLernVokabel> speakAction)
     {
         Vokabel = vokabel;
         Richtig = "";
-        Deutsch = Vokabel.Deutsch;
+        Vorgabe = lernsprache == Lernsprache.Latein ? Vokabel.Englisch : Vokabel.Deutsch;
+        ErwarteteAntwort = lernsprache == Lernsprache.Latein ? Vokabel.Deutsch : Vokabel.Englisch;
         
         if (Vokabel.Zaehler == 100)
-            EnglischRichtig = Vokabel.Englisch;
+            Loesung = ErwarteteAntwort;
         else
-            EnglischRichtig = string.Empty;
+            Loesung = string.Empty;
         
-        SpeakCommand = new RelayCommand<DisplayLernVokabel>(speakAction);
+        SpeakCommand = new RelayCommand<DisplayLernVokabel>(displayLernVokabel =>
+        {
+            if (displayLernVokabel is not null)
+            {
+                speakAction(displayLernVokabel);
+            }
+        });
     }
+
+    public bool IstAntwortRichtig() =>
+        Antwort.Trim() == ErwarteteAntwort.Trim();
     
     public event PropertyChangedEventHandler? PropertyChanged;
 

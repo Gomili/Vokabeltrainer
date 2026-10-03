@@ -229,8 +229,12 @@
                     <ListView.Header>
                         <ct:DataTable Margin="12,8" MinWidth="900">
                             <ct:DataColumn Content="Status" Width="90" />
-                            <ct:DataColumn Content="Deutsch" DesiredWidth="230" />
-                            <ct:DataColumn Content="Deine Übersetzung" DesiredWidth="260" />
+                            <ct:DataColumn DesiredWidth="230">
+                                <TextBlock Text="{x:Bind ViewModel.Vorgabensprache, Mode=OneWay}" />
+                            </ct:DataColumn>
+                            <ct:DataColumn DesiredWidth="260">
+                                <TextBlock Text="{x:Bind ViewModel.Antwortspalte, Mode=OneWay}" />
+                            </ct:DataColumn>
                             <ct:DataColumn DesiredWidth="230">
                                 <TextBlock Text="Lösung" Margin="12,0,0,0" />
                             </ct:DataColumn>
@@ -239,19 +243,19 @@
                     </ListView.Header>
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:DisplayLernVokabel">
-                            <ct:DataRow MinWidth="900" AutomationProperties.Name="{x:Bind Deutsch}">
+                            <ct:DataRow MinWidth="900" AutomationProperties.Name="{x:Bind Vorgabe}">
                                 <Border Background="{x:Bind Richtig, Mode=OneWay, Converter={StaticResource StringToColorConverter}}"
                                         CornerRadius="18" Width="36" Height="36" HorizontalAlignment="Center">
                                     <TextBlock Text="{x:Bind Richtig, Mode=OneWay}"
                                                HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
-                                <TextBlock Text="{x:Bind Deutsch, Mode=OneWay}" FontWeight="SemiBold"
+                                <TextBlock Text="{x:Bind Vorgabe, Mode=OneWay}" FontWeight="SemiBold"
                                            VerticalAlignment="Center" TextWrapping="Wrap" />
-                                <TextBox Text="{x:Bind Englisch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                <TextBox Text="{x:Bind Antwort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          PlaceholderText="Übersetzung eingeben"
                                          IsSpellCheckEnabled="False"
-                                         AutomationProperties.Name="Englische Antwort" />
-                                <TextBlock Text="{x:Bind EnglischRichtig, Mode=OneWay}"
+                                         AutomationProperties.Name="Antwort" />
+                                <TextBlock Text="{x:Bind Loesung, Mode=OneWay}"
                                            Margin="12,0,0,0"
                                            VerticalAlignment="Center" TextWrapping="Wrap"
                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}" />

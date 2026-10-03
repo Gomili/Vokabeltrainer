@@ -56,8 +56,12 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
     public Visibility LaufendeRundeSichtbarkeit => Running ? Visibility.Collapsed : Visibility.Visible;
     public string AudioTooltip => _sprachstimme is null
         ? $"Keine Stimme für {FremdsprachenBezeichnung} installiert"
-        : $"{(_lernsprache == Lernsprache.Latein ? "Lateinische" : "Englische")} Lösung anhören";
+        : $"{(_lernsprache == Lernsprache.Latein ? "Lateinischen Begriff" : "Englische Lösung")} anhören";
     public string FremdsprachenBezeichnung => _lernsprache == Lernsprache.Latein ? "Latein" : "Englisch";
+    public string Vorgabensprache => _lernsprache == Lernsprache.Latein ? "Latein" : "Deutsch";
+    public string Antwortspalte => _lernsprache == Lernsprache.Latein
+        ? "Deine deutsche Übersetzung"
+        : "Deine englische Übersetzung";
     
     public VokabelTrainingViewModel(
         IDataService dataService,
@@ -94,8 +98,8 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
             foreach (DisplayLernVokabel lernVokabel in Lernliste)
             {
                 lernVokabel.SpeakButtonEnabled = _sprachstimme is not null;
-                lernVokabel.EnglischRichtig = lernVokabel.Vokabel.Englisch;
-                if (lernVokabel.Englisch.Trim() == lernVokabel.Vokabel.Englisch.Trim())
+                lernVokabel.Loesung = lernVokabel.ErwarteteAntwort;
+                if (lernVokabel.IstAntwortRichtig())
                 {
                     if (lernVokabel.Vokabel.Zaehler > 10)
                     {
@@ -183,7 +187,7 @@ public partial class VokabelTrainingViewModel : ObservableRecipient, IDisposable
         
         foreach (Vokabel vokabel in lernListe)
         {
-            var lernVokabel = new DisplayLernVokabel(vokabel, SpeakText)
+            var lernVokabel = new DisplayLernVokabel(vokabel, _lernsprache, SpeakText)
             {
                 SpeakButtonEnabled = _sprachstimme is not null && vokabel.Zaehler == 100
             };

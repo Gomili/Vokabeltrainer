@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.11.35303.130
+# Visual Studio Version 18
+VisualStudioVersion = 18.11.12224.323 insiders
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vokabeltrainer", "Vokabeltrainer\Vokabeltrainer.csproj", "{E5C9782E-6093-4D66-898E-C592D5512462}"
 EndProject
@@ -73,8 +73,7 @@ Global
 		{D4E97888-FA79-4DFE-A1D3-3E5400194672}.Release|Any CPU.Build.0 = Release|x64
 		{D4E97888-FA79-4DFE-A1D3-3E5400194672}.Release|arm64.ActiveCfg = Release|x64
 		{D4E97888-FA79-4DFE-A1D3-3E5400194672}.Release|arm64.Build.0 = Release|x64
-		{D4E97888-FA79-4DFE-A1D3-3E5400194672}.Release|x64.ActiveCfg = Release|x64
-		{D4E97888-FA79-4DFE-A1D3-3E5400194672}.Release|x64.Build.0 = Release|x64
+		{D4E97888-FA79-4DFE-A1D3-3E5400194672}.Release|x64.ActiveCfg = Release|Any CPU
 		{D4E97888-FA79-4DFE-A1D3-3E5400194672}.Release|x86.ActiveCfg = Release|x64
 		{D4E97888-FA79-4DFE-A1D3-3E5400194672}.Release|x86.Build.0 = Release|x64
 	EndGlobalSection
